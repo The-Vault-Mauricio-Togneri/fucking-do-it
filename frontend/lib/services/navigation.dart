@@ -12,11 +12,14 @@ class Navigation {
 
   static BuildContext context() => get.routes.key.currentContext!;
 
+  static Future<T?>? push<T>(Route<T> route) => get.routes.push(route);
+
   static void pop<T>([T? result]) => get.routes.pop();
 
-  static void mainScreen() => get.routes.pushReplacement(
+  static void mainScreen() => push(
         FadeRoute(
           MainScreen.instance(),
+          name: 'bank_transactions',
         ),
       );
 
