@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:fucking_do_it/services/localizations.dart';
 import 'package:fucking_do_it/services/navigation.dart';
 import 'package:fucking_do_it/widgets/custom_button.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class ConnectionScreen extends StatelessWidget {
   final SplashState state = SplashState();
@@ -92,16 +91,8 @@ class SplashState extends BaseState {
     notify();
 
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-
-      final a = await FirebaseAuth.instance.signInWithCredential(credential);
-      print(a);
+      final GoogleAuthProvider authProvider = GoogleAuthProvider();
+      await FirebaseAuth.instance.signInWithPopup(authProvider);
       openMainScreen();
     } catch (e) {
       showLoading = false;
