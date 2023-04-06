@@ -1,2 +1,3 @@
-# fucking-do-it
-Just Fucking Do It
+# Fucking Do It
+
+[fucking-do-it.web.app](https://fucking-do-it.web.app)
