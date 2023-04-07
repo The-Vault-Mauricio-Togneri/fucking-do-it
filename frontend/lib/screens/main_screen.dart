@@ -5,6 +5,7 @@ import 'package:fucking_do_it/states/main_state.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
+import 'package:link_text/link_text.dart';
 
 class MainScreen extends StatelessWidget {
   final MainState state;
@@ -224,10 +225,17 @@ class TaskEntry extends StatelessWidget {
                 if (task.description.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
-                    child: Label(
-                      text: task.description,
-                      color: Palette.grey,
-                      size: 12,
+                    child: LinkText(
+                      task.description,
+                      textStyle: const TextStyle(
+                        color: Palette.grey,
+                        fontSize: 12,
+                      ),
+                      linkStyle: const TextStyle(
+                        color: Palette.primary,
+                        fontSize: 12,
+                        decoration: TextDecoration.none,
+                      ),
                     ),
                   ),
                 const VBox(10),
