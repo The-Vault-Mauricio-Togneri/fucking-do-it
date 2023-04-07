@@ -12,15 +12,7 @@ class Repository {
         )
         .snapshots();
 
-    return stream.listen((event) async {
-      final List<Task> tasks = [];
-
-      for (final document in event.docs) {
-        tasks.add(Task.fromDocument(document));
-      }
-
-      callback(tasks);
-    });
+    return processStream(stream, callback);
   }
 
   static StreamSubscription listenCreated(Function(List<Task> tasks) callback) {
@@ -32,15 +24,7 @@ class Repository {
         .where('status', isEqualTo: 'created')
         .snapshots();
 
-    return stream.listen((event) async {
-      final List<Task> tasks = [];
-
-      for (final document in event.docs) {
-        tasks.add(Task.fromDocument(document));
-      }
-
-      callback(tasks);
-    });
+    return processStream(stream, callback);
   }
 
   static StreamSubscription listenInProgress(Function(List<Task> tasks) callback) {
@@ -52,15 +36,7 @@ class Repository {
         .where('status', isEqualTo: 'accepted')
         .snapshots();
 
-    return stream.listen((event) async {
-      final List<Task> tasks = [];
-
-      for (final document in event.docs) {
-        tasks.add(Task.fromDocument(document));
-      }
-
-      callback(tasks);
-    });
+    return processStream(stream, callback);
   }
 
   static StreamSubscription listenInReview(Function(List<Task> tasks) callback) {
@@ -72,6 +48,10 @@ class Repository {
         .where('status', isEqualTo: 'done')
         .snapshots();
 
+    return processStream(stream, callback);
+  }
+
+  static StreamSubscription processStream(Stream<QuerySnapshot<Map<String, dynamic>>> stream, Function(List<Task> tasks) callback) {
     return stream.listen((event) async {
       final List<Task> tasks = [];
 

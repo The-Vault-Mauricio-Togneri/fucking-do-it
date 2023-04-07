@@ -75,6 +75,7 @@ class Fields extends StatelessWidget {
               label: 'Description (optional)',
               controller: state.descriptionController,
               inputType: TextInputType.text,
+              canBeEmpty: true,
               minLines: 1,
               maxLines: 5,
             ),

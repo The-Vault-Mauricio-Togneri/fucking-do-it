@@ -113,7 +113,7 @@ class TaskColumn extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Label(
-                text: title.toUpperCase(),
+                text: ((tasks != null) && (tasks!.isNotEmpty)) ? '${title.toUpperCase()} (${tasks!.length})' : title.toUpperCase(),
                 color: Palette.white,
               ),
             ),
@@ -133,14 +133,16 @@ class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return tasks.isNotEmpty
-        ? SingleChildScrollView(
-            child: Column(
-              children: [
-                for (final Task task in tasks)
-                  ListTile(
-                    title: Text(task.title),
-                  ),
-              ],
+        ? Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  for (final Task task in tasks)
+                    ListTile(
+                      title: Text(task.title),
+                    ),
+                ],
+              ),
             ),
           )
         : const Empty();
