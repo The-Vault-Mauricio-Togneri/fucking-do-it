@@ -143,20 +143,20 @@ class TasksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return tasks.isNotEmpty
-        ? Expanded(
-            child: Container(
-              color: Palette.lightGrey,
-              child: SingleChildScrollView(
+    return Expanded(
+      child: Container(
+        color: Palette.lightGrey,
+        child: tasks.isNotEmpty
+            ? SingleChildScrollView(
                 child: Column(
                   children: [
                     for (final Task task in tasks) TaskEntry(state: state, task: task),
                   ],
                 ),
-              ),
-            ),
-          )
-        : const Empty();
+              )
+            : const NoTasks(),
+      ),
+    );
   }
 }
 
@@ -180,8 +180,8 @@ class NoTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Label(
-        text: 'No tasks',
-        color: Palette.black,
+        text: 'Empty',
+        color: Palette.grey,
       ),
     );
   }
