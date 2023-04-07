@@ -33,7 +33,7 @@ class MainScreen extends StatelessWidget {
         ),
         body: Content(state),
         floatingActionButton: FloatingActionButton(
-          onPressed: state.onCreateTask,
+          onPressed: () => state.onCreateTask(context),
           child: const Icon(Icons.add),
         ),
       ),

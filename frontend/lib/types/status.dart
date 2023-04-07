@@ -1,5 +1,5 @@
 enum Status {
-  sent,
+  created,
   accepted,
   done;
 

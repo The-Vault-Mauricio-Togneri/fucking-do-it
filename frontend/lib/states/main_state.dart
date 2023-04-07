@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:dafluta/dafluta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
+import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/dialogs/options_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
@@ -61,7 +63,7 @@ class MainState extends BaseState {
     Repository.delete(task);
   }
 
-  void onCreateTask() {}
+  void onCreateTask(BuildContext context) => CreateTaskDialog.show(context);
 
   Future signOut() async {
     await FirebaseAuth.instance.signOut();
