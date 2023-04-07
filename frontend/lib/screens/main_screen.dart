@@ -165,9 +165,12 @@ class LoadingTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
-      child: Center(
-        child: CircularProgressIndicator(),
+    return Expanded(
+      child: Container(
+        color: Palette.lightGrey,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
