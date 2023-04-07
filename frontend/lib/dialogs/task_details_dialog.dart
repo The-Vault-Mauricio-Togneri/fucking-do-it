@@ -57,7 +57,7 @@ class ReopenButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 20,
+        top: 10,
         left: 20,
         right: 20,
       ),
@@ -78,7 +78,12 @@ class CompleteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(
+        top: 10,
+        left: 20,
+        right: 20,
+        bottom: 20,
+      ),
       child: CustomButton(
         onPressed: state.onComplete,
         text: 'Mark as done',
@@ -96,7 +101,12 @@ class DeleteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(
+        top: 10,
+        left: 20,
+        right: 20,
+        bottom: 20,
+      ),
       child: CustomButton(
         onPressed: state.onDelete,
         text: 'Delete',
