@@ -19,6 +19,7 @@ class MainScreen extends StatelessWidget {
       state: state,
       builder: (context, state) => Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Label(
             text: Localized.get.appName,
             color: Palette.white,
@@ -84,8 +85,9 @@ class VerticalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 50),
       color: Palette.grey,
-      width: 0.5,
+      width: 0.2,
       height: double.infinity,
     );
   }
@@ -109,7 +111,8 @@ class TaskColumn extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            color: Palette.grey,
+            height: 50,
+            color: Palette.primary,
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Label(
