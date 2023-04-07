@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fucking_do_it/models/task.dart';
+import 'package:fucking_do_it/types/status.dart';
 
 class Repository {
   static StreamSubscription listenAssignedToMe(Function(List<Task> tasks) callback) {
@@ -64,9 +65,15 @@ class Repository {
     });
   }
 
-  static Future add(Task task) => _collection().add(task.document);
+  static Future create(Task task) => _collection().add(task.document);
 
-  static Future update(Task task) => _collection().doc(task.id).set(task.document);
+  static Future complete(Task task) => _collection().doc(task.id).update({
+        'status': Status.done,
+      });
+
+  static Future reopen(Task task) => _collection().doc(task.id).update({
+        'status': Status.accepted,
+      });
 
   static Future delete(Task task) => _collection().doc(task.id).delete();
 

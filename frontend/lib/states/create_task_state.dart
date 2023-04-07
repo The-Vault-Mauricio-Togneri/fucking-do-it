@@ -40,7 +40,7 @@ class CreateTaskState extends BaseState {
         dueDate: null,
       );
 
-      await Repository.add(task);
+      await Repository.create(task);
       Navigation.pop();
     }
   }
