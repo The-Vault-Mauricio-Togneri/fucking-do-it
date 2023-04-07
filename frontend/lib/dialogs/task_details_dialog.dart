@@ -37,12 +37,38 @@ class TaskDetailsDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               TaskCard(state.task),
+              const VBox(10),
+              if (state.task.canBeCopied) CopyLinkButton(state),
               if (state.task.canBeReopened) ReopenButton(state),
               if (state.task.canBeCompleted) CompleteButton(state),
               if (state.task.canBeDeleted) DeleteButton(state),
+              const VBox(10),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CopyLinkButton extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const CopyLinkButton(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 10,
+        left: 20,
+        right: 20,
+        bottom: 10,
+      ),
+      child: CustomButton(
+        onPressed: state.onCopyLink,
+        text: 'Copy link',
+        color: Palette.primary,
       ),
     );
   }
@@ -60,6 +86,7 @@ class ReopenButton extends StatelessWidget {
         top: 10,
         left: 20,
         right: 20,
+        bottom: 10,
       ),
       child: CustomButton(
         onPressed: state.onReopen,
@@ -82,7 +109,7 @@ class CompleteButton extends StatelessWidget {
         top: 10,
         left: 20,
         right: 20,
-        bottom: 20,
+        bottom: 10,
       ),
       child: CustomButton(
         onPressed: state.onComplete,
@@ -105,7 +132,7 @@ class DeleteButton extends StatelessWidget {
         top: 10,
         left: 20,
         right: 20,
-        bottom: 20,
+        bottom: 10,
       ),
       child: CustomButton(
         onPressed: state.onDelete,

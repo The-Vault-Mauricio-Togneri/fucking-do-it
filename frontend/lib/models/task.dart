@@ -43,6 +43,8 @@ class Task implements Comparable<Task> {
 
   bool get canBeReopened => (status == Status.done) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
+  bool get canBeCopied => ((status == Status.created) || (status == Status.accepted)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
+
   bool get canBeDeleted => ((status == Status.created) || (status == Status.done)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
   String get createdAtDateTime => Formatter.fullDateTime(createdAt);

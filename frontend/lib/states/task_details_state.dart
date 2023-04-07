@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'package:dafluta/dafluta.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
@@ -8,13 +9,32 @@ class TaskDetailsState extends BaseState {
 
   TaskDetailsState(this.task);
 
-  void onComplete() {
-    Repository.complete(task);
-    Navigation.pop();
+  void onCopyLink() {
+    try {
+      final textarea = TextAreaElement();
+      document.body!.append(textarea);
+      textarea.style.border = '0';
+      textarea.style.margin = '0';
+      textarea.style.padding = '0';
+      textarea.style.opacity = '0';
+      textarea.style.position = 'absolute';
+      textarea.readOnly = true;
+      textarea.value = 'https://fucking-do-it.web.app?taskId=${task.id}';
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+    } catch (e) {
+      // ignore
+    }
   }
 
   void onReopen() {
     Repository.reopen(task);
+    Navigation.pop();
+  }
+
+  void onComplete() {
+    Repository.complete(task);
     Navigation.pop();
   }
 
