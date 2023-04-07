@@ -9,6 +9,7 @@ import 'package:fucking_do_it/utils/palette.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt getIt = GetIt.instance;
+String? paramTaskId;
 
 class Initializer {
   static Future set() async {
@@ -35,6 +36,8 @@ class Initializer {
     ));
 
     getIt.registerSingleton<Navigation>(Navigation());
+
+    paramTaskId = Uri.base.queryParameters['taskId'];
 
     setUrlStrategy(EmptyUrlStrategy());
   }

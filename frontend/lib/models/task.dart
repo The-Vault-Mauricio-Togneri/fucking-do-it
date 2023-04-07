@@ -47,8 +47,8 @@ class Task implements Comparable<Task> {
 
   String get createdAtDateTime => Formatter.fullDateTime(createdAt);
 
-  factory Task.fromDocument(QueryDocumentSnapshot<Map<String, dynamic>> document) {
-    final map = document.data();
+  factory Task.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {
+    final map = document.data() ?? {};
 
     return Task(
       id: document.id,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dafluta/dafluta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/app/initializer.dart';
 import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/dialogs/task_details_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
@@ -20,6 +21,11 @@ class MainState extends BaseState {
 
   @override
   void onLoad() {
+    if (paramTaskId != null) {
+      Repository.accept(paramTaskId!);
+      paramTaskId = null;
+    }
+
     subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
     subscriptionCreated ??= Repository.listenCreated(onTasksCreated);
     subscriptionInProgress ??= Repository.listenInProgress(onTasksInProgress);
