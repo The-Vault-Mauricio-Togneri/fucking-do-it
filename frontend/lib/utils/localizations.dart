@@ -7,7 +7,7 @@ abstract class BaseLocalized {
 
 class ENLocalized extends BaseLocalized {
   @override
-  String get appName => 'Fucking Do It';
+  String get appName => 'Just Fucking Do It';
 }
 
 class Localized {
