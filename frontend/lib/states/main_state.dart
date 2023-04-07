@@ -60,10 +60,6 @@ class MainState extends BaseState {
   }
 
   void onTaskSelected(Task task) {
-    onOptionsSelected(task);
-  }
-
-  void onOptionsSelected(Task task) {
     OptionsDialog.show(options: [
       Option(
         text: 'Option 1',

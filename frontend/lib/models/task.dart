@@ -10,7 +10,7 @@ class Task implements Comparable<Task> {
   final Priority priority;
   final String title;
   final List<String> assignedTo;
-  final String? description;
+  final String description;
   final DateTime? dueDate;
 
   static const String FIELD_CREATED_BY = 'createdBy';

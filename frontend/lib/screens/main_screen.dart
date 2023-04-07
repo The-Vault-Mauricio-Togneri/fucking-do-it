@@ -55,21 +55,25 @@ class Content extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TaskColumn(
+            state: state,
             title: 'Assigned to me',
             tasks: state.tasksAssignedToMe,
           ),
           const VerticalDivider(),
           TaskColumn(
+            state: state,
             title: 'Created',
             tasks: state.tasksCreated,
           ),
           const VerticalDivider(),
           TaskColumn(
+            state: state,
             title: 'In progress',
             tasks: state.tasksInProgress,
           ),
           const VerticalDivider(),
           TaskColumn(
+            state: state,
             title: 'In review',
             tasks: state.tasksInReview,
           ),
@@ -94,10 +98,12 @@ class VerticalDivider extends StatelessWidget {
 }
 
 class TaskColumn extends StatelessWidget {
+  final MainState state;
   final String title;
   final List<Task>? tasks;
 
   const TaskColumn({
+    required this.state,
     required this.title,
     required this.tasks,
   });
@@ -121,7 +127,7 @@ class TaskColumn extends StatelessWidget {
               ),
             ),
           ),
-          if (tasks != null) TasksList(tasks!) else const LoadingTasks(),
+          if (tasks != null) TasksList(state, tasks!) else const LoadingTasks(),
         ],
       ),
     );
@@ -129,9 +135,10 @@ class TaskColumn extends StatelessWidget {
 }
 
 class TasksList extends StatelessWidget {
+  final MainState state;
   final List<Task> tasks;
 
-  const TasksList(this.tasks);
+  const TasksList(this.state, this.tasks);
 
   @override
   Widget build(BuildContext context) {
@@ -140,10 +147,7 @@ class TasksList extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  for (final Task task in tasks)
-                    ListTile(
-                      title: Text(task.title),
-                    ),
+                  for (final Task task in tasks) TaskEntry(state: state, task: task),
                 ],
               ),
             ),
@@ -191,19 +195,49 @@ class TaskEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(
+        top: 10,
+        left: 10,
+        right: 10,
+      ),
       width: double.infinity,
-      color: task.priority.color,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Palette.lightGrey,
+      ),
       child: Material(
         color: Palette.transparent,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: InkWell(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           onTap: () => state.onTaskSelected(task),
-          onLongPress: () => state.onOptionsSelected(task),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(12, 17, 12, 17),
-            child: Label(
-              text: task.title,
-              size: 12,
-              color: Palette.black,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Label(
+                  text: task.title,
+                  color: Palette.black,
+                  size: 14,
+                ),
+                if (task.description.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Label(
+                      text: task.description,
+                      color: Palette.grey,
+                      size: 12,
+                    ),
+                  ),
+                const VBox(10),
+                Label(
+                  text: task.priority.text.toUpperCase(),
+                  color: task.priority.color,
+                  weight: FontWeight.bold,
+                  size: 12,
+                ),
+              ],
             ),
           ),
         ),
