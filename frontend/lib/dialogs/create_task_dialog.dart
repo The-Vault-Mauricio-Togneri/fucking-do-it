@@ -8,7 +8,7 @@ import 'package:fucking_do_it/widgets/custom_form_field.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 
 class CreateTaskDialog extends StatelessWidget {
-  final TaskState state;
+  final CreateTaskState state;
 
   const CreateTaskDialog._(this.state);
 
@@ -16,7 +16,7 @@ class CreateTaskDialog extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: true,
-      builder: (context) => CreateTaskDialog._(TaskState()),
+      builder: (context) => CreateTaskDialog._(CreateTaskState()),
     );
 
     return DialogController(context);
@@ -26,7 +26,7 @@ class CreateTaskDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
-      content: StateProvider<TaskState>(
+      content: StateProvider<CreateTaskState>(
         state: state,
         builder: (context, state) => SizedBox(
           width: 500,
@@ -34,7 +34,7 @@ class CreateTaskDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Fields(state),
-              Buttons(state),
+              CreateButton(state),
             ],
           ),
         ),
@@ -44,7 +44,7 @@ class CreateTaskDialog extends StatelessWidget {
 }
 
 class Fields extends StatelessWidget {
-  final TaskState state;
+  final CreateTaskState state;
 
   const Fields(this.state);
 
@@ -99,7 +99,7 @@ class Fields extends StatelessWidget {
                   priority: Priority.low,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -108,7 +108,7 @@ class Fields extends StatelessWidget {
 }
 
 class PrioritySelector extends StatelessWidget {
-  final TaskState state;
+  final CreateTaskState state;
   final Priority priority;
 
   const PrioritySelector({
@@ -141,10 +141,10 @@ class PrioritySelector extends StatelessWidget {
   }
 }
 
-class Buttons extends StatelessWidget {
-  final TaskState state;
+class CreateButton extends StatelessWidget {
+  final CreateTaskState state;
 
-  const Buttons(this.state, {super.key});
+  const CreateButton(this.state, {super.key});
 
   @override
   Widget build(BuildContext context) {

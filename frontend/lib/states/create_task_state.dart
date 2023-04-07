@@ -7,7 +7,7 @@ import 'package:fucking_do_it/types/status.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
-class TaskState extends BaseState {
+class CreateTaskState extends BaseState {
   Priority priority = Priority.high;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
