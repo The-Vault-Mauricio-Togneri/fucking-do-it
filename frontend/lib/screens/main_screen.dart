@@ -217,40 +217,92 @@ class TaskEntry extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Label(
-                  text: task.title,
-                  color: Palette.black,
-                  weight: FontWeight.bold,
-                  size: 14,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.notes,
+                      color: Palette.grey,
+                      size: 20,
+                    ),
+                    const HBox(10),
+                    Expanded(
+                      child: Label(
+                        text: task.title,
+                        color: Palette.black,
+                        weight: FontWeight.bold,
+                        size: 14,
+                      ),
+                    ),
+                  ],
                 ),
                 if (task.description.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
-                    child: LinkText(
-                      task.description,
-                      textStyle: const TextStyle(
-                        color: Palette.grey,
-                        fontSize: 12,
-                      ),
-                      linkStyle: const TextStyle(
-                        color: Palette.primary,
-                        fontSize: 12,
-                        decoration: TextDecoration.none,
-                      ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.summarize_outlined,
+                          color: Palette.grey,
+                          size: 20,
+                        ),
+                        const HBox(10),
+                        Expanded(
+                          child: LinkText(
+                            task.description,
+                            textStyle: const TextStyle(
+                              color: Palette.grey,
+                              fontSize: 12,
+                            ),
+                            linkStyle: const TextStyle(
+                              color: Palette.primary,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 const VBox(10),
-                Label(
-                  text: task.priority.text.toUpperCase(),
-                  color: task.priority.color,
-                  weight: FontWeight.bold,
-                  size: 12,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.priority_high_rounded,
+                      color: Palette.grey,
+                      size: 20,
+                    ),
+                    const HBox(10),
+                    Expanded(
+                      child: Label(
+                        text: task.priority.text.toUpperCase(),
+                        color: task.priority.color,
+                        weight: FontWeight.bold,
+                        size: 12,
+                      ),
+                    ),
+                  ],
                 ),
                 const VBox(10),
-                Label(
-                  text: task.createdAt.toString(),
-                  color: Palette.grey,
-                  size: 12,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.calendar_month_outlined,
+                      color: Palette.grey,
+                      size: 20,
+                    ),
+                    const HBox(10),
+                    Expanded(
+                      child: Label(
+                        text: task.createdAt.toString(),
+                        color: Palette.grey,
+                        size: 12,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
