@@ -95,7 +95,7 @@ class TaskCard extends StatelessWidget {
               ),
             ],
           ),
-          const VBox(10),
+          /*const VBox(10),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -116,7 +116,7 @@ class TaskCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+          ),*/
           if (task.assignedTo.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 10),

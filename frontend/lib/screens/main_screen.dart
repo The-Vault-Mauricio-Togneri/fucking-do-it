@@ -21,10 +21,12 @@ class MainScreen extends StatelessWidget {
       builder: (context, state) => Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Label(
-            text: Localized.get.appName,
-            color: Palette.white,
-            size: 16,
+          title: Center(
+            child: Label(
+              text: Localized.get.appName.toUpperCase(),
+              color: Palette.white,
+              size: 16,
+            ),
           ),
           actions: [
             IconButton(

@@ -57,13 +57,6 @@ class Fields extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Label(
-              text: 'Create task'.toUpperCase(),
-              color: Palette.black,
-              weight: FontWeight.bold,
-              size: 18,
-            ),
-            const VBox(20),
             CustomFormField(
               label: 'Title',
               autofocus: true,
