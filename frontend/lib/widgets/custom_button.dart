@@ -10,7 +10,6 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.color = Palette.primary,
-    super.key,
   });
 
   @override

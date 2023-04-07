@@ -31,7 +31,6 @@ class CustomFormField extends StatelessWidget {
     this.inputValidator,
     this.minLines,
     this.maxLines,
-    super.key,
   });
 
   @override

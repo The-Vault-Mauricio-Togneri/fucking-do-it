@@ -51,7 +51,7 @@ class TaskDetailsDialog extends StatelessWidget {
 class ReopenButton extends StatelessWidget {
   final TaskDetailsState state;
 
-  const ReopenButton(this.state, {super.key});
+  const ReopenButton(this.state);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class ReopenButton extends StatelessWidget {
 class CompleteButton extends StatelessWidget {
   final TaskDetailsState state;
 
-  const CompleteButton(this.state, {super.key});
+  const CompleteButton(this.state);
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class CompleteButton extends StatelessWidget {
 class DeleteButton extends StatelessWidget {
   final TaskDetailsState state;
 
-  const DeleteButton(this.state, {super.key});
+  const DeleteButton(this.state);
 
   @override
   Widget build(BuildContext context) {

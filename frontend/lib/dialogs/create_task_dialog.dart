@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/states/create_task_state.dart';
 import 'package:fucking_do_it/types/priority.dart';
+import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/custom_button.dart';
 import 'package:fucking_do_it/widgets/custom_form_field.dart';
@@ -15,7 +16,7 @@ class CreateTaskDialog extends StatelessWidget {
   static DialogController show(BuildContext context) {
     showDialog(
       context: context,
-      barrierDismissible: true,
+      barrierDismissible: false,
       builder: (context) => CreateTaskDialog._(CreateTaskState()),
     );
 
@@ -35,6 +36,7 @@ class CreateTaskDialog extends StatelessWidget {
             children: [
               Fields(state),
               CreateButton(state),
+              const CloseButton(),
             ],
           ),
         ),
@@ -137,15 +139,42 @@ class PrioritySelector extends StatelessWidget {
 class CreateButton extends StatelessWidget {
   final CreateTaskState state;
 
-  const CreateButton(this.state, {super.key});
+  const CreateButton(this.state);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(
+        top: 30,
+        left: 20,
+        right: 20,
+        bottom: 10,
+      ),
       child: CustomButton(
         onPressed: state.canSubmit ? state.onSubmit : null,
         text: 'Create',
+      ),
+    );
+  }
+}
+
+class CloseButton extends StatelessWidget {
+  const CloseButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: 10,
+      ),
+      child: TextButton(
+        onPressed: Navigation.pop,
+        child: Label(
+          text: 'Close'.toUpperCase(),
+          color: Palette.grey,
+          weight: FontWeight.bold,
+          size: 12,
+        ),
       ),
     );
   }

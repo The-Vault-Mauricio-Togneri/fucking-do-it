@@ -8,12 +8,12 @@ import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
 class CreateTaskState extends BaseState {
-  Priority priority = Priority.high;
+  Priority? priority;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  bool get canSubmit => titleController.text.trim().isNotEmpty;
+  bool get canSubmit => (priority != null) && titleController.text.trim().isNotEmpty;
 
   void onTitleChanged() {
     notify();
@@ -33,7 +33,7 @@ class CreateTaskState extends BaseState {
         createdBy: FirebaseAuth.instance.currentUser?.uid ?? '',
         createdAt: DateTime.now(),
         status: Status.created,
-        priority: priority,
+        priority: priority!,
         title: titleController.text.trim(),
         assignedTo: [],
         assignedInfo: {},
