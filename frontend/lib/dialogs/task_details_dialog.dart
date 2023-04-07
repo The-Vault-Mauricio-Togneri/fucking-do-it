@@ -38,6 +38,7 @@ class TaskDetailsDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Fields(state),
+              if (state.task.canBeReopened) ReopenButton(state),
               if (state.task.canBeCompleted) CompleteButton(state) else if (state.task.canBeDeleted) DeleteButton(state) else const VBox(20),
             ],
           ),
@@ -105,9 +106,31 @@ class CompleteButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: CustomButton(
-        onPressed: state.onDelete,
+        onPressed: state.onComplete,
         text: 'Mark as done',
         color: Palette.green,
+      ),
+    );
+  }
+}
+
+class ReopenButton extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const ReopenButton(this.state, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 20,
+        left: 20,
+        right: 20,
+      ),
+      child: CustomButton(
+        onPressed: state.onReopen,
+        text: 'Reopen',
+        color: Palette.primary,
       ),
     );
   }

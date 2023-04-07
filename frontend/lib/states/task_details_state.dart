@@ -8,5 +8,7 @@ class TaskDetailsState extends BaseState {
 
   void onComplete() {}
 
+  void onReopen() {}
+
   void onDelete() {}
 }

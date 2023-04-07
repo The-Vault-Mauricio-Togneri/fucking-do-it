@@ -37,6 +37,8 @@ class Task implements Comparable<Task> {
 
   bool get canBeCompleted => (status == Status.accepted) && (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
 
+  bool get canBeReopened => (status == Status.done) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
+
   bool get canBeDeleted => ((status == Status.created) || (status == Status.done)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
   factory Task.fromDocument(QueryDocumentSnapshot<Map<String, dynamic>> document) {
