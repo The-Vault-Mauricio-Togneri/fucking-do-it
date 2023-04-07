@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
 
@@ -33,6 +34,10 @@ class Task implements Comparable<Task> {
     required this.description,
     required this.dueDate,
   });
+
+  bool get canBeCompleted => (status == Status.accepted) && (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
+
+  bool get canBeDeleted => ((status == Status.created) || (status == Status.done)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
   factory Task.fromDocument(QueryDocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data();

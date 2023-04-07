@@ -6,5 +6,7 @@ class TaskDetailsState extends BaseState {
 
   TaskDetailsState(this.task);
 
+  void onComplete() {}
+
   void onDelete() {}
 }

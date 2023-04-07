@@ -38,7 +38,7 @@ class TaskDetailsDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Fields(state),
-              DeleteButton(state),
+              if (state.task.canBeCompleted) CompleteButton(state) else if (state.task.canBeDeleted) DeleteButton(state) else const VBox(20),
             ],
           ),
         ),
@@ -90,6 +90,24 @@ class Fields extends StatelessWidget {
             size: 14,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CompleteButton extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const CompleteButton(this.state, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: CustomButton(
+        onPressed: state.onDelete,
+        text: 'Mark as done',
+        color: Palette.green,
       ),
     );
   }

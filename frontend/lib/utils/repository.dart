@@ -10,6 +10,7 @@ class Repository {
           'assignedTo',
           arrayContains: FirebaseAuth.instance.currentUser?.uid,
         )
+        .where('status', isEqualTo: 'accepted')
         .snapshots();
 
     return processStream(stream, callback);
