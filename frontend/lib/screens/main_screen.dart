@@ -50,9 +50,81 @@ class Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateProvider<MainState>(
       state: state,
-      builder: (context, state) => state.hasTasks
-          ? (state.tasks.isEmpty ? const NoTasks() : TaskList(state))
-          : const Waiting(),
+      builder: (context, state) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          TaskColumn(title: 'Assigned to me'),
+          VerticalDivider(),
+          TaskColumn(title: 'Created'),
+          VerticalDivider(),
+          TaskColumn(title: 'In progress'),
+          VerticalDivider(),
+          TaskColumn(title: 'In review'),
+        ],
+      ),
+    );
+  }
+}
+
+class VerticalDivider extends StatelessWidget {
+  const VerticalDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Palette.grey,
+      width: 0.5,
+      height: double.infinity,
+    );
+  }
+}
+
+class TaskColumn extends StatelessWidget {
+  final String title;
+
+  const TaskColumn({
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            color: Palette.grey,
+            padding: const EdgeInsets.all(15),
+            child: Center(
+              child: Label(
+                text: title,
+                color: Palette.white,
+              ),
+            ),
+          ),
+          Column(
+            children: const [
+              ListTile(
+                title: Text('Entry 1'),
+              ),
+              ListTile(
+                title: Text('Entry 1'),
+              ),
+              ListTile(
+                title: Text('Entry 1'),
+              ),
+              ListTile(
+                title: Text('Entry 1'),
+              ),
+              ListTile(
+                title: Text('Entry 1'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

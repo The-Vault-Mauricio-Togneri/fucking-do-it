@@ -10,25 +10,24 @@ import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
 class MainState extends BaseState {
-  List<Task>? _tasks;
-  StreamSubscription? subscription;
+  List<Task>? _tasksAssignedToMe;
+  StreamSubscription? subscriptionAssignedToMe;
 
-  List<Task> get tasks => _tasks!;
+  List<Task> get tasks => _tasksAssignedToMe ?? [];
 
-  bool get hasTasks => _tasks != null;
+  bool get hasTasks => _tasksAssignedToMe != null;
 
   @override
-  void onLoad() => subscription ??= Repository.listen(onTasksLoaded);
+  void onLoad() => subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
 
   @override
   void onDestroy() {
-    subscription?.cancel();
-    subscription = null;
+    subscriptionAssignedToMe?.cancel();
   }
 
-  Future onTasksLoaded(List<Task> tasks) async {
-    _tasks = tasks;
-    _tasks!.sort((a, b) => a.compareTo(b));
+  Future onTasksAssignedToMe(List<Task> tasks) async {
+    _tasksAssignedToMe = tasks;
+    _tasksAssignedToMe!.sort((a, b) => a.compareTo(b));
     notify();
   }
 
@@ -57,7 +56,7 @@ class MainState extends BaseState {
   }
 
   void onTaskDeleted(Task task) {
-    _tasks!.remove(task);
+    _tasksAssignedToMe!.remove(task);
     notify();
     Repository.delete(task);
   }
