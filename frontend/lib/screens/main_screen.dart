@@ -220,6 +220,7 @@ class TaskEntry extends StatelessWidget {
                 Label(
                   text: task.title,
                   color: Palette.black,
+                  weight: FontWeight.bold,
                   size: 14,
                 ),
                 if (task.description.isNotEmpty)

@@ -63,6 +63,7 @@ class Fields extends StatelessWidget {
           Label(
             text: state.task.title,
             color: Palette.black,
+            weight: FontWeight.bold,
             size: 14,
           ),
           if (state.task.description.isNotEmpty)
