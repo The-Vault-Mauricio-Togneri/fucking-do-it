@@ -4,8 +4,7 @@ import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/task_details_state.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/custom_button.dart';
-import 'package:fucking_do_it/widgets/label.dart';
-import 'package:link_text/link_text.dart';
+import 'package:fucking_do_it/widgets/task_card.dart';
 
 class TaskDetailsDialog extends StatelessWidget {
   final TaskDetailsState state;
@@ -37,7 +36,7 @@ class TaskDetailsDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Fields(state),
+              TaskCard(state.task),
               if (state.task.canBeReopened) ReopenButton(state),
               if (state.task.canBeCompleted) CompleteButton(state) else if (state.task.canBeDeleted) DeleteButton(state) else const VBox(20),
             ],
@@ -48,49 +47,22 @@ class TaskDetailsDialog extends StatelessWidget {
   }
 }
 
-class Fields extends StatelessWidget {
+class ReopenButton extends StatelessWidget {
   final TaskDetailsState state;
 
-  const Fields(this.state);
+  const ReopenButton(this.state, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Label(
-            text: state.task.title,
-            color: Palette.black,
-            weight: FontWeight.bold,
-            size: 14,
-          ),
-          if (state.task.description.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: LinkText(
-                state.task.description,
-                textStyle: const TextStyle(
-                  color: Palette.grey,
-                  fontSize: 14,
-                ),
-                linkStyle: const TextStyle(
-                  color: Palette.primary,
-                  fontSize: 14,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-            ),
-          const VBox(15),
-          Label(
-            text: state.task.priority.text.toUpperCase(),
-            color: state.task.priority.color,
-            weight: FontWeight.bold,
-            size: 14,
-          ),
-        ],
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
+      child: CustomButton(
+        onPressed: state.onReopen,
+        text: 'Reopen',
+        color: Palette.primary,
       ),
     );
   }
@@ -109,28 +81,6 @@ class CompleteButton extends StatelessWidget {
         onPressed: state.onComplete,
         text: 'Mark as done',
         color: Palette.green,
-      ),
-    );
-  }
-}
-
-class ReopenButton extends StatelessWidget {
-  final TaskDetailsState state;
-
-  const ReopenButton(this.state, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 20,
-        left: 20,
-        right: 20,
-      ),
-      child: CustomButton(
-        onPressed: state.onReopen,
-        text: 'Reopen',
-        color: Palette.primary,
       ),
     );
   }
