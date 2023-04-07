@@ -68,11 +68,11 @@ class Repository {
   static Future create(Task task) => _collection().add(task.document);
 
   static Future complete(Task task) => _collection().doc(task.id).update({
-        'status': Status.done,
+        'status': Status.done.name,
       });
 
   static Future reopen(Task task) => _collection().doc(task.id).update({
-        'status': Status.accepted,
+        'status': Status.accepted.name,
       });
 
   static Future delete(Task task) => _collection().doc(task.id).delete();
