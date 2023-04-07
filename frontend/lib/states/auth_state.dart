@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:dafluta/dafluta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fucking_do_it/services/navigation.dart';
+import 'package:fucking_do_it/utils/navigation.dart';
 
 class AuthState extends BaseState {
   bool showLoading = false;

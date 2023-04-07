@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
 import 'package:fucking_do_it/dialogs/options_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
-import 'package:fucking_do_it/services/localizations.dart';
-import 'package:fucking_do_it/services/navigation.dart';
-import 'package:fucking_do_it/services/repository.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
+import 'package:fucking_do_it/utils/navigation.dart';
+import 'package:fucking_do_it/utils/repository.dart';
 
 class MainState extends BaseState {
   List<Task>? _tasks;
@@ -32,9 +32,7 @@ class MainState extends BaseState {
   }
 
   void onTaskSelected(Task task) {
-    Repository.update(task);
-    _tasks!.sort((a, b) => a.compareTo(b));
-    notify();
+    onOptionsSelected(task);
   }
 
   void onOptionsSelected(Task task) {

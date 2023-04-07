@@ -3,13 +3,13 @@ importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js');
 importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js');
 
 var firebaseConfig = {
-    apiKey: "AIzaSyAnidizUg0ktmSgulrs2qXWbR5oO-WYbVE",
-    authDomain: "non-zero.firebaseapp.com",
-    projectId: "non-zero",
-    storageBucket: "non-zero.appspot.com",
-    messagingSenderId: "631296600620",
-    appId: "1:631296600620:web:3e1dd4ed0e9ac5741eff89",
-    measurementId: "G-9X829EHP3M"
+    apiKey: "AIzaSyBcfG-dMDbsPSrtuzLeB7ZIooiOOMSSqLU",
+    authDomain: "fucking-do-it.firebaseapp.com",
+    projectId: "fucking-do-it",
+    storageBucket: "fucking-do-it.appspot.com",
+    messagingSenderId: "1059246213727",
+    appId: "1:1059246213727:web:ef0af89f84d0a0b563e9ea",
+    measurementId: "G-3P3D7W9C6Q"
 };
 
 firebase.initializeApp(firebaseConfig);

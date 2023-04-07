@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fucking_do_it/services/localizations.dart';
-import 'package:fucking_do_it/services/navigation.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
+import 'package:fucking_do_it/utils/navigation.dart';
 
 class ConfirmationDialog {
   static Future<bool?> show({

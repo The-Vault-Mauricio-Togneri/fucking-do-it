@@ -1,9 +1,9 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
-import 'package:fucking_do_it/services/localizations.dart';
-import 'package:fucking_do_it/services/palette.dart';
 import 'package:fucking_do_it/states/main_state.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
+import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 
 class MainScreen extends StatelessWidget {

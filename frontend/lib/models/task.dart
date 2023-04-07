@@ -40,25 +40,25 @@ class Task implements Comparable<Task> {
     return Task(
       id: document.id,
       createdBy: map[FIELD_CREATED_BY],
-      createdAt: map[FIELD_CREATED_AT],
+      createdAt: (map[FIELD_CREATED_AT] as Timestamp).toDate(),
       status: Status.parse(map[FIELD_STATUS]),
       priority: Priority.parse(map[FIELD_PRIORITY]),
       title: map[FIELD_TITLE],
-      assignedTo: map[FIELD_ASSIGNED_TO],
+      assignedTo: [], // TODO(momo): map[FIELD_ASSIGNED_TO] as List<String>,
       description: map[FIELD_DESCRIPTION],
-      dueDate: map[FIELD_DUE_DATE],
+      dueDate: (map[FIELD_DUE_DATE] as Timestamp).toDate(),
     );
   }
 
   Map<String, dynamic> get document => <String, dynamic>{
         FIELD_CREATED_BY: createdBy,
-        FIELD_CREATED_AT: createdAt,
+        FIELD_CREATED_AT: Timestamp.fromDate(createdAt),
         FIELD_STATUS: status.name,
         FIELD_PRIORITY: priority.name,
         FIELD_TITLE: title,
         FIELD_ASSIGNED_TO: assignedTo,
         FIELD_DESCRIPTION: description,
-        FIELD_DUE_DATE: dueDate,
+        FIELD_DUE_DATE: (dueDate != null) ? Timestamp.fromDate(dueDate!) : null,
       };
 
   @override

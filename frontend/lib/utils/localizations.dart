@@ -43,7 +43,7 @@ abstract class BaseLocalized {
 
 class ENLocalized extends BaseLocalized {
   @override
-  String get appName => 'Non Zero';
+  String get appName => 'Fucking Do It';
 
   @override
   String get buttonCancel => 'Cancel';
@@ -102,7 +102,7 @@ class ENLocalized extends BaseLocalized {
 
 class ESLocalized extends BaseLocalized {
   @override
-  String get appName => 'Non Zero';
+  String get appName => 'Fucking Do It';
 
   @override
   String get buttonCancel => 'Canceler';

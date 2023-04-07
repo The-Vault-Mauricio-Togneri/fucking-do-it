@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fucking_do_it/services/navigation.dart';
+import 'package:fucking_do_it/utils/navigation.dart';
 
 class OptionsDialog {
   static Future<bool?> show({
