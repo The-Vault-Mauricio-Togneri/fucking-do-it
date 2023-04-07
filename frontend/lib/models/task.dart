@@ -58,7 +58,7 @@ class Task implements Comparable<Task> {
       priority: Priority.parse(map[FIELD_PRIORITY]),
       title: map[FIELD_TITLE],
       assignedTo: (map[FIELD_ASSIGNED_TO] as List<dynamic>).map((e) => e.toString()).toList(),
-      assignedInfo: map[FIELD_ASSIGNED_TO] as Map<String, dynamic>,
+      assignedInfo: map[FIELD_ASSIGNED_INFO] as Map<String, dynamic>,
       description: map[FIELD_DESCRIPTION],
       dueDate: (map[FIELD_DUE_DATE] != null) ? (map[FIELD_DUE_DATE] as Timestamp).toDate() : null,
     );
