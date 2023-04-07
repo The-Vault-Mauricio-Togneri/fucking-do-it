@@ -135,17 +135,13 @@ class TaskCard extends StatelessWidget {
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Assignee(
-                          avatar: 'https://i.imgur.com/Q6NQRC9.png',
-                          name: 'Max',
-                          isLast: false,
-                        ),
-                        Assignee(
-                          avatar: 'https://i.imgur.com/8EB10Bx.png',
-                          name: 'Jennifer',
-                          isLast: true,
-                        ),
+                      children: [
+                        for (int i = 0; i < task.assignedTo.length; i++)
+                          Assignee(
+                            avatar: task.assignedInfo[task.assignedTo[i]]['avatar'],
+                            name: task.assignedInfo[task.assignedTo[i]]['name'],
+                            isLast: i < (task.assignedTo.length - 1),
+                          ),
                       ],
                     ),
                   ),
