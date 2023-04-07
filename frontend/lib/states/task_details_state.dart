@@ -26,6 +26,7 @@ class TaskDetailsState extends BaseState {
     } catch (e) {
       // ignore
     }
+    Navigation.pop();
   }
 
   void onReopen() {

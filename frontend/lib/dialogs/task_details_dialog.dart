@@ -60,7 +60,6 @@ class CopyLinkButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 10,
         left: 20,
         right: 20,
         bottom: 10,
@@ -83,7 +82,6 @@ class ReopenButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 10,
         left: 20,
         right: 20,
         bottom: 10,
@@ -106,7 +104,6 @@ class CompleteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 10,
         left: 20,
         right: 20,
         bottom: 10,
@@ -129,7 +126,6 @@ class DeleteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 10,
         left: 20,
         right: 20,
         bottom: 10,
