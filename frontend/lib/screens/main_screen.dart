@@ -221,11 +221,11 @@ class TaskEntry extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(
-                      Icons.notes,
+                      Icons.video_label,
                       color: Palette.grey,
                       size: 20,
                     ),
-                    const HBox(10),
+                    const HBox(15),
                     Expanded(
                       child: Label(
                         text: task.title,
@@ -243,11 +243,11 @@ class TaskEntry extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Icon(
-                          Icons.summarize_outlined,
+                          Icons.view_headline_outlined,
                           color: Palette.grey,
                           size: 20,
                         ),
-                        const HBox(10),
+                        const HBox(15),
                         Expanded(
                           child: LinkText(
                             task.description,
@@ -274,7 +274,7 @@ class TaskEntry extends StatelessWidget {
                       color: Palette.grey,
                       size: 20,
                     ),
-                    const HBox(10),
+                    const HBox(15),
                     Expanded(
                       child: Label(
                         text: task.priority.text.toUpperCase(),
@@ -294,7 +294,7 @@ class TaskEntry extends StatelessWidget {
                       color: Palette.grey,
                       size: 20,
                     ),
-                    const HBox(10),
+                    const HBox(15),
                     Expanded(
                       child: Label(
                         text: task.createdAt.toString(),
