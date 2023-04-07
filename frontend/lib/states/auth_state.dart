@@ -8,7 +8,7 @@ class AuthState extends BaseState {
   bool showSignIn = false;
 
   @override
-  Future onLoad() async {
+  void onLoad() {
     final Stream<User?> stream = FirebaseAuth.instance.authStateChanges();
     StreamSubscription? subscription;
     subscription = stream.listen((user) {

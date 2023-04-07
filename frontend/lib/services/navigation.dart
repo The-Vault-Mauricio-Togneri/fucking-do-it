@@ -1,9 +1,8 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/app/initializer.dart';
-import 'package:fucking_do_it/models/task.dart';
+import 'package:fucking_do_it/screens/auth_screen.dart';
 import 'package:fucking_do_it/screens/main_screen.dart';
-import 'package:fucking_do_it/screens/task_screen.dart';
 
 class Navigation {
   final Routes routes = Routes();
@@ -14,18 +13,21 @@ class Navigation {
 
   static Future<T?>? push<T>(Route<T> route) => get.routes.push(route);
 
+  static Future<T?>? pushAlone<T>(Route<T> route) => get.routes.pushAlone(route);
+
   static void pop<T>([T? result]) => get.routes.pop();
 
-  static void mainScreen() => push(
+  static void authScreen() => pushAlone(
         FadeRoute(
-          MainScreen.instance(),
-          name: 'bank_transactions',
+          AuthScreen.instance(),
+          name: 'auth',
         ),
       );
 
-  static void taskScreen([Task? task]) => get.routes.push(
+  static void mainScreen() => pushAlone(
         FadeRoute(
-          TaskScreen.instance(task),
+          MainScreen.instance(),
+          name: 'main',
         ),
       );
 }

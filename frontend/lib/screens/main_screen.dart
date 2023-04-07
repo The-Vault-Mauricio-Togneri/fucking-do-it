@@ -1,15 +1,10 @@
-import 'dart:async';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
-import 'package:fucking_do_it/dialogs/options_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/services/localizations.dart';
-import 'package:fucking_do_it/services/navigation.dart';
 import 'package:fucking_do_it/services/palette.dart';
-import 'package:fucking_do_it/services/repository.dart';
+import 'package:fucking_do_it/states/main_state.dart';
 import 'package:fucking_do_it/widgets/label.dart';
-import 'package:fucking_do_it/widgets/screen_container.dart';
 
 class MainScreen extends StatelessWidget {
   final MainState state;
@@ -20,30 +15,26 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LightStatusBar(
-      child: ScreenContainer(
-        child: StateProvider<MainState>(
-          state: state,
-          builder: (context, state) => Scaffold(
-            appBar: AppBar(
-              title: Label(
-                text: Localized.get.appName,
-                color: Palette.white,
-                size: 16,
-              ),
-              actions: [
-                IconButton(
-                  onPressed: state.markAllAsNotCompleted,
-                  icon: const Icon(Icons.restart_alt_rounded),
-                ),
-              ],
-            ),
-            body: Content(state),
-            floatingActionButton: FloatingActionButton(
-              onPressed: state.onAddTask,
-              child: const Icon(Icons.add),
-            ),
+    return StateProvider<MainState>(
+      state: state,
+      builder: (context, state) => Scaffold(
+        appBar: AppBar(
+          title: Label(
+            text: Localized.get.appName,
+            color: Palette.white,
+            size: 16,
           ),
+          actions: [
+            IconButton(
+              onPressed: state.signOut,
+              icon: const Icon(Icons.logout),
+            ),
+          ],
+        ),
+        body: Content(state),
+        floatingActionButton: FloatingActionButton(
+          onPressed: state.onCreateTask,
+          child: const Icon(Icons.add),
         ),
       ),
     );
@@ -121,50 +112,20 @@ class TaskEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: DismissibleBackground(
-        color: Colors.green,
-        alignment: Alignment.centerLeft,
-        icon: task.completed ? Icons.undo : Icons.check,
-      ),
-      secondaryBackground: const DismissibleBackground(
-        color: Colors.red,
-        alignment: Alignment.centerRight,
-        icon: Icons.delete,
-      ),
-      onDismissed: (direction) {
-        if (direction == DismissDirection.endToStart) {
-          state.onTaskDeleted(task);
-        } else {
-          state.onTaskSelected(task);
-        }
-      },
-      confirmDismiss: (direction) async {
-        if (direction == DismissDirection.endToStart) {
-          return ConfirmationDialog.show(
-            message: Localized.get.confirmationDeleteTask,
-          );
-        } else {
-          return true;
-        }
-      },
-      child: Container(
-        width: double.infinity,
-        color: !task.completed ? task.priority.color : Palette.lightGrey,
-        child: Material(
-          color: Palette.transparent,
-          child: InkWell(
-            onTap: () => state.onTaskSelected(task),
-            onLongPress: () => state.onOptionsSelected(task),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(12, 17, 12, 17),
-              child: Label(
-                text: task.name,
-                size: 12,
-                color: task.completed ? Palette.darkGrey : Palette.black,
-                decoration: task.completed ? TextDecoration.lineThrough : null,
-              ),
+    return Container(
+      width: double.infinity,
+      color: task.priority.color,
+      child: Material(
+        color: Palette.transparent,
+        child: InkWell(
+          onTap: () => state.onTaskSelected(task),
+          onLongPress: () => state.onOptionsSelected(task),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12, 17, 12, 17),
+            child: Label(
+              text: task.title,
+              size: 12,
+              color: Palette.black,
             ),
           ),
         ),
@@ -200,76 +161,4 @@ class DismissibleBackground extends StatelessWidget {
       ),
     );
   }
-}
-
-class MainState extends BaseState {
-  List<Task>? _tasks;
-  StreamSubscription? subscription;
-
-  List<Task> get tasks => _tasks!;
-
-  bool get hasTasks => _tasks != null;
-
-  @override
-  void onLoad() => subscription ??= Repository.listen(onTasksLoaded);
-
-  @override
-  void onDestroy() {
-    subscription?.cancel();
-    subscription = null;
-  }
-
-  Future onTasksLoaded(List<Task> tasks) async {
-    _tasks = tasks;
-    _tasks!.sort((a, b) => a.compareTo(b));
-    notify();
-  }
-
-  void markAllAsNotCompleted() {
-    onDestroy();
-
-    for (final Task task in _tasks!) {
-      task.completed = false;
-      Repository.update(task);
-    }
-
-    onLoad();
-  }
-
-  void onTaskSelected(Task task) {
-    task.toggle();
-    Repository.update(task);
-    _tasks!.sort((a, b) => a.compareTo(b));
-    notify();
-  }
-
-  void onOptionsSelected(Task task) {
-    OptionsDialog.show(options: [
-      Option(
-        text: task.completed ? Localized.get.optionNotDone : Localized.get.optionDone,
-        callback: () => onTaskSelected(task),
-      ),
-      Option(
-        text: Localized.get.optionUpdate,
-        callback: () => onUpdateTask(task),
-      ),
-      Option(
-        text: Localized.get.optionDelete,
-        callback: () => ConfirmationDialog.show(
-          message: Localized.get.confirmationDeleteTask,
-          callback: () => onTaskDeleted(task),
-        ),
-      ),
-    ]);
-  }
-
-  void onTaskDeleted(Task task) {
-    _tasks!.remove(task);
-    notify();
-    Repository.delete(task);
-  }
-
-  void onAddTask() => Navigation.taskScreen();
-
-  void onUpdateTask(Task task) => Navigation.taskScreen(task);
 }
