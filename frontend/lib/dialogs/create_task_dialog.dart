@@ -28,12 +28,15 @@ class CreateTaskDialog extends StatelessWidget {
       contentPadding: const EdgeInsets.all(0),
       content: StateProvider<TaskState>(
         state: state,
-        builder: (context, state) => Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Fields(state),
-            Buttons(state),
-          ],
+        builder: (context, state) => SizedBox(
+          width: 500,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Fields(state),
+              Buttons(state),
+            ],
+          ),
         ),
       ),
     );
@@ -54,11 +57,25 @@ class Fields extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const Label(
+              text: 'Create task',
+              color: Palette.black,
+              size: 18,
+            ),
+            const VBox(15),
             CustomFormField(
               label: 'Title',
               autofocus: true,
               controller: state.titleController,
               inputType: TextInputType.text,
+            ),
+            const VBox(15),
+            CustomFormField(
+              label: 'Description (optional)',
+              controller: state.descriptionController,
+              inputType: TextInputType.text,
+              minLines: 1,
+              maxLines: 5,
             ),
             const VBox(15),
             Row(

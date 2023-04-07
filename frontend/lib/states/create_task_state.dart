@@ -10,6 +10,7 @@ import 'package:fucking_do_it/utils/repository.dart';
 class TaskState extends BaseState {
   Priority priority = Priority.high;
   final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void onSetPriority(Priority newPriority) {
@@ -29,7 +30,7 @@ class TaskState extends BaseState {
         priority: priority,
         title: titleController.text.trim(),
         assignedTo: [],
-        description: 'Description',
+        description: descriptionController.text.trim(),
         dueDate: DateTime.now().add(const Duration(days: 7)),
       );
 

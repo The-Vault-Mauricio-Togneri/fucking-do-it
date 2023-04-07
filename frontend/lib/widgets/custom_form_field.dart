@@ -12,6 +12,8 @@ class CustomFormField extends StatelessWidget {
   final VoidCallback? onPressed;
   final String? suffixText;
   final String? inputValidator;
+  final int? minLines;
+  final int? maxLines;
 
   const CustomFormField({
     required this.label,
@@ -25,6 +27,8 @@ class CustomFormField extends StatelessWidget {
     this.onPressed,
     this.suffixText,
     this.inputValidator,
+    this.minLines,
+    this.maxLines,
     super.key,
   });
 
@@ -38,6 +42,8 @@ class CustomFormField extends StatelessWidget {
       autofocus: autofocus,
       obscureText: isPassword,
       keyboardType: inputType,
+      minLines: minLines,
+      maxLines: maxLines,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: label,
