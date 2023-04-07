@@ -77,7 +77,7 @@ class TaskCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Icon(
-                Icons.priority_high_rounded,
+                Icons.signal_cellular_alt,
                 color: Palette.grey,
                 size: 20,
               ),
