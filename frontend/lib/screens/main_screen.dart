@@ -52,14 +52,26 @@ class Content extends StatelessWidget {
       state: state,
       builder: (context, state) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          TaskColumn(title: 'Assigned to me'),
-          VerticalDivider(),
-          TaskColumn(title: 'Created'),
-          VerticalDivider(),
-          TaskColumn(title: 'In progress'),
-          VerticalDivider(),
-          TaskColumn(title: 'In review'),
+        children: [
+          TaskColumn(
+            title: 'Assigned to me',
+            tasks: state.tasksAssignedToMe,
+          ),
+          const VerticalDivider(),
+          TaskColumn(
+            title: 'Created',
+            tasks: state.tasksCreated,
+          ),
+          const VerticalDivider(),
+          TaskColumn(
+            title: 'In progress',
+            tasks: state.tasksInProgress,
+          ),
+          const VerticalDivider(),
+          TaskColumn(
+            title: 'In review',
+            tasks: state.tasksInReview,
+          ),
         ],
       ),
     );
@@ -81,9 +93,11 @@ class VerticalDivider extends StatelessWidget {
 
 class TaskColumn extends StatelessWidget {
   final String title;
+  final List<Task>? tasks;
 
   const TaskColumn({
     required this.title,
+    required this.tasks,
   });
 
   @override
@@ -99,43 +113,49 @@ class TaskColumn extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Label(
-                text: title,
+                text: title.toUpperCase(),
                 color: Palette.white,
               ),
             ),
           ),
-          Column(
-            children: const [
-              ListTile(
-                title: Text('Entry 1'),
-              ),
-              ListTile(
-                title: Text('Entry 1'),
-              ),
-              ListTile(
-                title: Text('Entry 1'),
-              ),
-              ListTile(
-                title: Text('Entry 1'),
-              ),
-              ListTile(
-                title: Text('Entry 1'),
-              ),
-            ],
-          ),
+          if (tasks != null) TasksList(tasks!) else const LoadingTasks(),
         ],
       ),
     );
   }
 }
 
-class Waiting extends StatelessWidget {
-  const Waiting();
+class TasksList extends StatelessWidget {
+  final List<Task> tasks;
+
+  const TasksList(this.tasks);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return tasks.isNotEmpty
+        ? SingleChildScrollView(
+            child: Column(
+              children: [
+                for (final Task task in tasks)
+                  ListTile(
+                    title: Text(task.title),
+                  ),
+              ],
+            ),
+          )
+        : const Empty();
+  }
+}
+
+class LoadingTasks extends StatelessWidget {
+  const LoadingTasks();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Expanded(
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }
@@ -148,27 +168,6 @@ class NoTasks extends StatelessWidget {
     return const Center(
       child: Label(
         text: 'No tasks',
-        color: Palette.black,
-      ),
-    );
-  }
-}
-
-class TaskList extends StatelessWidget {
-  final MainState state;
-
-  const TaskList(this.state);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: state.tasks.length,
-      itemBuilder: (context, index) => TaskEntry(
-        state: state,
-        task: state.tasks[index],
-      ),
-      separatorBuilder: (context, index) => const HorizontalDivider(
-        height: 0.1,
         color: Palette.black,
       ),
     );
