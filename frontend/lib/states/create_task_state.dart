@@ -13,6 +13,12 @@ class TaskState extends BaseState {
   final TextEditingController descriptionController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  bool get canSubmit => titleController.text.trim().isNotEmpty;
+
+  void onTitleChanged() {
+    notify();
+  }
+
   void onSetPriority(Priority newPriority) {
     priority = newPriority;
     notify();
@@ -31,7 +37,7 @@ class TaskState extends BaseState {
         title: titleController.text.trim(),
         assignedTo: [],
         description: descriptionController.text.trim(),
-        dueDate: DateTime.now().add(const Duration(days: 7)),
+        dueDate: null,
       );
 
       await Repository.add(task);

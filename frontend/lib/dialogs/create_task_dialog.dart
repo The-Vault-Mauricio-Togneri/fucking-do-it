@@ -68,6 +68,7 @@ class Fields extends StatelessWidget {
               autofocus: true,
               controller: state.titleController,
               inputType: TextInputType.text,
+              onChanged: (input) => state.onTitleChanged(),
             ),
             const VBox(15),
             CustomFormField(
@@ -148,7 +149,7 @@ class Buttons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: CustomButton(
-        onPressed: state.onSubmit,
+        onPressed: state.canSubmit ? state.onSubmit : null,
         text: 'Create',
       ),
     );

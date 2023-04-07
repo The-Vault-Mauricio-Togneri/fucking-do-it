@@ -34,8 +34,7 @@ class Task implements Comparable<Task> {
     required this.dueDate,
   });
 
-  factory Task.fromDocument(
-      QueryDocumentSnapshot<Map<String, dynamic>> document) {
+  factory Task.fromDocument(QueryDocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data();
 
     return Task(
@@ -47,7 +46,7 @@ class Task implements Comparable<Task> {
       title: map[FIELD_TITLE],
       assignedTo: [], // TODO(momo): map[FIELD_ASSIGNED_TO] as List<String>,
       description: map[FIELD_DESCRIPTION],
-      dueDate: (map[FIELD_DUE_DATE] as Timestamp).toDate(),
+      dueDate: (map[FIELD_DUE_DATE] != null) ? (map[FIELD_DUE_DATE] as Timestamp).toDate() : null,
     );
   }
 

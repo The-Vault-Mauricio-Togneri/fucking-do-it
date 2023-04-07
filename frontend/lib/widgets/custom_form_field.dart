@@ -10,6 +10,7 @@ class CustomFormField extends StatelessWidget {
   final TextAlign textAlign;
   final bool autofocus;
   final VoidCallback? onPressed;
+  final Function(String)? onChanged;
   final String? suffixText;
   final String? inputValidator;
   final int? minLines;
@@ -25,6 +26,7 @@ class CustomFormField extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.autofocus = false,
     this.onPressed,
+    this.onChanged,
     this.suffixText,
     this.inputValidator,
     this.minLines,
@@ -45,6 +47,7 @@ class CustomFormField extends StatelessWidget {
       minLines: minLines,
       maxLines: maxLines,
       textCapitalization: TextCapitalization.sentences,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: label,
         suffixText: suffixText,
