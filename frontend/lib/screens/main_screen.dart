@@ -145,11 +145,14 @@ class TasksList extends StatelessWidget {
   Widget build(BuildContext context) {
     return tasks.isNotEmpty
         ? Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  for (final Task task in tasks) TaskEntry(state: state, task: task),
-                ],
+            child: Container(
+              color: Palette.lightGrey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    for (final Task task in tasks) TaskEntry(state: state, task: task),
+                  ],
+                ),
               ),
             ),
           )
@@ -197,14 +200,14 @@ class TaskEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        top: 10,
-        left: 10,
-        right: 10,
+        top: 15,
+        left: 15,
+        right: 15,
       ),
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Palette.lightGrey,
+        color: Palette.white,
       ),
       child: Material(
         color: Palette.transparent,
