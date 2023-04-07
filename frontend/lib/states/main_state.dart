@@ -15,18 +15,47 @@ class MainState extends BaseState {
   List<Task>? tasksInProgress;
   List<Task>? tasksInReview;
   StreamSubscription? subscriptionAssignedToMe;
+  StreamSubscription? subscriptionCreated;
+  StreamSubscription? subscriptionInProgress;
+  StreamSubscription? subscriptionInReview;
 
   @override
-  void onLoad() => subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
+  void onLoad() {
+    subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
+    subscriptionCreated ??= Repository.listenAssignedToMe(onTasksCreated);
+    subscriptionInProgress ??= Repository.listenAssignedToMe(onTasksInProgress);
+    subscriptionInReview ??= Repository.listenAssignedToMe(onTasksInReview);
+  }
 
   @override
   void onDestroy() {
     subscriptionAssignedToMe?.cancel();
+    subscriptionCreated?.cancel();
+    subscriptionInProgress?.cancel();
+    subscriptionInReview?.cancel();
   }
 
   Future onTasksAssignedToMe(List<Task> tasks) async {
     tasksAssignedToMe = tasks;
     tasksAssignedToMe!.sort((a, b) => a.compareTo(b));
+    notify();
+  }
+
+  Future onTasksCreated(List<Task> tasks) async {
+    tasksCreated = tasks;
+    tasksCreated!.sort((a, b) => a.compareTo(b));
+    notify();
+  }
+
+  Future onTasksInProgress(List<Task> tasks) async {
+    tasksInProgress = tasks;
+    tasksInProgress!.sort((a, b) => a.compareTo(b));
+    notify();
+  }
+
+  Future onTasksInReview(List<Task> tasks) async {
+    tasksInReview = tasks;
+    tasksInReview!.sort((a, b) => a.compareTo(b));
     notify();
   }
 
