@@ -12,6 +12,7 @@ class Task implements Comparable<Task> {
   final Priority priority;
   final String title;
   final List<String> assignedTo;
+  final Map<String, dynamic> assignedInfo;
   final String description;
   final DateTime? dueDate;
 
@@ -21,6 +22,7 @@ class Task implements Comparable<Task> {
   static const String FIELD_PRIORITY = 'priority';
   static const String FIELD_TITLE = 'title';
   static const String FIELD_ASSIGNED_TO = 'assignedTo';
+  static const String FIELD_ASSIGNED_INFO = 'assignedInfo';
   static const String FIELD_DESCRIPTION = 'description';
   static const String FIELD_DUE_DATE = 'dueDate';
 
@@ -32,6 +34,7 @@ class Task implements Comparable<Task> {
     required this.priority,
     required this.title,
     required this.assignedTo,
+    required this.assignedInfo,
     required this.description,
     required this.dueDate,
   });
@@ -55,6 +58,7 @@ class Task implements Comparable<Task> {
       priority: Priority.parse(map[FIELD_PRIORITY]),
       title: map[FIELD_TITLE],
       assignedTo: (map[FIELD_ASSIGNED_TO] as List<dynamic>).map((e) => e.toString()).toList(),
+      assignedInfo: map[FIELD_ASSIGNED_TO] as Map<String, dynamic>,
       description: map[FIELD_DESCRIPTION],
       dueDate: (map[FIELD_DUE_DATE] != null) ? (map[FIELD_DUE_DATE] as Timestamp).toDate() : null,
     );
@@ -67,6 +71,7 @@ class Task implements Comparable<Task> {
         FIELD_PRIORITY: priority.name,
         FIELD_TITLE: title,
         FIELD_ASSIGNED_TO: assignedTo,
+        FIELD_ASSIGNED_INFO: assignedInfo,
         FIELD_DESCRIPTION: description,
         FIELD_DUE_DATE: (dueDate != null) ? Timestamp.fromDate(dueDate!) : null,
       };

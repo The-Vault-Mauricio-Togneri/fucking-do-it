@@ -36,6 +36,7 @@ class CreateTaskState extends BaseState {
         priority: priority,
         title: titleController.text.trim(),
         assignedTo: [],
+        assignedInfo: {},
         description: descriptionController.text.trim(),
         dueDate: null,
       );
