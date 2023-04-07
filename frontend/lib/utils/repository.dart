@@ -8,10 +8,10 @@ class Repository {
   static StreamSubscription listenAssignedToMe(Function(List<Task> tasks) callback) {
     final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
         .where(
-          'assignedTo',
+          Task.FIELD_ASSIGNED_TO,
           arrayContains: FirebaseAuth.instance.currentUser?.uid,
         )
-        .where('status', isEqualTo: 'accepted')
+        .where(Task.FIELD_STATUS, isEqualTo: Status.accepted.name)
         .snapshots();
 
     return processStream(stream, callback);
@@ -20,10 +20,10 @@ class Repository {
   static StreamSubscription listenCreated(Function(List<Task> tasks) callback) {
     final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
         .where(
-          'createdBy',
+          Task.FIELD_CREATED_BY,
           isEqualTo: FirebaseAuth.instance.currentUser?.uid,
         )
-        .where('status', isEqualTo: 'created')
+        .where(Task.FIELD_STATUS, isEqualTo: Status.created.name)
         .snapshots();
 
     return processStream(stream, callback);
@@ -32,10 +32,10 @@ class Repository {
   static StreamSubscription listenInProgress(Function(List<Task> tasks) callback) {
     final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
         .where(
-          'createdBy',
+          Task.FIELD_CREATED_BY,
           isEqualTo: FirebaseAuth.instance.currentUser?.uid,
         )
-        .where('status', isEqualTo: 'accepted')
+        .where(Task.FIELD_STATUS, isEqualTo: Status.accepted.name)
         .snapshots();
 
     return processStream(stream, callback);
@@ -44,10 +44,10 @@ class Repository {
   static StreamSubscription listenInReview(Function(List<Task> tasks) callback) {
     final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
         .where(
-          'createdBy',
+          Task.FIELD_CREATED_BY,
           isEqualTo: FirebaseAuth.instance.currentUser?.uid,
         )
-        .where('status', isEqualTo: 'done')
+        .where(Task.FIELD_STATUS, isEqualTo: Status.done.name)
         .snapshots();
 
     return processStream(stream, callback);
@@ -68,11 +68,11 @@ class Repository {
   static Future create(Task task) => _collection().add(task.document);
 
   static Future complete(Task task) => _collection().doc(task.id).update({
-        'status': Status.done.name,
+        Task.FIELD_STATUS: Status.done.name,
       });
 
   static Future reopen(Task task) => _collection().doc(task.id).update({
-        'status': Status.accepted.name,
+        Task.FIELD_STATUS: Status.accepted.name,
       });
 
   static Future accept(String taskId) async {
@@ -94,6 +94,7 @@ class Repository {
     return _collection().doc(task.id).update({
       Task.FIELD_ASSIGNED_TO: assignedTo,
       Task.FIELD_ASSIGNED_INFO: assignedInfo,
+      Task.FIELD_STATUS: Status.accepted.name,
     });
   }
 
