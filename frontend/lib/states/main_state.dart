@@ -22,9 +22,9 @@ class MainState extends BaseState {
   @override
   void onLoad() {
     subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
-    subscriptionCreated ??= Repository.listenAssignedToMe(onTasksCreated);
-    subscriptionInProgress ??= Repository.listenAssignedToMe(onTasksInProgress);
-    subscriptionInReview ??= Repository.listenAssignedToMe(onTasksInReview);
+    subscriptionCreated ??= Repository.listenCreated(onTasksCreated);
+    subscriptionInProgress ??= Repository.listenInProgress(onTasksInProgress);
+    subscriptionInReview ??= Repository.listenInReview(onTasksInReview);
   }
 
   @override
