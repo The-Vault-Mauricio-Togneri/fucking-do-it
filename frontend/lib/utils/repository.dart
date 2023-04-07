@@ -78,24 +78,25 @@ class Repository {
   static Future accept(String taskId) async {
     final DocumentSnapshot<Map<String, dynamic>> document = await _collection().doc(taskId).get();
     final Task task = Task.fromDocument(document);
-
     final String userId = FirebaseAuth.instance.currentUser?.uid ?? '';
-
     final List<String> assignedTo = task.assignedTo;
-    assignedTo.add(userId);
 
-    final Map<String, dynamic> assignedInfo = task.assignedInfo;
-    assignedInfo[userId] = {
-      'avatar': FirebaseAuth.instance.currentUser?.photoURL,
-      'email': FirebaseAuth.instance.currentUser?.email,
-      'name': FirebaseAuth.instance.currentUser?.displayName,
-    };
+    if (!assignedTo.contains(userId)) {
+      assignedTo.add(userId);
 
-    return _collection().doc(task.id).update({
-      Task.FIELD_ASSIGNED_TO: assignedTo,
-      Task.FIELD_ASSIGNED_INFO: assignedInfo,
-      Task.FIELD_STATUS: Status.accepted.name,
-    });
+      final Map<String, dynamic> assignedInfo = task.assignedInfo;
+      assignedInfo[userId] = {
+        'avatar': FirebaseAuth.instance.currentUser?.photoURL,
+        'email': FirebaseAuth.instance.currentUser?.email,
+        'name': FirebaseAuth.instance.currentUser?.displayName,
+      };
+
+      return _collection().doc(task.id).update({
+        Task.FIELD_ASSIGNED_TO: assignedTo,
+        Task.FIELD_ASSIGNED_INFO: assignedInfo,
+        Task.FIELD_STATUS: Status.accepted.name,
+      });
+    }
   }
 
   static Future delete(Task task) => _collection().doc(task.id).delete();
