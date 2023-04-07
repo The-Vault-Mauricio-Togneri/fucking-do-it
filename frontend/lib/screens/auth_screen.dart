@@ -1,7 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/states/auth_state.dart';
-import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/widgets/custom_button.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -43,7 +42,7 @@ class SignInButton extends StatelessWidget {
       child: SizedBox(
         width: 150,
         child: CustomButton(
-          text: Localized.get.connectionSignIn,
+          text: 'Sign in',
           onPressed: state.onSignIn,
         ),
       ),

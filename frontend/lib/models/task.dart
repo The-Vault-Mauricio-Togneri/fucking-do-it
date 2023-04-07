@@ -34,7 +34,8 @@ class Task implements Comparable<Task> {
     required this.dueDate,
   });
 
-  factory Task.fromDocument(QueryDocumentSnapshot<Map<String, dynamic>> document) {
+  factory Task.fromDocument(
+      QueryDocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data();
 
     return Task(

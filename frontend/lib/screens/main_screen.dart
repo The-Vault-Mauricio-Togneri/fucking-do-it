@@ -50,7 +50,9 @@ class Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateProvider<MainState>(
       state: state,
-      builder: (context, state) => state.hasTasks ? (state.tasks.isEmpty ? const NoTasks() : TaskList(state)) : const Waiting(),
+      builder: (context, state) => state.hasTasks
+          ? (state.tasks.isEmpty ? const NoTasks() : TaskList(state))
+          : const Waiting(),
     );
   }
 }
@@ -71,9 +73,9 @@ class NoTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Label(
-        text: Localized.get.listEmpty,
+        text: 'No tasks',
         color: Palette.black,
       ),
     );

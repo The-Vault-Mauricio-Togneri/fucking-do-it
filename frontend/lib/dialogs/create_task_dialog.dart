@@ -2,7 +2,6 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/states/create_task_state.dart';
 import 'package:fucking_do_it/types/priority.dart';
-import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/custom_button.dart';
 import 'package:fucking_do_it/widgets/custom_form_field.dart';
@@ -16,7 +15,7 @@ class CreateTaskDialog extends StatelessWidget {
   static DialogController show(BuildContext context) {
     showDialog(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
       builder: (context) => CreateTaskDialog._(TaskState()),
     );
 
@@ -33,7 +32,6 @@ class CreateTaskDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Fields(state),
-            const Spacer(),
             Buttons(state),
           ],
         ),
@@ -54,11 +52,12 @@ class Fields extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             CustomFormField(
-              label: Localized.get.taskFieldName,
+              label: 'Title',
               autofocus: true,
-              controller: state.nameController,
+              controller: state.titleController,
               inputType: TextInputType.text,
             ),
             const VBox(15),
@@ -133,7 +132,7 @@ class Buttons extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: CustomButton(
         onPressed: state.onSubmit,
-        text: Localized.get.taskButtonAdd,
+        text: 'Create',
       ),
     );
   }

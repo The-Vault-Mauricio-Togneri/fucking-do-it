@@ -6,7 +6,6 @@ import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
 import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/dialogs/options_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
-import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
@@ -40,7 +39,7 @@ class MainState extends BaseState {
   void onOptionsSelected(Task task) {
     OptionsDialog.show(options: [
       Option(
-        text: Localized.get.optionDone,
+        text: 'Option 1',
         callback: () => onTaskSelected(task),
       ),
       /*Option(
@@ -48,9 +47,9 @@ class MainState extends BaseState {
         callback: () => onUpdateTask(task),
       ),*/
       Option(
-        text: Localized.get.optionDelete,
+        text: 'Option 2',
         callback: () => ConfirmationDialog.show(
-          message: Localized.get.confirmationDeleteTask,
+          message: 'Really?',
           callback: () => onTaskDeleted(task),
         ),
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fucking_do_it/utils/localizations.dart';
 
 enum Priority {
   high,
@@ -20,11 +19,11 @@ enum Priority {
   String get text {
     switch (this) {
       case Priority.high:
-        return Localized.get.priorityHigh;
+        return 'High';
       case Priority.medium:
-        return Localized.get.priorityMedium;
+        return 'Medium';
       case Priority.low:
-        return Localized.get.priorityLow;
+        return 'Low';
     }
   }
 

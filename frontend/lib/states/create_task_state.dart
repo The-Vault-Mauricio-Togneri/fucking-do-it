@@ -1,4 +1,5 @@
 import 'package:dafluta/dafluta.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/priority.dart';
@@ -8,7 +9,7 @@ import 'package:fucking_do_it/utils/repository.dart';
 
 class TaskState extends BaseState {
   Priority priority = Priority.high;
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController titleController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void onSetPriority(Priority newPriority) {
@@ -22,11 +23,11 @@ class TaskState extends BaseState {
 
       final Task task = Task(
         id: '',
-        createdBy: 'aaa',
+        createdBy: FirebaseAuth.instance.currentUser?.uid ?? '',
         createdAt: DateTime.now(),
         status: Status.created,
         priority: priority,
-        title: 'Title',
+        title: titleController.text.trim(),
         assignedTo: [],
         description: 'Description',
         dueDate: DateTime.now().add(const Duration(days: 7)),

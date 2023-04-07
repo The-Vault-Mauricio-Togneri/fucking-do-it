@@ -17,9 +17,11 @@ class Repository {
 
   static Future add(Task task) => _collection().add(task.document);
 
-  static Future update(Task task) => _collection().doc(task.id).set(task.document);
+  static Future update(Task task) =>
+      _collection().doc(task.id).set(task.document);
 
   static Future delete(Task task) => _collection().doc(task.id).delete();
 
-  static CollectionReference<Map<String, dynamic>> _collection() => FirebaseFirestore.instance.collection('tasks');
+  static CollectionReference<Map<String, dynamic>> _collection() =>
+      FirebaseFirestore.instance.collection('tasks');
 }

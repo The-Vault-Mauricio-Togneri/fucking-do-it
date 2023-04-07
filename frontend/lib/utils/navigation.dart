@@ -13,7 +13,8 @@ class Navigation {
 
   static Future<T?>? push<T>(Route<T> route) => get.routes.push(route);
 
-  static Future<T?>? pushAlone<T>(Route<T> route) => get.routes.pushAlone(route);
+  static Future<T?>? pushAlone<T>(Route<T> route) =>
+      get.routes.pushAlone(route);
 
   static void pop<T>([T? result]) => get.routes.pop();
 
