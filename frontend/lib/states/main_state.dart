@@ -20,9 +20,9 @@ class MainState extends BaseState {
   StreamSubscription? subscriptionInReview;
 
   @override
-  void onLoad() {
+  Future onLoad() async {
     if (paramTaskId != null) {
-      Repository.accept(paramTaskId!);
+      await Repository.accept(paramTaskId!);
       paramTaskId = null;
     }
 
