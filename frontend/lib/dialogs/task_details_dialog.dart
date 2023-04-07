@@ -38,7 +38,8 @@ class TaskDetailsDialog extends StatelessWidget {
             children: [
               TaskCard(state.task),
               if (state.task.canBeReopened) ReopenButton(state),
-              if (state.task.canBeCompleted) CompleteButton(state) else if (state.task.canBeDeleted) DeleteButton(state) else const VBox(20),
+              if (state.task.canBeCompleted) CompleteButton(state),
+              if (state.task.canBeDeleted) DeleteButton(state),
             ],
           ),
         ),
@@ -56,6 +57,7 @@ class ReopenButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
+        top: 20,
         left: 20,
         right: 20,
       ),
