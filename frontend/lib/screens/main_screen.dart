@@ -227,11 +227,14 @@ class TaskEntry extends StatelessWidget {
                     ),
                     const HBox(15),
                     Expanded(
-                      child: Label(
-                        text: task.title,
-                        color: Palette.black,
-                        weight: FontWeight.bold,
-                        size: 14,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Label(
+                          text: task.title,
+                          color: Palette.black,
+                          weight: FontWeight.bold,
+                          size: 14,
+                        ),
                       ),
                     ),
                   ],
@@ -249,16 +252,19 @@ class TaskEntry extends StatelessWidget {
                         ),
                         const HBox(15),
                         Expanded(
-                          child: LinkText(
-                            task.description,
-                            textStyle: const TextStyle(
-                              color: Palette.grey,
-                              fontSize: 12,
-                            ),
-                            linkStyle: const TextStyle(
-                              color: Palette.primary,
-                              fontSize: 12,
-                              decoration: TextDecoration.none,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 3),
+                            child: LinkText(
+                              task.description,
+                              textStyle: const TextStyle(
+                                color: Palette.grey,
+                                fontSize: 14,
+                              ),
+                              linkStyle: const TextStyle(
+                                color: Palette.primary,
+                                fontSize: 14,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
                           ),
                         ),
@@ -276,11 +282,14 @@ class TaskEntry extends StatelessWidget {
                     ),
                     const HBox(15),
                     Expanded(
-                      child: Label(
-                        text: task.priority.text.toUpperCase(),
-                        color: task.priority.color,
-                        weight: FontWeight.bold,
-                        size: 12,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Label(
+                          text: task.priority.text.toUpperCase(),
+                          color: task.priority.color,
+                          weight: FontWeight.bold,
+                          size: 12,
+                        ),
                       ),
                     ),
                   ],
@@ -296,10 +305,13 @@ class TaskEntry extends StatelessWidget {
                     ),
                     const HBox(15),
                     Expanded(
-                      child: Label(
-                        text: task.createdAt.toString(),
-                        color: Palette.grey,
-                        size: 12,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Label(
+                          text: task.createdAt.toString(),
+                          color: Palette.grey,
+                          size: 12,
+                        ),
                       ),
                     ),
                   ],
