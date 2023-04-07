@@ -246,6 +246,12 @@ class TaskEntry extends StatelessWidget {
                   weight: FontWeight.bold,
                   size: 12,
                 ),
+                const VBox(10),
+                Label(
+                  text: task.createdAt.toString(),
+                  color: Palette.grey,
+                  size: 12,
+                ),
               ],
             ),
           ),
