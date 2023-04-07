@@ -311,7 +311,7 @@ class TaskEntry extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 4),
                         child: Label(
-                          text: task.createdAt.toString(),
+                          text: task.createdAtDateTime,
                           color: Palette.grey,
                           size: 12,
                         ),

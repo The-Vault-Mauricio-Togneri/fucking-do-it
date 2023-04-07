@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
+import 'package:fucking_do_it/utils/formatter.dart';
 
 class Task implements Comparable<Task> {
   final String id;
@@ -40,6 +41,8 @@ class Task implements Comparable<Task> {
   bool get canBeReopened => (status == Status.done) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
   bool get canBeDeleted => ((status == Status.created) || (status == Status.done)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
+
+  String get createdAtDateTime => Formatter.fullDateTime(createdAt);
 
   factory Task.fromDocument(QueryDocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data();
