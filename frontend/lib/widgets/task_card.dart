@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
@@ -115,6 +116,94 @@ class TaskCard extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          if (task.assignedTo.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 2),
+                    child: Icon(
+                      Icons.people,
+                      color: Palette.grey,
+                      size: 20,
+                    ),
+                  ),
+                  const HBox(15),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Assignee(
+                          avatar: 'https://i.imgur.com/Q6NQRC9.png',
+                          name: 'Max',
+                          isLast: false,
+                        ),
+                        Assignee(
+                          avatar: 'https://i.imgur.com/8EB10Bx.png',
+                          name: 'Jennifer',
+                          isLast: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class Assignee extends StatelessWidget {
+  final String avatar;
+  final String name;
+  final bool isLast;
+
+  const Assignee({
+    required this.avatar,
+    required this.name,
+    required this.isLast,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: isLast ? 0 : 5),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 12,
+            backgroundColor: Palette.transparent,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(100)),
+              child: SizedBox(
+                width: 24,
+                height: 24,
+                child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  imageUrl: avatar,
+                  placeholder: (context, url) => Container(color: Palette.lightGrey),
+                  errorWidget: (context, url, error) => Container(
+                    color: Palette.lightGrey,
+                    child: const Icon(
+                      Icons.person,
+                      size: 15,
+                      color: Palette.grey,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const HBox(10),
+          Label(
+            text: name,
+            color: Palette.grey,
+            size: 12,
           ),
         ],
       ),
