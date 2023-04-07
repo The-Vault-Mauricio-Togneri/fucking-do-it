@@ -107,6 +107,7 @@ class DeleteButton extends StatelessWidget {
       child: CustomButton(
         onPressed: state.onDelete,
         text: 'Delete',
+        color: Palette.red,
       ),
     );
   }
