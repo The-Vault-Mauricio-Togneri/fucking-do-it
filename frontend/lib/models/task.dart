@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
 import 'package:fucking_do_it/utils/formatter.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
 
 class Task implements Comparable<Task> {
   final String id;
@@ -60,7 +61,23 @@ class Task implements Comparable<Task> {
       ((status == Status.created) || (status == Status.done)) &&
       (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
-  String get deadlineText => Formatter.dayLongMonthMonthYear(deadline!);
+  String get deadlineText {
+    final DateTime now = DateTime.now();
+    final DateTime today = DateTime(now.year, now.month, now.day);
+    final String date = Formatter.dayLongMonthMonthYear(deadline!);
+    final Duration difference = deadline!.difference(today);
+    String delta = '';
+
+    if (difference.inDays > 0) {
+      delta = Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
+    } else if (difference.inDays == 0) {
+      delta = Localized.get.labelDeltaToday.toLowerCase();
+    } else {
+      delta = Localized.get.labelDeltaDaysPast(difference.inDays.toString());
+    }
+
+    return '$date ($delta)';
+  }
 
   factory Task.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data() ?? {};

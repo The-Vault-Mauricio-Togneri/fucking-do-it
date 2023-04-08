@@ -36,6 +36,12 @@ abstract class BaseLocalized {
 
   String get labelCreated;
 
+  String labelDeltaDaysFuture(String param1);
+
+  String labelDeltaDaysPast(String param1);
+
+  String get labelDeltaToday;
+
   String get labelEmpty;
 
   String get labelInProgress;
@@ -101,6 +107,15 @@ class ENLocalized extends BaseLocalized {
 
   @override
   String get labelCreated => 'Created';
+
+  @override
+  String labelDeltaDaysFuture(String param1) => '${param1.toString()}d';
+
+  @override
+  String labelDeltaDaysPast(String param1) => '${param1.toString()}d ago';
+
+  @override
+  String get labelDeltaToday => 'Today';
 
   @override
   String get labelEmpty => 'Empty';
@@ -173,6 +188,15 @@ class ESLocalized extends BaseLocalized {
 
   @override
   String get labelCreated => 'Creadas';
+
+  @override
+  String labelDeltaDaysFuture(String param1) => '${param1.toString()}d';
+
+  @override
+  String labelDeltaDaysPast(String param1) => 'hace ${param1.toString()}d';
+
+  @override
+  String get labelDeltaToday => 'hoy';
 
   @override
   String get labelEmpty => 'Vacía';
