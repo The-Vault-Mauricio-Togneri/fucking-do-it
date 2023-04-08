@@ -30,8 +30,8 @@ class PriorityChip extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           child: Padding(
             padding: EdgeInsets.only(
-              top: size / 3,
-              bottom: size / 3,
+              top: size / 3.5,
+              bottom: size / 3.5,
               left: size / 1.5,
               right: size / 1.5,
             ),

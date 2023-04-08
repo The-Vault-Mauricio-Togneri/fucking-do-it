@@ -35,10 +35,13 @@ class PrimaryButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 20,
-              color: Palette.white,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 2),
+              child: Icon(
+                icon,
+                size: 20,
+                color: Palette.white,
+              ),
             ),
             const HBox(5),
             Label(
