@@ -32,23 +32,26 @@ class PrimaryButton extends StatelessWidget {
           shape: const StadiumBorder(),
         ),
         onPressed: onSubmit,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 2),
-              child: Icon(
-                icon,
-                size: 20,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 2),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 2),
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: Palette.white,
+                ),
+              ),
+              const HBox(5),
+              Label(
+                text: text.toUpperCase(),
                 color: Palette.white,
               ),
-            ),
-            const HBox(5),
-            Label(
-              text: text.toUpperCase(),
-              color: Palette.white,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
