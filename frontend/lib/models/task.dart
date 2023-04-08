@@ -90,7 +90,7 @@ class Task implements Comparable<Task> {
     if (difference.inDays > 0) {
       return Palette.grey;
     } else {
-      return Palette.red;
+      return Palette.error;
     }
   }
 

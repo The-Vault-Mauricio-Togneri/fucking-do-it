@@ -74,7 +74,7 @@ class AcceptButton extends StatelessWidget {
         text: Localized.get.buttonAccept,
         onSubmit: state.onAccept,
         icon: Icons.check,
-        color: Palette.green,
+        color: Palette.success,
       ),
     );
   }
@@ -141,7 +141,7 @@ class CompleteButton extends StatelessWidget {
       ),
       child: PrimaryButton(
         text: Localized.get.buttonCompleted,
-        color: Palette.green,
+        color: Palette.success,
         icon: Icons.done,
         onSubmit: state.onComplete,
       ),
@@ -164,7 +164,7 @@ class DeleteButton extends StatelessWidget {
       ),
       child: PrimaryButton(
         text: Localized.get.buttonDelete,
-        color: Palette.red,
+        color: Palette.error,
         icon: Icons.delete,
         onSubmit: state.onDelete,
       ),
