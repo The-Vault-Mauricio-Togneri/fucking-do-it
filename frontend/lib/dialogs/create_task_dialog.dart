@@ -5,7 +5,7 @@ import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
-import 'package:fucking_do_it/widgets/custom_form_field.dart';
+import 'package:fucking_do_it/widgets/input_field.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/priority_chip.dart';
@@ -68,7 +68,7 @@ class Fields extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            CustomFormField(
+            InputField(
               label: Localized.get.inputTitle,
               autofocus: true,
               controller: state.titleController,
@@ -76,7 +76,7 @@ class Fields extends StatelessWidget {
               onChanged: (input) => state.onTitleChanged(),
             ),
             const VBox(15),
-            CustomFormField(
+            InputField(
               label: Localized.get.inputDescription,
               controller: state.descriptionController,
               inputType: TextInputType.text,
@@ -119,7 +119,7 @@ class Fields extends StatelessWidget {
             const VBox(15),
             SizedBox(
               width: 200,
-              child: CustomFormField(
+              child: InputField(
                 label: Localized.get.inputDeadline,
                 controller: state.deadlineController,
                 inputType: TextInputType.text,
@@ -134,7 +134,7 @@ class Fields extends StatelessWidget {
               ),
             ),
             const VBox(15),
-            CustomFormField(
+            InputField(
               label: Localized.get.inputTags,
               controller: state.tagsController,
               inputType: TextInputType.text,

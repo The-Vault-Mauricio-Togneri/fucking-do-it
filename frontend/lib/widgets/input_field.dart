@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 
-class CustomFormField extends StatelessWidget {
+class InputField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final bool isPassword;
@@ -20,7 +20,7 @@ class CustomFormField extends StatelessWidget {
   final int? minLines;
   final int? maxLines;
 
-  const CustomFormField({
+  const InputField({
     required this.label,
     required this.controller,
     this.isPassword = false,
