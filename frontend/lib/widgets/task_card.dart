@@ -97,10 +97,13 @@ class TaskCard extends StatelessWidget {
                   ),
                   const HBox(15),
                   Expanded(
-                    child: Label(
-                      text: task.deadlineText,
-                      color: task.deadlineTextColor,
-                      size: 14,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 2),
+                      child: Label(
+                        text: task.deadlineText,
+                        color: task.deadlineTextColor,
+                        size: 12,
+                      ),
                     ),
                   ),
                 ],
