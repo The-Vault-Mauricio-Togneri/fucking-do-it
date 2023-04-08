@@ -70,6 +70,7 @@ class AcceptButton extends StatelessWidget {
       child: PrimaryButton(
         text: 'Accept',
         onSubmit: state.onAccept,
+        icon: Icons.check,
         color: Palette.green,
       ),
     );
@@ -92,6 +93,7 @@ class CopyLinkButton extends StatelessWidget {
       child: PrimaryButton(
         text: 'Copy link',
         color: Palette.primary,
+        icon: Icons.copy,
         onSubmit: state.onCopyLink,
       ),
     );
@@ -114,6 +116,7 @@ class ReopenButton extends StatelessWidget {
       child: PrimaryButton(
         text: 'Reopen',
         color: Palette.primary,
+        icon: Icons.undo,
         onSubmit: state.onReopen,
       ),
     );
@@ -136,6 +139,7 @@ class CompleteButton extends StatelessWidget {
       child: PrimaryButton(
         text: 'Mark as done',
         color: Palette.green,
+        icon: Icons.done,
         onSubmit: state.onComplete,
       ),
     );
@@ -158,6 +162,7 @@ class DeleteButton extends StatelessWidget {
       child: PrimaryButton(
         text: 'Delete',
         color: Palette.red,
+        icon: Icons.delete,
         onSubmit: state.onDelete,
       ),
     );

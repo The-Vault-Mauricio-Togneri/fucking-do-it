@@ -1,3 +1,4 @@
+import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
@@ -6,11 +7,13 @@ class PrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onSubmit;
   final Color color;
+  final IconData icon;
 
   const PrimaryButton({
     required this.text,
     required this.onSubmit,
     required this.color,
+    required this.icon,
   });
 
   @override
@@ -29,9 +32,20 @@ class PrimaryButton extends StatelessWidget {
           shape: const StadiumBorder(),
         ),
         onPressed: onSubmit,
-        child: Label(
-          text: text.toUpperCase(),
-          color: Palette.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 20,
+              color: Palette.white,
+            ),
+            const HBox(5),
+            Label(
+              text: text.toUpperCase(),
+              color: Palette.white,
+            ),
+          ],
         ),
       ),
     );

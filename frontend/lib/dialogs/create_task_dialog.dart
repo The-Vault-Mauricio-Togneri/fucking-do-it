@@ -155,6 +155,7 @@ class CreateButton extends StatelessWidget {
       child: PrimaryButton(
         text: 'Create',
         color: Palette.primary,
+        icon: Icons.add,
         onSubmit: state.canSubmit ? state.onSubmit : null,
       ),
     );
