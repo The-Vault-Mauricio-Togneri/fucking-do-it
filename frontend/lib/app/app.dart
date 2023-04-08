@@ -15,9 +15,12 @@ class FuckingDoIt extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Palette.primary,
+        focusColor: Palette.primary,
+        highlightColor: Palette.primary,
         scaffoldBackgroundColor: Palette.white,
         useMaterial3: true,
         fontFamily: 'CustomFont',
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Palette.primary),
       ),
       navigatorKey: Navigation.get.routes.key,
       localizationsDelegates: const [

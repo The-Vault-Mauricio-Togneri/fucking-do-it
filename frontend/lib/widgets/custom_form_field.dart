@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/utils/palette.dart';
 
 class CustomFormField extends StatelessWidget {
   final String label;
@@ -52,6 +53,7 @@ class CustomFormField extends StatelessWidget {
         labelText: label,
         suffixText: suffixText,
         errorText: inputValidator,
+        focusColor: Palette.primary,
         border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 1),
         ),
