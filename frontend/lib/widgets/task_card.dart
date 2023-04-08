@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/models/assigned_person.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
@@ -130,10 +131,8 @@ class TaskCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         for (int i = 0; i < task.assignedTo.length; i++)
-                          Assignee(
-                            avatar: task.assignedInfo[task.assignedTo[i]]
-                                ['avatar'],
-                            name: task.assignedInfo[task.assignedTo[i]]['name'],
+                          AssignedPersonRow(
+                            person: task.getAssignedPerson(task.assignedTo[i]),
                             isLast: i < (task.assignedTo.length - 1),
                           ),
                       ],
@@ -167,14 +166,12 @@ class TaskCard extends StatelessWidget {
   }
 }
 
-class Assignee extends StatelessWidget {
-  final String avatar;
-  final String name;
+class AssignedPersonRow extends StatelessWidget {
+  final AssignedPerson person;
   final bool isLast;
 
-  const Assignee({
-    required this.avatar,
-    required this.name,
+  const AssignedPersonRow({
+    required this.person,
     required this.isLast,
   });
 
@@ -194,7 +191,7 @@ class Assignee extends StatelessWidget {
                 height: 24,
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
-                  imageUrl: avatar,
+                  imageUrl: person.avatar,
                   placeholder: (context, url) =>
                       Container(color: Palette.background),
                   errorWidget: (context, url, error) => Container(
@@ -212,7 +209,7 @@ class Assignee extends StatelessWidget {
           const HBox(5),
           Expanded(
             child: Label(
-              text: name,
+              text: person.name,
               color: Palette.grey,
               size: 14,
               overflow: TextOverflow.ellipsis,

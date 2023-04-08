@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fucking_do_it/models/assigned_person.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/status.dart';
 
@@ -100,9 +101,11 @@ class Repository {
 
       final Map<String, dynamic> assignedInfo = task.assignedInfo;
       assignedInfo[userId] = {
-        'avatar': FirebaseAuth.instance.currentUser?.photoURL,
-        'email': FirebaseAuth.instance.currentUser?.email,
-        'name': FirebaseAuth.instance.currentUser?.displayName,
+        AssignedPerson.FIELD_AVATAR:
+            FirebaseAuth.instance.currentUser?.photoURL,
+        AssignedPerson.FIELD_NAME:
+            FirebaseAuth.instance.currentUser?.displayName,
+        AssignedPerson.FIELD_EMAIL: FirebaseAuth.instance.currentUser?.email,
       };
 
       return _collection().doc(task.id).update({

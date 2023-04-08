@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fucking_do_it/models/assigned_person.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
 import 'package:fucking_do_it/utils/formatter.dart';
@@ -96,6 +97,9 @@ class Task implements Comparable<Task> {
       return Palette.error;
     }
   }
+
+  AssignedPerson getAssignedPerson(String id) =>
+      AssignedPerson.fromMap(assignedInfo[id]);
 
   factory Task.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data() ?? {};
