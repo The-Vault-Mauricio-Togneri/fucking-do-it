@@ -29,6 +29,7 @@ class TaskDetailsDialog extends StatelessWidget {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Palette.white,
+      surfaceTintColor: Palette.white,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
       content: StateProvider<TaskDetailsState>(
         state: state,
