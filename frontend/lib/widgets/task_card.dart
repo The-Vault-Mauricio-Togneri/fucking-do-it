@@ -124,7 +124,8 @@ class TaskCard extends StatelessWidget {
                       children: [
                         for (int i = 0; i < task.assignedTo.length; i++)
                           Assignee(
-                            avatar: task.assignedInfo[task.assignedTo[i]]['avatar'],
+                            avatar: task.assignedInfo[task.assignedTo[i]]
+                                ['avatar'],
                             name: task.assignedInfo[task.assignedTo[i]]['name'],
                             isLast: i < (task.assignedTo.length - 1),
                           ),
@@ -168,7 +169,8 @@ class Assignee extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl: avatar,
-                  placeholder: (context, url) => Container(color: Palette.background),
+                  placeholder: (context, url) =>
+                      Container(color: Palette.background),
                   errorWidget: (context, url, error) => Container(
                     color: Palette.background,
                     child: const Icon(
@@ -186,7 +188,7 @@ class Assignee extends StatelessWidget {
             child: Label(
               text: name,
               color: Palette.grey,
-              size: 12,
+              size: 14,
               overflow: TextOverflow.ellipsis,
             ),
           ),

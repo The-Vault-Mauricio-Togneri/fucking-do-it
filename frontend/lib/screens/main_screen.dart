@@ -245,32 +245,3 @@ class TaskEntry extends StatelessWidget {
     );
   }
 }
-
-class DismissibleBackground extends StatelessWidget {
-  final Color color;
-  final Alignment alignment;
-  final IconData icon;
-
-  const DismissibleBackground({
-    required this.color,
-    required this.alignment,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      child: Align(
-        alignment: alignment,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Icon(
-            icon,
-            color: Palette.white,
-          ),
-        ),
-      ),
-    );
-  }
-}

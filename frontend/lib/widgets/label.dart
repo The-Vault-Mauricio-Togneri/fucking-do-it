@@ -9,7 +9,6 @@ class Label extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final TextDecoration? decoration;
-  final GestureTapCallback? onTap;
 
   const Label({
     required this.text,
@@ -20,13 +19,12 @@ class Label extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.decoration,
-    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return Padding(
+      padding: EdgeInsets.only(bottom: size / 20),
       child: Text(
         text,
         maxLines: maxLines,
