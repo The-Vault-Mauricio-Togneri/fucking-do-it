@@ -1,4 +1,4 @@
-class AssignedPerson {
+class Person {
   final String avatar;
   final String name;
   final String email;
@@ -7,14 +7,14 @@ class AssignedPerson {
   static const String FIELD_NAME = 'name';
   static const String FIELD_EMAIL = 'email';
 
-  const AssignedPerson._({
+  const Person._({
     required this.avatar,
     required this.name,
     required this.email,
   });
 
-  factory AssignedPerson.fromMap(Map<String, dynamic> map) {
-    return AssignedPerson._(
+  factory Person.fromMap(Map<String, dynamic> map) {
+    return Person._(
       avatar: map[FIELD_AVATAR],
       name: map[FIELD_NAME],
       email: map[FIELD_EMAIL],

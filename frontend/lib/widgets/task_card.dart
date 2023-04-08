@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:fucking_do_it/models/assigned_person.dart';
+import 'package:fucking_do_it/models/person.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
@@ -132,7 +132,7 @@ class TaskCard extends StatelessWidget {
                       children: [
                         for (int i = 0; i < task.assignedTo.length; i++)
                           AssignedPersonRow(
-                            person: task.getAssignedPerson(task.assignedTo[i]),
+                            person: task.person(task.assignedTo[i]),
                             isLast: i < (task.assignedTo.length - 1),
                           ),
                       ],
@@ -167,7 +167,7 @@ class TaskCard extends StatelessWidget {
 }
 
 class AssignedPersonRow extends StatelessWidget {
-  final AssignedPerson person;
+  final Person person;
   final bool isLast;
 
   const AssignedPersonRow({
