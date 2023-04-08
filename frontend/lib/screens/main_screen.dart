@@ -221,9 +221,13 @@ class TaskEntry extends StatelessWidget {
         right: 15,
       ),
       width: double.infinity,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: Palette.white,
+        border: Border.all(
+          color: Palette.border,
+          width: 0.5,
+        ),
       ),
       child: Material(
         color: Palette.transparent,
@@ -259,7 +263,7 @@ class DismissibleBackground extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Icon(
             icon,
-            color: Colors.white,
+            color: Palette.white,
           ),
         ),
       ),

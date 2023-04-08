@@ -55,16 +55,16 @@ class CustomFormField extends StatelessWidget {
         errorText: inputValidator,
         focusColor: Palette.primary,
         border: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 1),
+          borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
         focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 1),
+          borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
         disabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 1),
+          borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 1),
+          borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
         labelStyle: const TextStyle(
           fontSize: 12,

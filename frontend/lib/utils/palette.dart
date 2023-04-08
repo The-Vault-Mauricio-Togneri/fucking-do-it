@@ -8,5 +8,6 @@ class Palette {
   static const Color grey = Colors.grey;
   static const Color red = Colors.red;
   static const Color green = Colors.green;
-  static const Color background = Color.fromARGB(255, 237, 240, 252);
+  static const Color background = Color(0xffedf0fc);
+  static const Color border = Color(0xFFDADADA);
 }
