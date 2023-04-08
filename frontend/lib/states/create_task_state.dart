@@ -65,6 +65,7 @@ class CreateTaskState extends BaseState {
         assignedInfo: {},
         description: descriptionController.text.trim(),
         deadline: deadline,
+        tags: tags,
       );
 
       await Repository.create(task);
@@ -73,7 +74,7 @@ class CreateTaskState extends BaseState {
   }
 
   void onCreateTag(String tag) {
-    if (!tags.contains(tag)) {
+    if (tag.isNotEmpty && !tags.contains(tag)) {
       tags.add(tag);
       notify();
     }
