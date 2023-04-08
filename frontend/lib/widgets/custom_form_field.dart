@@ -13,7 +13,7 @@ class CustomFormField extends StatelessWidget {
   final bool autofocus;
   final VoidCallback? onPressed;
   final Function(String)? onChanged;
-  final String? suffixText;
+  final Widget? suffixIcon;
   final String? inputValidator;
   final int? minLines;
   final int? maxLines;
@@ -29,7 +29,7 @@ class CustomFormField extends StatelessWidget {
     this.autofocus = false,
     this.onPressed,
     this.onChanged,
-    this.suffixText,
+    this.suffixIcon,
     this.inputValidator,
     this.minLines,
     this.maxLines,
@@ -49,10 +49,13 @@ class CustomFormField extends StatelessWidget {
       maxLines: maxLines,
       textCapitalization: TextCapitalization.sentences,
       onChanged: onChanged,
+      style: const TextStyle(
+        fontSize: 14,
+      ),
       decoration: InputDecoration(
         isDense: true,
         labelText: label,
-        suffixText: suffixText,
+        suffixIcon: suffixIcon,
         errorText: inputValidator,
         focusColor: Palette.primary,
         border: const OutlineInputBorder(

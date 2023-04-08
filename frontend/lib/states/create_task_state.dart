@@ -4,13 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
+import 'package:fucking_do_it/utils/formatter.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
 class CreateTaskState extends BaseState {
   Priority? priority;
+  DateTime? deadline;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController deadlineController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool get canSubmit =>
@@ -22,6 +25,25 @@ class CreateTaskState extends BaseState {
 
   void onSetPriority(Priority newPriority) {
     priority = newPriority;
+    notify();
+  }
+
+  Future onSelectDeadline(BuildContext context) async {
+    final DateTime? dateTime = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
+    );
+
+    deadline = dateTime;
+
+    if (dateTime != null) {
+      deadlineController.text = Formatter.dayLongMonthMonthYear(dateTime);
+    } else {
+      deadlineController.text = '';
+    }
+
     notify();
   }
 

@@ -64,6 +64,7 @@ class Fields extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomFormField(
@@ -113,6 +114,23 @@ class Fields extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            const VBox(15),
+            SizedBox(
+              width: 200,
+              child: CustomFormField(
+                label: 'Deadline', // TODO(momo): localize
+                controller: state.deadlineController,
+                inputType: TextInputType.text,
+                canBeEmpty: true,
+                enabled: false,
+                suffixIcon: const Icon(
+                  Icons.calendar_month,
+                  color: Palette.border,
+                  size: 20,
+                ),
+                onPressed: () => state.onSelectDeadline(context),
+              ),
             ),
           ],
         ),
