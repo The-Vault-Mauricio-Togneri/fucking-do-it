@@ -28,14 +28,11 @@ class TaskCard extends StatelessWidget {
               ),
               const HBox(15),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 2),
-                  child: Label(
-                    text: task.title,
-                    color: Palette.black,
-                    weight: FontWeight.bold,
-                    size: 14,
-                  ),
+                child: Label(
+                  text: task.title,
+                  color: Palette.black,
+                  weight: FontWeight.bold,
+                  size: 14,
                 ),
               ),
             ],
@@ -53,19 +50,16 @@ class TaskCard extends StatelessWidget {
                   ),
                   const HBox(15),
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3),
-                      child: LinkText(
-                        task.description,
-                        textStyle: const TextStyle(
-                          color: Palette.grey,
-                          fontSize: 14,
-                        ),
-                        linkStyle: const TextStyle(
-                          color: Palette.primary,
-                          fontSize: 14,
-                          decoration: TextDecoration.none,
-                        ),
+                    child: LinkText(
+                      task.description,
+                      textStyle: const TextStyle(
+                        color: Palette.grey,
+                        fontSize: 14,
+                      ),
+                      linkStyle: const TextStyle(
+                        color: Palette.primary,
+                        fontSize: 14,
+                        decoration: TextDecoration.none,
                       ),
                     ),
                   ),
@@ -83,14 +77,11 @@ class TaskCard extends StatelessWidget {
               ),
               const HBox(15),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Label(
-                    text: task.priority.text.toUpperCase(),
-                    color: task.priority.color,
-                    weight: FontWeight.bold,
-                    size: 12,
-                  ),
+                child: Label(
+                  text: task.priority.text.toUpperCase(),
+                  color: task.priority.color,
+                  weight: FontWeight.bold,
+                  size: 12,
                 ),
               ),
             ],
@@ -106,13 +97,10 @@ class TaskCard extends StatelessWidget {
               ),
               const HBox(15),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Label(
+                child: Label(
                     text: task.createdAtDateTime,
                     color: Palette.grey,
                     size: 12,
-                  ),
                 ),
               ),
             ],
