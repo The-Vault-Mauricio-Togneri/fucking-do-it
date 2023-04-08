@@ -200,7 +200,6 @@ class TasksList extends StatelessWidget {
                 children: [
                   for (final Task task in tasks)
                     TaskEntry(state: state, task: task),
-                  const VBox(20),
                 ],
               ),
             )
