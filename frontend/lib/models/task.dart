@@ -14,7 +14,7 @@ class Task implements Comparable<Task> {
   final List<String> assignedTo;
   final Map<String, dynamic> assignedInfo;
   final String description;
-  final DateTime? dueDate;
+  final DateTime? deadline;
 
   static const String FIELD_CREATED_BY = 'createdBy';
   static const String FIELD_CREATED_AT = 'createdAt';
@@ -24,7 +24,7 @@ class Task implements Comparable<Task> {
   static const String FIELD_ASSIGNED_TO = 'assignedTo';
   static const String FIELD_ASSIGNED_INFO = 'assignedInfo';
   static const String FIELD_DESCRIPTION = 'description';
-  static const String FIELD_DUE_DATE = 'dueDate';
+  static const String FIELD_DEADLINE = 'deadline';
 
   Task({
     required this.id,
@@ -36,7 +36,7 @@ class Task implements Comparable<Task> {
     required this.assignedTo,
     required this.assignedInfo,
     required this.description,
-    required this.dueDate,
+    required this.deadline,
   });
 
   bool get canBeAccepted =>
@@ -60,7 +60,7 @@ class Task implements Comparable<Task> {
       ((status == Status.created) || (status == Status.done)) &&
       (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
-  String get createdAtDateTime => Formatter.fullDateTime(createdAt);
+  String get deadlineText => Formatter.dayLongMonthMonthYear(deadline!);
 
   factory Task.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data() ?? {};
@@ -77,8 +77,8 @@ class Task implements Comparable<Task> {
           .toList(),
       assignedInfo: map[FIELD_ASSIGNED_INFO] as Map<String, dynamic>,
       description: map[FIELD_DESCRIPTION],
-      dueDate: (map[FIELD_DUE_DATE] != null)
-          ? (map[FIELD_DUE_DATE] as Timestamp).toDate()
+      deadline: (map[FIELD_DEADLINE] != null)
+          ? (map[FIELD_DEADLINE] as Timestamp).toDate()
           : null,
     );
   }
@@ -92,7 +92,8 @@ class Task implements Comparable<Task> {
         FIELD_ASSIGNED_TO: assignedTo,
         FIELD_ASSIGNED_INFO: assignedInfo,
         FIELD_DESCRIPTION: description,
-        FIELD_DUE_DATE: (dueDate != null) ? Timestamp.fromDate(dueDate!) : null,
+        FIELD_DEADLINE:
+            (deadline != null) ? Timestamp.fromDate(deadline!) : null,
       };
 
   @override

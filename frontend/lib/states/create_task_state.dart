@@ -61,7 +61,7 @@ class CreateTaskState extends BaseState {
         assignedTo: [],
         assignedInfo: {},
         description: descriptionController.text.trim(),
-        dueDate: null,
+        deadline: deadline,
       );
 
       await Repository.create(task);

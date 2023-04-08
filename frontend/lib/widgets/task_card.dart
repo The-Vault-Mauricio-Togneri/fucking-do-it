@@ -84,25 +84,28 @@ class TaskCard extends StatelessWidget {
               ),
             ],
           ),
-          /*const VBox(10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Icon(
-                Icons.calendar_month_outlined,
-                color: Palette.grey,
-                size: 20,
-              ),
-              const HBox(15),
-              Expanded(
-                child: Label(
-                    text: task.createdAtDateTime,
+          if (task.deadline != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.calendar_month_outlined,
                     color: Palette.grey,
-                    size: 12,
-                ),
+                    size: 20,
+                  ),
+                  const HBox(15),
+                  Expanded(
+                    child: Label(
+                      text: task.deadlineText,
+                      color: Palette.grey,
+                      size: 14,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),*/
+            ),
           if (task.assignedTo.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 10),
