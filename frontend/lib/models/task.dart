@@ -66,9 +66,7 @@ class Task implements Comparable<Task> {
       ((status == Status.created) || (status == Status.accepted)) &&
       (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
-  bool get canBeDeleted =>
-      ((status == Status.created) || (status == Status.done)) &&
-      (createdBy == FirebaseAuth.instance.currentUser?.uid);
+  bool get canBeDeleted => createdBy == FirebaseAuth.instance.currentUser?.uid;
 
   String get deadlineText {
     final DateTime now = DateTime.now();
