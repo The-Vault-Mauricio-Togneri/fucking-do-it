@@ -11,7 +11,7 @@ class FuckingDoIt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: Localized.get.appName,
+      title: ENLocalized().appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Palette.primary,
@@ -21,8 +21,7 @@ class FuckingDoIt extends StatelessWidget {
         scaffoldBackgroundColor: Palette.white,
         useMaterial3: true,
         fontFamily: 'CustomFont',
-        colorScheme:
-            ColorScheme.fromSwatch().copyWith(secondary: Palette.primary),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Palette.primary),
       ),
       navigatorKey: Navigation.get.routes.key,
       localizationsDelegates: const [

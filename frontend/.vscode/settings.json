@@ -11,11 +11,5 @@
         "source.fixAll": true,
     },
     "files.autoSave": "afterDelay",
-    "dart.previewFlutterUiGuides": true,
-    "dart.lineLength": 150,
-    "[dart]": {
-        "editor.rulers": [
-            150
-        ],
-    }
+    "dart.previewFlutterUiGuides": true
 }

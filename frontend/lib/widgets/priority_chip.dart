@@ -15,7 +15,6 @@ class PriorityChip extends StatelessWidget {
     required this.selected,
     this.onPressed,
   });
-
   @override
   Widget build(BuildContext context) {
     return Container(
