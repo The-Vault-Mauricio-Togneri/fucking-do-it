@@ -24,7 +24,7 @@ class TaskCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Icon(
-                Icons.video_label,
+                Icons.title,
                 color: Palette.grey,
                 size: 20,
               ),
@@ -92,7 +92,7 @@ class TaskCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Icon(
-                    Icons.calendar_month_outlined,
+                    Icons.calendar_today,
                     color: Palette.grey,
                     size: 20,
                   ),
@@ -145,7 +145,21 @@ class TaskCard extends StatelessWidget {
           if (task.tags.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: TagsList(task.tags),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 4),
+                    child: Icon(
+                      Icons.label,
+                      color: Palette.grey,
+                      size: 20,
+                    ),
+                  ),
+                  const HBox(15),
+                  Expanded(child: TagsList(task.tags)),
+                ],
+              ),
             ),
         ],
       ),
