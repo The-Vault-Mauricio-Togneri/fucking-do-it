@@ -9,6 +9,11 @@ class TaskDetailsState extends BaseState {
 
   TaskDetailsState(this.task);
 
+  void onAccept() {
+    Repository.accept(task);
+    Navigation.pop();
+  }
+
   void onCopyLink() {
     try {
       final textarea = TextAreaElement();

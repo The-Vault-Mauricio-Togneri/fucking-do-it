@@ -40,6 +40,7 @@ class TaskDetailsDialog extends StatelessWidget {
             children: [
               TaskCard(state.task),
               const VBox(10),
+              if (state.task.canBeAccepted) AcceptButton(state),
               if (state.task.canBeCopied) CopyLinkButton(state),
               if (state.task.canBeReopened) ReopenButton(state),
               if (state.task.canBeCompleted) CompleteButton(state),
@@ -48,6 +49,28 @@ class TaskDetailsDialog extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AcceptButton extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const AcceptButton(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+        bottom: 10,
+      ),
+      child: CustomButton(
+        onPressed: state.onAccept,
+        text: 'Accept',
+        color: Palette.green,
       ),
     );
   }

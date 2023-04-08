@@ -20,16 +20,26 @@ class MainState extends BaseState {
   StreamSubscription? subscriptionInReview;
 
   @override
-  Future onLoad() async {
-    if (paramTaskId != null) {
-      await Repository.accept(paramTaskId!);
-      paramTaskId = null;
-    }
-
+  void onLoad() {
+    checkAcceptTask();
     subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
     subscriptionCreated ??= Repository.listenCreated(onTasksCreated);
     subscriptionInProgress ??= Repository.listenInProgress(onTasksInProgress);
     subscriptionInReview ??= Repository.listenInReview(onTasksInReview);
+  }
+
+  Future checkAcceptTask() async {
+    if (paramTaskId != null) {
+      final Task task = await Repository.get(paramTaskId!);
+      paramTaskId = null;
+
+      if (task.canBeAccepted) {
+        TaskDetailsDialog.show(
+          context: Navigation.context(),
+          task: task,
+        );
+      }
+    }
   }
 
   @override

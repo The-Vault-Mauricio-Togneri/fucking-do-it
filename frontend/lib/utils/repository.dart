@@ -65,6 +65,12 @@ class Repository {
     });
   }
 
+  static Future get(String taskId) async {
+    final DocumentSnapshot<Map<String, dynamic>> document = await _collection().doc(taskId).get();
+
+    return Task.fromDocument(document);
+  }
+
   static Future create(Task task) => _collection().add(task.document);
 
   static Future complete(Task task) => _collection().doc(task.id).update({
@@ -75,9 +81,7 @@ class Repository {
         Task.FIELD_STATUS: Status.accepted.name,
       });
 
-  static Future accept(String taskId) async {
-    final DocumentSnapshot<Map<String, dynamic>> document = await _collection().doc(taskId).get();
-    final Task task = Task.fromDocument(document);
+  static Future accept(Task task) async {
     final String userId = FirebaseAuth.instance.currentUser?.uid ?? '';
     final List<String> assignedTo = task.assignedTo;
 
