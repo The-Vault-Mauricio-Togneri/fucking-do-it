@@ -6,6 +6,7 @@ class Palette {
   static const Color black = Color(0xff303030);
   static const Color white = Colors.white;
   static const Color grey = Colors.grey;
+  static const Color hint = Color(0xffaaaaaa);
   static const Color error = Color(0xffef5365);
   static const Color success = Color(0xff82b368);
   static const Color background = Color(0xffedf0fc);
