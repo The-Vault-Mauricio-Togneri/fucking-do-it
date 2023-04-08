@@ -36,11 +36,13 @@ class TagChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       padding: EdgeInsets.only(
+        top: 0,
+        bottom: 0,
         left: 4,
         right: (onDelete != null) ? 0 : 4,
       ),
       label: Padding(
-        padding: const EdgeInsets.only(bottom: 2),
+        padding: const EdgeInsets.only(bottom: 1),
         child: Label(
           text: text,
           color: Palette.white,
