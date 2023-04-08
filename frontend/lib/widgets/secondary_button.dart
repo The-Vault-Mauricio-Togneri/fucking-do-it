@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 
 class SecondaryButton extends StatelessWidget {
@@ -24,6 +25,7 @@ class SecondaryButton extends StatelessWidget {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           foregroundColor: borderColor,
+          backgroundColor: Palette.white,
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           textStyle: TextStyle(
             fontSize: 14,
