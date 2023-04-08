@@ -10,6 +10,7 @@
     "button.ok": "Ok",
     "button.reopen": "Reopen",
     "button.signInWithGoogle": "Sign in with Google",
+    "input.deadline": "Deadline (optional)",
     "input.description": "Description (optional)",
     "input.title": "Title",
     "label.assignedToMe": "Assigned to me",

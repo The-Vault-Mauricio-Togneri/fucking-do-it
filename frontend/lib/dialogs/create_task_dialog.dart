@@ -119,7 +119,7 @@ class Fields extends StatelessWidget {
             SizedBox(
               width: 200,
               child: CustomFormField(
-                label: 'Deadline', // TODO(momo): localize
+                label: Localized.get.inputDeadline,
                 controller: state.deadlineController,
                 inputType: TextInputType.text,
                 canBeEmpty: true,

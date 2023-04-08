@@ -10,6 +10,7 @@
     "button.ok": "Ok",
     "button.reopen": "Reabrir",
     "button.signInWithGoogle": "Conectarse con Google",
+    "input.deadline": "Fecha límite (opcional)",
     "input.description": "Descripción (opcional)",
     "input.title": "Título",
     "label.assignedToMe": "Asignadas a mí",
