@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/states/create_task_state.dart';
 import 'package:fucking_do_it/types/priority.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/custom_form_field.dart';
@@ -65,7 +66,7 @@ class Fields extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomFormField(
-              label: 'Title',
+              label: Localized.get.inputTitle,
               autofocus: true,
               controller: state.titleController,
               inputType: TextInputType.text,
@@ -73,7 +74,7 @@ class Fields extends StatelessWidget {
             ),
             const VBox(15),
             CustomFormField(
-              label: 'Description (optional)',
+              label: Localized.get.inputDescription,
               controller: state.descriptionController,
               inputType: TextInputType.text,
               canBeEmpty: true,
@@ -134,7 +135,7 @@ class CreateButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: 'Create',
+        text: Localized.get.buttonCreate,
         color: Palette.primary,
         icon: Icons.add,
         onSubmit: state.canSubmit ? state.onSubmit : null,
@@ -155,7 +156,7 @@ class CloseButton extends StatelessWidget {
       child: TextButton(
         onPressed: Navigation.pop,
         child: Label(
-          text: 'Close'.toUpperCase(),
+          text: Localized.get.buttonClose.toUpperCase(),
           color: Palette.grey,
           weight: FontWeight.bold,
           size: 12,

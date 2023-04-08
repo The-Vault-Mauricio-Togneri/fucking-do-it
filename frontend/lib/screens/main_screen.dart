@@ -71,25 +71,25 @@ class Content extends StatelessWidget {
         children: [
           TaskColumn(
             state: state,
-            title: 'Assigned to me',
+            title: Localized.get.labelAssignedToMe,
             tasks: state.tasksAssignedToMe,
           ),
           const VerticalDivider(),
           TaskColumn(
             state: state,
-            title: 'Created',
+            title: Localized.get.labelCreated,
             tasks: state.tasksCreated,
           ),
           const VerticalDivider(),
           TaskColumn(
             state: state,
-            title: 'In progress',
+            title: Localized.get.labelInProgress,
             tasks: state.tasksInProgress,
           ),
           const VerticalDivider(),
           TaskColumn(
             state: state,
-            title: 'In review',
+            title: Localized.get.labelInReview,
             tasks: state.tasksInReview,
           ),
         ],
@@ -198,9 +198,9 @@ class NoTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Label(
-        text: 'Empty',
+        text: Localized.get.labelEmpty,
         color: Palette.grey,
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/states/auth_state.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/image_asset.dart';
 import 'package:fucking_do_it/widgets/secondary_button.dart';
@@ -43,7 +44,7 @@ class SignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SecondaryButton(
-        text: 'Sign in with Google',
+        text: Localized.get.buttonSignInWithGoogle,
         textColor: Palette.black,
         borderColor: Palette.grey,
         onSubmit: state.onSignIn,

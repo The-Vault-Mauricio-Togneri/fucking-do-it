@@ -4,41 +4,47 @@ import 'package:flutter/widgets.dart';
 abstract class BaseLocalized {
   String get appName;
 
+  String get buttonAccept;
+
   String get buttonCancel;
+
+  String get buttonClose;
+
+  String get buttonCompleted;
+
+  String get buttonCopyLink;
+
+  String get buttonCreate;
+
+  String get buttonDelete;
 
   String get buttonOk;
 
-  String get confirmationDeleteTask;
+  String get buttonReopen;
 
-  String get connectionSignIn;
+  String get buttonSignInWithGoogle;
 
-  String get fieldCantBeEmpty;
+  String get inputDescription;
 
-  String get listEmpty;
+  String get inputTitle;
 
-  String get optionDelete;
+  String get labelAssignedToMe;
 
-  String get optionDone;
+  String labelCannotBeEmpty(String param1);
 
-  String get optionNotDone;
+  String get labelCreated;
 
-  String get optionUpdate;
+  String get labelEmpty;
+
+  String get labelInProgress;
+
+  String get labelInReview;
 
   String get priorityHigh;
 
   String get priorityLow;
 
   String get priorityMedium;
-
-  String get taskButtonAdd;
-
-  String get taskButtonUpdate;
-
-  String get taskFieldName;
-
-  String get taskTitleNew;
-
-  String get taskTitleUpdate;
 }
 
 class ENLocalized extends BaseLocalized {
@@ -46,34 +52,59 @@ class ENLocalized extends BaseLocalized {
   String get appName => 'Just Fucking Do it';
 
   @override
+  String get buttonAccept => 'Accept';
+
+  @override
   String get buttonCancel => 'Cancel';
+
+  @override
+  String get buttonClose => 'Close';
+
+  @override
+  String get buttonCompleted => 'Completed';
+
+  @override
+  String get buttonCopyLink => 'Copy link';
+
+  @override
+  String get buttonCreate => 'Create';
+
+  @override
+  String get buttonDelete => 'Delete';
 
   @override
   String get buttonOk => 'Ok';
 
   @override
-  String get confirmationDeleteTask => 'Delete task?';
+  String get buttonReopen => 'Reopen';
 
   @override
-  String get connectionSignIn => 'Sign in';
+  String get buttonSignInWithGoogle => 'Sign in with Google';
 
   @override
-  String get fieldCantBeEmpty => "can't be empty";
+  String get inputDescription => 'Description (optional)';
 
   @override
-  String get listEmpty => 'No tasks';
+  String get inputTitle => 'Title';
 
   @override
-  String get optionDelete => 'Delete';
+  String get labelAssignedToMe => 'Assigned to me';
 
   @override
-  String get optionDone => 'Done';
+  String labelCannotBeEmpty(String param1) =>
+      '${param1.toString()} cannot be empty';
 
   @override
-  String get optionNotDone => 'Not done';
+  String get labelCreated => 'Created';
 
   @override
-  String get optionUpdate => 'Update';
+  String get labelEmpty => 'Empty';
+
+  @override
+  String get labelInProgress => 'In progress';
+
+  @override
+  String get labelInReview => 'In review';
 
   @override
   String get priorityHigh => 'High';
@@ -83,21 +114,6 @@ class ENLocalized extends BaseLocalized {
 
   @override
   String get priorityMedium => 'Medium';
-
-  @override
-  String get taskButtonAdd => 'Add';
-
-  @override
-  String get taskButtonUpdate => 'Update';
-
-  @override
-  String get taskFieldName => 'Name';
-
-  @override
-  String get taskTitleNew => 'New task';
-
-  @override
-  String get taskTitleUpdate => 'Update task';
 }
 
 class ESLocalized extends BaseLocalized {
@@ -105,34 +121,59 @@ class ESLocalized extends BaseLocalized {
   String get appName => 'Just Fucking Do it';
 
   @override
-  String get buttonCancel => 'Cancelar';
+  String get buttonAccept => 'Aceptar';
+
+  @override
+  String get buttonCancel => 'Cerrar';
+
+  @override
+  String get buttonClose => 'Cerrar';
+
+  @override
+  String get buttonCompleted => 'Competada';
+
+  @override
+  String get buttonCopyLink => 'Copiar enlace';
+
+  @override
+  String get buttonCreate => 'Crear';
+
+  @override
+  String get buttonDelete => 'Eliminar';
 
   @override
   String get buttonOk => 'Ok';
 
   @override
-  String get confirmationDeleteTask => '¿Elimiar tarea?';
+  String get buttonReopen => 'Reabrir';
 
   @override
-  String get connectionSignIn => 'Conectarse';
+  String get buttonSignInWithGoogle => 'Conectarse con Google';
 
   @override
-  String get fieldCantBeEmpty => 'no puede esta vacío';
+  String get inputDescription => 'Descripción (opcional)';
 
   @override
-  String get listEmpty => 'Sin tareas';
+  String get inputTitle => 'Título';
 
   @override
-  String get optionDelete => 'Eliminar';
+  String get labelAssignedToMe => 'Asignadas a mí';
 
   @override
-  String get optionDone => 'Completada';
+  String labelCannotBeEmpty(String param1) =>
+      '${param1.toString()} no puede estar vacío';
 
   @override
-  String get optionNotDone => 'No completada';
+  String get labelCreated => 'Creadas';
 
   @override
-  String get optionUpdate => 'Actualizar';
+  String get labelEmpty => 'Vacía';
+
+  @override
+  String get labelInProgress => 'En progreso';
+
+  @override
+  String get labelInReview => 'En revisión';
 
   @override
   String get priorityHigh => 'Alta';
@@ -142,21 +183,6 @@ class ESLocalized extends BaseLocalized {
 
   @override
   String get priorityMedium => 'Media';
-
-  @override
-  String get taskButtonAdd => 'Agregar';
-
-  @override
-  String get taskButtonUpdate => 'Actualizar';
-
-  @override
-  String get taskFieldName => 'Nombre';
-
-  @override
-  String get taskTitleNew => 'Nueva tarea';
-
-  @override
-  String get taskTitleUpdate => 'Actualizar tarea';
 }
 
 class Localized {

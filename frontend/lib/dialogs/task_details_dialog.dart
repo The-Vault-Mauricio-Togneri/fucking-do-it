@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/task_details_state.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/task_card.dart';
@@ -70,7 +71,7 @@ class AcceptButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: 'Accept',
+        text: Localized.get.buttonAccept,
         onSubmit: state.onAccept,
         icon: Icons.check,
         color: Palette.green,
@@ -93,7 +94,7 @@ class CopyLinkButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: 'Copy link',
+        text: Localized.get.buttonCopyLink,
         color: Palette.primary,
         icon: Icons.copy,
         onSubmit: state.onCopyLink,
@@ -116,7 +117,7 @@ class ReopenButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: 'Reopen',
+        text: Localized.get.buttonReopen,
         color: Palette.primary,
         icon: Icons.undo,
         onSubmit: state.onReopen,
@@ -139,7 +140,7 @@ class CompleteButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: 'Mark as done',
+        text: Localized.get.buttonCompleted,
         color: Palette.green,
         icon: Icons.done,
         onSubmit: state.onComplete,
@@ -162,7 +163,7 @@ class DeleteButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: 'Delete',
+        text: Localized.get.buttonDelete,
         color: Palette.red,
         icon: Icons.delete,
         onSubmit: state.onDelete,

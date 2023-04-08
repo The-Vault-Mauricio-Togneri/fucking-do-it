@@ -11,7 +11,7 @@ class FuckingDoIt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Just Fucking Do It',
+      title: Localized.get.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Palette.primary,
