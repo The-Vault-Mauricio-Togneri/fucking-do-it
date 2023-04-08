@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/rendering.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
 import 'package:fucking_do_it/utils/formatter.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
+import 'package:fucking_do_it/utils/palette.dart';
 
 class Task implements Comparable<Task> {
   final String id;
@@ -73,10 +75,23 @@ class Task implements Comparable<Task> {
     } else if (difference.inDays == 0) {
       delta = Localized.get.labelDeltaToday.toLowerCase();
     } else {
-      delta = Localized.get.labelDeltaDaysPast(difference.inDays.toString());
+      delta =
+          Localized.get.labelDeltaDaysPast(difference.inDays.abs().toString());
     }
 
     return '$date ($delta)';
+  }
+
+  Color get deadlineTextColor {
+    final DateTime now = DateTime.now();
+    final DateTime today = DateTime(now.year, now.month, now.day);
+    final Duration difference = deadline!.difference(today);
+
+    if (difference.inDays > 0) {
+      return Palette.grey;
+    } else {
+      return Palette.red;
+    }
   }
 
   factory Task.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {

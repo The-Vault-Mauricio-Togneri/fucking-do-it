@@ -99,7 +99,7 @@ class TaskCard extends StatelessWidget {
                   Expanded(
                     child: Label(
                       text: task.deadlineText,
-                      color: Palette.grey,
+                      color: task.deadlineTextColor,
                       size: 14,
                     ),
                   ),
