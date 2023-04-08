@@ -22,8 +22,9 @@ class MainScreen extends StatelessWidget {
         title: state.title,
         color: Palette.primary,
         child: Scaffold(
+          backgroundColor: Palette.background,
           appBar: AppBar(
-            elevation: 0,
+            elevation: 1,
             backgroundColor: Palette.primary,
             title: Center(
               child: Label(
@@ -105,8 +106,8 @@ class VerticalDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 50),
-      color: Palette.grey,
-      width: 0.2,
+      color: Palette.border,
+      width: 0.4,
       height: double.infinity,
     );
   }
@@ -133,14 +134,14 @@ class TaskColumn extends StatelessWidget {
         children: [
           Container(
             height: 50,
-            color: Palette.primary,
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Label(
                 text: ((tasks != null) && (tasks!.isNotEmpty))
                     ? '${title.toUpperCase()} (${tasks!.length})'
                     : title.toUpperCase(),
-                color: Palette.white,
+                color: Palette.black,
+                weight: FontWeight.bold,
               ),
             ),
           ),
@@ -160,19 +161,16 @@ class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        color: Palette.background,
-        child: tasks.isNotEmpty
-            ? SingleChildScrollView(
-                child: Column(
-                  children: [
-                    for (final Task task in tasks)
-                      TaskEntry(state: state, task: task),
-                  ],
-                ),
-              )
-            : const NoTasks(),
-      ),
+      child: tasks.isNotEmpty
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  for (final Task task in tasks)
+                    TaskEntry(state: state, task: task),
+                ],
+              ),
+            )
+          : const NoTasks(),
     );
   }
 }
@@ -182,12 +180,9 @@ class LoadingTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: Palette.background,
-        child: const Center(
-          child: CircularProgressIndicator(color: Palette.primary),
-        ),
+    return const Expanded(
+      child: Center(
+        child: CircularProgressIndicator(color: Palette.primary),
       ),
     );
   }
@@ -220,7 +215,7 @@ class TaskEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        top: 15,
+        bottom: 15,
         left: 15,
         right: 15,
       ),
