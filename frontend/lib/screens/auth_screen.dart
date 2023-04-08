@@ -1,7 +1,9 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/states/auth_state.dart';
-import 'package:fucking_do_it/widgets/custom_button.dart';
+import 'package:fucking_do_it/utils/palette.dart';
+import 'package:fucking_do_it/widgets/image_asset.dart';
+import 'package:fucking_do_it/widgets/secondary_button.dart';
 
 class AuthScreen extends StatelessWidget {
   final AuthState state;
@@ -39,11 +41,16 @@ class SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-        width: 150,
-        child: CustomButton(
-          text: 'Sign in',
-          onPressed: state.onSignIn,
+      child: SecondaryButton(
+        text: 'Sign in with Google',
+        textColor: Palette.black,
+        borderColor: Palette.grey,
+        onSubmit: state.onSignIn,
+        icon: const SizedBox(
+          child: ImageAsset(
+            path: 'google.png',
+            size: 20,
+          ),
         ),
       ),
     );
