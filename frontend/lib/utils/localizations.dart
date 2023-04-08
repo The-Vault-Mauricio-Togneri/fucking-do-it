@@ -30,6 +30,8 @@ abstract class BaseLocalized {
 
   String get inputOptional;
 
+  String get inputTags;
+
   String get inputTitle;
 
   String get labelAssignedToMe;
@@ -99,6 +101,9 @@ class ENLocalized extends BaseLocalized {
 
   @override
   String get inputOptional => 'Optional';
+
+  @override
+  String get inputTags => 'Tags';
 
   @override
   String get inputTitle => 'Title';
@@ -183,6 +188,9 @@ class ESLocalized extends BaseLocalized {
 
   @override
   String get inputOptional => 'Opcional';
+
+  @override
+  String get inputTags => 'Etiquetas';
 
   @override
   String get inputTitle => 'Título';

@@ -134,10 +134,11 @@ class Fields extends StatelessWidget {
             ),
             const VBox(15),
             CustomFormField(
-              label: 'Tags', // TODO(momo): localize
+              label: Localized.get.inputTags,
               controller: state.tagsController,
               inputType: TextInputType.text,
               focusNode: state.tagsFocus,
+              canBeEmpty: true,
               onSubmit: state.onCreateTag,
             ),
             const VBox(10),
@@ -147,7 +148,7 @@ class Fields extends StatelessWidget {
                   TagChip(
                     text: tag,
                     onDelete: state.onDeleteTag,
-                  )
+                  ),
               ],
             ),
           ],

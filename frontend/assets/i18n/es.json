@@ -13,6 +13,7 @@
     "input.deadline": "Fecha límite",
     "input.description": "Descripción",
     "input.optional": "Opcional",
+    "input.tags": "Etiquetas",
     "input.title": "Título",
     "label.assignedToMe": "Asignadas a mí",
     "label.cannotBeEmpty": "%1$s no puede estar vacío",

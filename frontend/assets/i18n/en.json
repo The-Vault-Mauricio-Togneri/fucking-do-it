@@ -13,6 +13,7 @@
     "input.deadline": "Deadline",
     "input.description": "Description",
     "input.optional": "Optional",
+    "input.tags": "Tags",
     "input.title": "Title",
     "label.assignedToMe": "Assigned to me",
     "label.cannotBeEmpty": "%1$s cannot be empty",
