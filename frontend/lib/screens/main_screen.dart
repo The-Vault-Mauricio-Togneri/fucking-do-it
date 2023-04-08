@@ -135,18 +135,51 @@ class TaskColumn extends StatelessWidget {
           Container(
             height: 50,
             padding: const EdgeInsets.all(15),
-            child: Center(
-              child: Label(
-                text: ((tasks != null) && (tasks!.isNotEmpty))
-                    ? '${title.toUpperCase()} (${tasks!.length})'
-                    : title.toUpperCase(),
-                color: Palette.black,
-                weight: FontWeight.bold,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Label(
+                  text: title.toUpperCase(),
+                  color: Palette.black,
+                  weight: FontWeight.bold,
+                ),
+                if ((tasks != null) && (tasks!.isNotEmpty))
+                  AmountChip(tasks!.length),
+              ],
             ),
           ),
           if (tasks != null) TasksList(state, tasks!) else const LoadingTasks(),
         ],
+      ),
+    );
+  }
+}
+
+class AmountChip extends StatelessWidget {
+  final num amount;
+
+  const AmountChip(this.amount);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(left: 5),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(100)),
+        color: Palette.error,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 1,
+          bottom: 4,
+          left: 6,
+          right: 6,
+        ),
+        child: Label(
+          text: amount.toString(),
+          color: Palette.white,
+          size: 12,
+        ),
       ),
     );
   }
