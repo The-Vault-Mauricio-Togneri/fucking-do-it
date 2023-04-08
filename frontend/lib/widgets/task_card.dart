@@ -151,7 +151,7 @@ class TaskCard extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 4),
                     child: Icon(
-                      Icons.label,
+                      Icons.label_outline_rounded,
                       color: Palette.grey,
                       size: 20,
                     ),
