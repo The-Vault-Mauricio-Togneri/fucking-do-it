@@ -10,7 +10,7 @@ dependencies:
   dafluta: ^5.1.1
   link_text: ^0.2.0
   url_strategy: ^0.2.0
-  google_sign_in: ^6.0.2
+  google_sign_in: ^6.1.0
   cached_network_image: ^3.2.3
   
   firebase_core: ^2.9.0
@@ -36,7 +36,7 @@ flutter:
   fonts:
     - family: CustomFont
       fonts:
-        - asset: assets/fonts/WorkSans-Regular.ttf
+        - asset: assets/fonts/NunitoSans-Regular.ttf
 
   assets:
     - assets/images/
