@@ -27,6 +27,8 @@ class CreateTaskDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
+      backgroundColor: Palette.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
       content: StateProvider<CreateTaskState>(
         state: state,
         builder: (context, state) => SizedBox(

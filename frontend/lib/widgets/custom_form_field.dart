@@ -48,6 +48,8 @@ class CustomFormField extends StatelessWidget {
       textCapitalization: TextCapitalization.sentences,
       onChanged: onChanged,
       decoration: InputDecoration(
+        filled: true,
+        isDense: true,
         labelText: label,
         suffixText: suffixText,
         errorText: inputValidator,
@@ -59,6 +61,12 @@ class CustomFormField extends StatelessWidget {
         ),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 1),
+        ),
+        labelStyle: const TextStyle(
+          fontSize: 12,
+        ),
+        hintStyle: const TextStyle(
+          fontSize: 12,
         ),
       ),
       validator: (value) {

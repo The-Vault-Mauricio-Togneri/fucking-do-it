@@ -21,6 +21,7 @@ class MainScreen extends StatelessWidget {
       builder: (context, state) => Scaffold(
         appBar: AppBar(
           elevation: 0,
+          backgroundColor: Palette.primary,
           title: Center(
             child: Label(
               text: Localized.get.appName.toUpperCase(),
@@ -32,13 +33,18 @@ class MainScreen extends StatelessWidget {
             IconButton(
               onPressed: state.signOut,
               icon: const Icon(Icons.logout),
+              color: Palette.white,
             ),
           ],
         ),
         body: Content(state),
         floatingActionButton: FloatingActionButton(
           onPressed: () => state.onCreateTask(context),
-          child: const Icon(Icons.add),
+          backgroundColor: Palette.primary,
+          child: const Icon(
+            Icons.add,
+            color: Palette.white,
+          ),
         ),
       ),
     );
@@ -171,7 +177,7 @@ class LoadingTasks extends StatelessWidget {
       child: Container(
         color: Palette.background,
         child: const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: Palette.primary),
         ),
       ),
     );
