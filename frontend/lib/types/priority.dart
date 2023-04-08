@@ -23,7 +23,7 @@ enum Priority {
       case Priority.medium:
         return const Color(0xFFB1842A);
       case Priority.low:
-        return const Color(0xFF76A35D);
+        return const Color(0xFF5B8644);
     }
   }
 

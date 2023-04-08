@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
+import 'package:fucking_do_it/widgets/priority_chip.dart';
 import 'package:link_text/link_text.dart';
 
 class TaskCard extends StatelessWidget {
@@ -76,13 +77,10 @@ class TaskCard extends StatelessWidget {
                 size: 20,
               ),
               const HBox(15),
-              Expanded(
-                child: Label(
-                  text: task.priority.text.toUpperCase(),
-                  color: task.priority.backgroundColor,
-                  weight: FontWeight.bold,
-                  size: 12,
-                ),
+              PriorityChip(
+                priority: task.priority,
+                size: 12,
+                selected: true,
               ),
             ],
           ),

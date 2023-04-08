@@ -82,25 +82,31 @@ class Fields extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                PriorityChip(
-                  priority: Priority.high,
-                  size: 16,
-                  selected: state.priority == Priority.high,
-                  onPressed: state.onSetPriority,
+                Expanded(
+                  child: PriorityChip(
+                    priority: Priority.high,
+                    size: 16,
+                    selected: state.priority == Priority.high,
+                    onPressed: state.onSetPriority,
+                  ),
                 ),
                 const HBox(10),
-                PriorityChip(
-                  priority: Priority.medium,
-                  size: 16,
-                  selected: state.priority == Priority.medium,
-                  onPressed: state.onSetPriority,
+                Expanded(
+                  child: PriorityChip(
+                    priority: Priority.medium,
+                    size: 16,
+                    selected: state.priority == Priority.medium,
+                    onPressed: state.onSetPriority,
+                  ),
                 ),
                 const HBox(10),
-                PriorityChip(
-                  priority: Priority.low,
-                  size: 16,
-                  selected: state.priority == Priority.low,
-                  onPressed: state.onSetPriority,
+                Expanded(
+                  child: PriorityChip(
+                    priority: Priority.low,
+                    size: 16,
+                    selected: state.priority == Priority.low,
+                    onPressed: state.onSetPriority,
+                  ),
                 ),
               ],
             ),

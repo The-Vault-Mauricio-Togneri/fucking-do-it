@@ -18,26 +18,29 @@ class PriorityChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: selected ? priority.backgroundColor : Palette.unselected,
+    return Container(
+      decoration: BoxDecoration(
+        color: selected ? priority.backgroundColor : Palette.unselected,
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+      ),
+      child: Material(
+        color: Palette.transparent,
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        child: InkWell(
+          onTap: () => onPressed?.call(priority),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
-        ),
-        child: Material(
-          color: Palette.transparent,
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-          child: InkWell(
-            onTap: () => onPressed?.call(priority),
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            child: Padding(
-              padding: EdgeInsets.all(size / 3),
-              child: Center(
-                child: Label(
-                  text: priority.text,
-                  color: selected ? priority.textColor : Palette.grey,
-                  size: size,
-                ),
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: size / 3,
+              bottom: size / 3,
+              left: size / 1.5,
+              right: size / 1.5,
+            ),
+            child: Center(
+              child: Label(
+                text: priority.text,
+                color: selected ? priority.textColor : Palette.grey,
+                size: size,
               ),
             ),
           ),
