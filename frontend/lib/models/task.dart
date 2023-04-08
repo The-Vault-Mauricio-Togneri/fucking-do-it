@@ -20,6 +20,7 @@ class Task implements Comparable<Task> {
   final String description;
   final DateTime? deadline;
   final List<String> tags;
+  final List<Map<String, dynamic>> comments;
 
   static const String FIELD_CREATED_BY = 'createdBy';
   static const String FIELD_CREATED_AT = 'createdAt';
@@ -31,6 +32,7 @@ class Task implements Comparable<Task> {
   static const String FIELD_DESCRIPTION = 'description';
   static const String FIELD_DEADLINE = 'deadline';
   static const String FIELD_TAGS = 'tags';
+  static const String FIELD_COMMENTS = 'comments';
 
   Task({
     required this.id,
@@ -44,6 +46,7 @@ class Task implements Comparable<Task> {
     required this.description,
     required this.deadline,
     required this.tags,
+    required this.comments,
   });
 
   bool get canBeAccepted =>
@@ -120,6 +123,9 @@ class Task implements Comparable<Task> {
           : null,
       tags:
           (map[FIELD_TAGS] as List<dynamic>).map((e) => e.toString()).toList(),
+      comments: (map[FIELD_COMMENTS] as List<dynamic>)
+          .map((e) => e as Map<String, dynamic>)
+          .toList(),
     );
   }
 
@@ -135,6 +141,7 @@ class Task implements Comparable<Task> {
         FIELD_DEADLINE:
             (deadline != null) ? Timestamp.fromDate(deadline!) : null,
         FIELD_TAGS: tags,
+        FIELD_COMMENTS: comments,
       };
 
   @override

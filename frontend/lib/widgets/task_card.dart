@@ -141,6 +141,28 @@ class TaskCard extends StatelessWidget {
                 ],
               ),
             ),
+          if (task.comments.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.comment_outlined,
+                    color: Palette.grey,
+                    size: 20,
+                  ),
+                  const HBox(15),
+                  Expanded(
+                    child: Label(
+                      text: '${task.comments.length}',
+                      color: Palette.grey,
+                      size: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           if (task.tags.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 10),
