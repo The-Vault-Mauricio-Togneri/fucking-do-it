@@ -48,12 +48,14 @@ class CustomFormField extends StatelessWidget {
       textCapitalization: TextCapitalization.sentences,
       onChanged: onChanged,
       decoration: InputDecoration(
-        filled: true,
         isDense: true,
         labelText: label,
         suffixText: suffixText,
         errorText: inputValidator,
         border: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey, width: 1),
+        ),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 1),
         ),
         disabledBorder: const OutlineInputBorder(
