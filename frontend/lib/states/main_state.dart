@@ -6,6 +6,7 @@ import 'package:fucking_do_it/app/initializer.dart';
 import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/dialogs/task_details_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
@@ -18,6 +19,12 @@ class MainState extends BaseState {
   StreamSubscription? subscriptionCreated;
   StreamSubscription? subscriptionInProgress;
   StreamSubscription? subscriptionInReview;
+
+  String get title {
+    final int assignedToMe = tasksAssignedToMe?.length ?? 0;
+
+    return (assignedToMe > 0) ? '($assignedToMe) ${Localized.get.appName}' : Localized.get.appName;
+  }
 
   @override
   void onLoad() {

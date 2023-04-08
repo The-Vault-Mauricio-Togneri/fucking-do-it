@@ -18,33 +18,37 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateProvider<MainState>(
       state: state,
-      builder: (context, state) => Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Palette.primary,
-          title: Center(
-            child: Label(
-              text: Localized.get.appName.toUpperCase(),
-              color: Palette.white,
-              size: 16,
+      builder: (context, state) => Title(
+        title: state.title,
+        color: Palette.primary,
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Palette.primary,
+            title: Center(
+              child: Label(
+                text: Localized.get.appName.toUpperCase(),
+                color: Palette.white,
+                size: 16,
+              ),
             ),
+            actions: [
+              IconButton(
+                onPressed: state.signOut,
+                icon: const Icon(Icons.logout),
+                color: Palette.white,
+              ),
+            ],
           ),
-          actions: [
-            IconButton(
-              onPressed: state.signOut,
-              icon: const Icon(Icons.logout),
+          body: Content(state),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => state.onCreateTask(context),
+            backgroundColor: Palette.primary,
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
+            child: const Icon(
+              Icons.add,
               color: Palette.white,
             ),
-          ],
-        ),
-        body: Content(state),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => state.onCreateTask(context),
-          backgroundColor: Palette.primary,
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
-          child: const Icon(
-            Icons.add,
-            color: Palette.white,
           ),
         ),
       ),
