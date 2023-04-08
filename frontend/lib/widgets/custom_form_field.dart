@@ -72,11 +72,17 @@ class CustomFormField extends StatelessWidget {
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
+        floatingLabelStyle: const TextStyle(
+          fontSize: 12,
+          color: Palette.primary,
+        ),
         labelStyle: const TextStyle(
           fontSize: 12,
+          color: Palette.hint,
         ),
         hintStyle: const TextStyle(
           fontSize: 12,
+          color: Palette.hint,
         ),
       ),
       validator: (value) {
