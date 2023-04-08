@@ -37,6 +37,7 @@ class Label extends StatelessWidget {
           fontSize: size,
           fontWeight: weight,
           decoration: decoration,
+          fontFamily: 'CustomFont',
         ),
       ),
     );

@@ -17,6 +17,7 @@ class FuckingDoIt extends StatelessWidget {
         primaryColor: Palette.primary,
         scaffoldBackgroundColor: Palette.white,
         useMaterial3: true,
+        fontFamily: 'CustomFont',
       ),
       navigatorKey: Navigation.get.routes.key,
       localizationsDelegates: const [

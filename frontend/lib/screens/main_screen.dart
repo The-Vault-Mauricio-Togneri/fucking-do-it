@@ -41,6 +41,7 @@ class MainScreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () => state.onCreateTask(context),
           backgroundColor: Palette.primary,
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
           child: const Icon(
             Icons.add,
             color: Palette.white,
