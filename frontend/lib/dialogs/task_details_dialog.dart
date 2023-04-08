@@ -37,19 +37,21 @@ class TaskDetailsDialog extends StatelessWidget {
         state: state,
         builder: (context, state) => SizedBox(
           width: 500,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TaskCard(state.task),
-              const VBox(10),
-              if (state.task.canBeAccepted) AcceptButton(state),
-              if (state.task.canBeCopied) CopyLinkButton(state),
-              if (state.task.canBeReopened) ReopenButton(state),
-              if (state.task.canBeCompleted) CompleteButton(state),
-              if (state.task.canBeDeleted) DeleteButton(state),
-              const VBox(10),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TaskCard(state.task),
+                const VBox(10),
+                if (state.task.canBeAccepted) AcceptButton(state),
+                if (state.task.canBeCopied) CopyLinkButton(state),
+                if (state.task.canBeReopened) ReopenButton(state),
+                if (state.task.canBeCompleted) CompleteButton(state),
+                if (state.task.canBeDeleted) DeleteButton(state),
+                const VBox(10),
+              ],
+            ),
           ),
         ),
       ),
