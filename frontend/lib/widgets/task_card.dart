@@ -139,7 +139,8 @@ class TaskCard extends StatelessWidget {
                         for (int i = 0; i < task.assignedTo.length; i++)
                           Assignee(
                             avatar: task.assignedInfo[task.assignedTo[i]]['avatar'],
-                            name: task.assignedInfo[task.assignedTo[i]]['name'],
+                            name:
+                                ' since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen ', // task.assignedInfo[task.assignedTo[i]]['name']
                             isLast: i < (task.assignedTo.length - 1),
                           ),
                       ],
@@ -195,11 +196,14 @@ class Assignee extends StatelessWidget {
               ),
             ),
           ),
-          const HBox(10),
-          Label(
-            text: name,
-            color: Palette.grey,
-            size: 12,
+          const HBox(5),
+          Expanded(
+            child: Label(
+              text: name,
+              color: Palette.grey,
+              size: 12,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),
