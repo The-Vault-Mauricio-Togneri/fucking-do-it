@@ -132,6 +132,24 @@ class Fields extends StatelessWidget {
                 onPressed: () => state.onSelectDeadline(context),
               ),
             ),
+            const VBox(15),
+            CustomFormField(
+              label: 'Tags', // TODO(momo): localize
+              controller: state.tagsController,
+              inputType: TextInputType.text,
+              focusNode: state.tagsFocus,
+              onSubmit: state.onCreateTag,
+            ),
+            const VBox(10),
+            Wrap(
+              children: [
+                for (final String tag in state.tags)
+                  Label(
+                    text: tag,
+                    color: Palette.black,
+                  )
+              ],
+            ),
           ],
         ),
       ),

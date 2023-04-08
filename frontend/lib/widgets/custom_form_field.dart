@@ -11,8 +11,10 @@ class CustomFormField extends StatelessWidget {
   final bool enabled;
   final TextAlign textAlign;
   final bool autofocus;
+  final FocusNode? focusNode;
   final VoidCallback? onPressed;
   final Function(String)? onChanged;
+  final Function(String)? onSubmit;
   final Widget? suffixIcon;
   final String? inputValidator;
   final int? minLines;
@@ -27,8 +29,10 @@ class CustomFormField extends StatelessWidget {
     this.enabled = true,
     this.textAlign = TextAlign.start,
     this.autofocus = false,
+    this.focusNode,
     this.onPressed,
     this.onChanged,
+    this.onSubmit,
     this.suffixIcon,
     this.inputValidator,
     this.minLines,
@@ -38,6 +42,7 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       textAlign: textAlign,
       controller: controller,
       readOnly: !enabled,
@@ -49,6 +54,7 @@ class CustomFormField extends StatelessWidget {
       maxLines: maxLines,
       textCapitalization: TextCapitalization.sentences,
       onChanged: onChanged,
+      onFieldSubmitted: onSubmit,
       style: const TextStyle(
         fontSize: 14,
       ),

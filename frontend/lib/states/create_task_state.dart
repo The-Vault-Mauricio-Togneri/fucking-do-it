@@ -11,9 +11,12 @@ import 'package:fucking_do_it/utils/repository.dart';
 class CreateTaskState extends BaseState {
   Priority? priority;
   DateTime? deadline;
+  final List<String> tags = [];
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController deadlineController = TextEditingController();
+  final TextEditingController tagsController = TextEditingController();
+  final FocusNode tagsFocus = FocusNode();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool get canSubmit =>
@@ -67,5 +70,15 @@ class CreateTaskState extends BaseState {
       await Repository.create(task);
       Navigation.pop();
     }
+  }
+
+  void onCreateTag(String tag) {
+    if (!tags.contains(tag)) {
+      tags.add(tag);
+      notify();
+    }
+
+    tagsController.text = '';
+    Delayed.post(tagsFocus.requestFocus);
   }
 }
