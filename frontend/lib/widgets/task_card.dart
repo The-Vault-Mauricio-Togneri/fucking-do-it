@@ -5,6 +5,7 @@ import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 import 'package:fucking_do_it/widgets/priority_chip.dart';
+import 'package:fucking_do_it/widgets/tags_list.dart';
 import 'package:link_text/link_text.dart';
 
 class TaskCard extends StatelessWidget {
@@ -140,6 +141,11 @@ class TaskCard extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          if (task.tags.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: TagsList(task.tags),
             ),
         ],
       ),

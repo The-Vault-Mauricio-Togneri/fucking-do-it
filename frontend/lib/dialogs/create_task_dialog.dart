@@ -9,6 +9,7 @@ import 'package:fucking_do_it/widgets/custom_form_field.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/priority_chip.dart';
+import 'package:fucking_do_it/widgets/tags_list.dart';
 
 class CreateTaskDialog extends StatelessWidget {
   final CreateTaskState state;
@@ -142,15 +143,7 @@ class Fields extends StatelessWidget {
               onSubmit: state.onCreateTag,
             ),
             const VBox(10),
-            Wrap(
-              children: [
-                for (final String tag in state.tags)
-                  TagChip(
-                    text: tag,
-                    onDelete: state.onDeleteTag,
-                  ),
-              ],
-            ),
+            TagsList(state.tags, state.onDeleteTag),
           ],
         ),
       ),
@@ -200,41 +193,6 @@ class CloseButton extends StatelessWidget {
           size: 12,
         ),
       ),
-    );
-  }
-}
-
-class TagChip extends StatelessWidget {
-  final String text;
-  final Function(String) onDelete;
-
-  const TagChip({
-    required this.text,
-    required this.onDelete,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Chip(
-      padding: const EdgeInsets.only(
-        top: 1,
-        bottom: 2,
-        left: 5,
-      ),
-      label: Padding(
-        padding: const EdgeInsets.only(bottom: 2),
-        child: Label(
-          text: text,
-          color: Palette.white,
-          size: 12,
-        ),
-      ),
-      deleteIcon: const Icon(
-        Icons.close,
-        color: Palette.white,
-        size: 15,
-      ),
-      onDeleted: () => onDelete(text),
     );
   }
 }
