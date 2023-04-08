@@ -17,6 +17,7 @@ class AuthScreen extends StatelessWidget {
     return StateProvider<AuthState>(
       state: state,
       builder: (context, state) => Scaffold(
+        backgroundColor: Palette.background,
         body: body(),
       ),
     );

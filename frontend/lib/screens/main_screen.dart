@@ -147,7 +147,7 @@ class TasksList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Palette.lightGrey,
+        color: Palette.background,
         child: tasks.isNotEmpty
             ? SingleChildScrollView(
                 child: Column(
@@ -169,7 +169,7 @@ class LoadingTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Palette.lightGrey,
+        color: Palette.background,
         child: const Center(
           child: CircularProgressIndicator(),
         ),

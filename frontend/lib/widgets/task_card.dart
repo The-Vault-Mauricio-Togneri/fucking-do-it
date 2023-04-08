@@ -183,9 +183,9 @@ class Assignee extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl: avatar,
-                  placeholder: (context, url) => Container(color: Palette.lightGrey),
+                  placeholder: (context, url) => Container(color: Palette.background),
                   errorWidget: (context, url, error) => Container(
-                    color: Palette.lightGrey,
+                    color: Palette.background,
                     child: const Icon(
                       Icons.person,
                       size: 15,
