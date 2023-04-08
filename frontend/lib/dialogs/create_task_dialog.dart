@@ -4,9 +4,9 @@ import 'package:fucking_do_it/states/create_task_state.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
-import 'package:fucking_do_it/widgets/custom_button.dart';
 import 'package:fucking_do_it/widgets/custom_form_field.dart';
 import 'package:fucking_do_it/widgets/label.dart';
+import 'package:fucking_do_it/widgets/primary_button.dart';
 
 class CreateTaskDialog extends StatelessWidget {
   final CreateTaskState state;
@@ -152,9 +152,10 @@ class CreateButton extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: CustomButton(
-        onPressed: state.canSubmit ? state.onSubmit : null,
+      child: PrimaryButton(
         text: 'Create',
+        color: Palette.primary,
+        onSubmit: state.canSubmit ? state.onSubmit : null,
       ),
     );
   }

@@ -39,7 +39,10 @@ class Task implements Comparable<Task> {
     required this.dueDate,
   });
 
-  bool get canBeAccepted => ((status == Status.created) || (status == Status.accepted)) && (!assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
+  bool get canBeAccepted =>
+      ((status == Status.created) || (status == Status.accepted)) &&
+      (!assignedTo.contains(FirebaseAuth.instance.currentUser?.uid)) &&
+      (createdBy != FirebaseAuth.instance.currentUser?.uid);
 
   bool get canBeCompleted => (status == Status.accepted) && (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
 

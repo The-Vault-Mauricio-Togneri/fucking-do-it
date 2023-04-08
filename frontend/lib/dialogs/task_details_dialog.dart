@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/task_details_state.dart';
 import 'package:fucking_do_it/utils/palette.dart';
-import 'package:fucking_do_it/widgets/custom_button.dart';
+import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/task_card.dart';
 
 class TaskDetailsDialog extends StatelessWidget {
@@ -67,9 +67,9 @@ class AcceptButton extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: CustomButton(
-        onPressed: state.onAccept,
+      child: PrimaryButton(
         text: 'Accept',
+        onSubmit: state.onAccept,
         color: Palette.green,
       ),
     );
@@ -89,10 +89,10 @@ class CopyLinkButton extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: CustomButton(
-        onPressed: state.onCopyLink,
+      child: PrimaryButton(
         text: 'Copy link',
         color: Palette.primary,
+        onSubmit: state.onCopyLink,
       ),
     );
   }
@@ -111,10 +111,10 @@ class ReopenButton extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: CustomButton(
-        onPressed: state.onReopen,
+      child: PrimaryButton(
         text: 'Reopen',
         color: Palette.primary,
+        onSubmit: state.onReopen,
       ),
     );
   }
@@ -133,10 +133,10 @@ class CompleteButton extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: CustomButton(
-        onPressed: state.onComplete,
+      child: PrimaryButton(
         text: 'Mark as done',
         color: Palette.green,
+        onSubmit: state.onComplete,
       ),
     );
   }
@@ -155,10 +155,10 @@ class DeleteButton extends StatelessWidget {
         right: 20,
         bottom: 10,
       ),
-      child: CustomButton(
-        onPressed: state.onDelete,
+      child: PrimaryButton(
         text: 'Delete',
         color: Palette.red,
+        onSubmit: state.onDelete,
       ),
     );
   }

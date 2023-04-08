@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/widgets/label.dart';
 
 class SecondaryButton extends StatelessWidget {
   final String text;
@@ -43,29 +44,10 @@ class SecondaryButton extends StatelessWidget {
                 children: [
                   icon!,
                   const HBox(10),
-                  ButtonText(text, textColor),
+                  Label(text: text, color: textColor),
                 ],
               )
-            : ButtonText(text, textColor),
-      ),
-    );
-  }
-}
-
-class ButtonText extends StatelessWidget {
-  final String text;
-  final Color color;
-
-  const ButtonText(this.text, this.color);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 14,
-        color: color,
-        fontWeight: FontWeight.w500,
+            : Label(text: text, color: textColor),
       ),
     );
   }
