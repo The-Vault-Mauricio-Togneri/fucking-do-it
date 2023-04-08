@@ -10,4 +10,5 @@ class Palette {
   static const Color green = Colors.green;
   static const Color background = Color(0xffedf0fc);
   static const Color border = Color(0xFFDADADA);
+  static const Color unselected = Color(0xffdddddd);
 }

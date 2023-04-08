@@ -79,7 +79,7 @@ class TaskCard extends StatelessWidget {
               Expanded(
                 child: Label(
                   text: task.priority.text.toUpperCase(),
-                  color: task.priority.color,
+                  color: task.priority.backgroundColor,
                   weight: FontWeight.bold,
                   size: 12,
                 ),

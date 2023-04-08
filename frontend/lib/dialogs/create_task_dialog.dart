@@ -7,6 +7,7 @@ import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/custom_form_field.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
+import 'package:fucking_do_it/widgets/priority_chip.dart';
 
 class CreateTaskDialog extends StatelessWidget {
   final CreateTaskState state;
@@ -81,57 +82,29 @@ class Fields extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                PrioritySelector(
-                  state: state,
+                PriorityChip(
                   priority: Priority.high,
+                  size: 16,
+                  selected: state.priority == Priority.high,
+                  onPressed: state.onSetPriority,
                 ),
                 const HBox(10),
-                PrioritySelector(
-                  state: state,
+                PriorityChip(
                   priority: Priority.medium,
+                  size: 16,
+                  selected: state.priority == Priority.medium,
+                  onPressed: state.onSetPriority,
                 ),
                 const HBox(10),
-                PrioritySelector(
-                  state: state,
+                PriorityChip(
                   priority: Priority.low,
+                  size: 16,
+                  selected: state.priority == Priority.low,
+                  onPressed: state.onSetPriority,
                 ),
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class PrioritySelector extends StatelessWidget {
-  final CreateTaskState state;
-  final Priority priority;
-
-  const PrioritySelector({
-    required this.state,
-    required this.priority,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: (state.priority == priority) ? priority.color : Palette.grey,
-        child: Material(
-          color: Palette.transparent,
-          child: InkWell(
-            onTap: () => state.onSetPriority(priority),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Center(
-                child: Label(
-                  text: priority.text,
-                  color: Palette.white,
-                ),
-              ),
-            ),
-          ),
         ),
       ),
     );
