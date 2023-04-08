@@ -13,7 +13,8 @@ class CreateTaskState extends BaseState {
   final TextEditingController descriptionController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  bool get canSubmit => (priority != null) && titleController.text.trim().isNotEmpty;
+  bool get canSubmit =>
+      (priority != null) && titleController.text.trim().isNotEmpty;
 
   void onTitleChanged() {
     notify();

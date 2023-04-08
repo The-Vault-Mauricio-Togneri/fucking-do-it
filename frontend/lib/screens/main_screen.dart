@@ -44,7 +44,8 @@ class MainScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             onPressed: () => state.onCreateTask(context),
             backgroundColor: Palette.primary,
-            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(100))),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100))),
             child: const Icon(
               Icons.add,
               color: Palette.white,
@@ -136,7 +137,9 @@ class TaskColumn extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: Label(
-                text: ((tasks != null) && (tasks!.isNotEmpty)) ? '${title.toUpperCase()} (${tasks!.length})' : title.toUpperCase(),
+                text: ((tasks != null) && (tasks!.isNotEmpty))
+                    ? '${title.toUpperCase()} (${tasks!.length})'
+                    : title.toUpperCase(),
                 color: Palette.white,
               ),
             ),
@@ -163,7 +166,8 @@ class TasksList extends StatelessWidget {
             ? SingleChildScrollView(
                 child: Column(
                   children: [
-                    for (final Task task in tasks) TaskEntry(state: state, task: task),
+                    for (final Task task in tasks)
+                      TaskEntry(state: state, task: task),
                   ],
                 ),
               )

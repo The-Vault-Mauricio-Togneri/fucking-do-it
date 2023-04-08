@@ -23,13 +23,16 @@ class MainState extends BaseState {
   String get title {
     final int assignedToMe = tasksAssignedToMe?.length ?? 0;
 
-    return (assignedToMe > 0) ? '($assignedToMe) ${Localized.get.appName}' : Localized.get.appName;
+    return (assignedToMe > 0)
+        ? '($assignedToMe) ${Localized.get.appName}'
+        : Localized.get.appName;
   }
 
   @override
   void onLoad() {
     checkAcceptTask();
-    subscriptionAssignedToMe ??= Repository.listenAssignedToMe(onTasksAssignedToMe);
+    subscriptionAssignedToMe ??=
+        Repository.listenAssignedToMe(onTasksAssignedToMe);
     subscriptionCreated ??= Repository.listenCreated(onTasksCreated);
     subscriptionInProgress ??= Repository.listenInProgress(onTasksInProgress);
     subscriptionInReview ??= Repository.listenInReview(onTasksInReview);
@@ -81,7 +84,8 @@ class MainState extends BaseState {
     notify();
   }
 
-  void onTaskSelected(BuildContext context, Task task) => TaskDetailsDialog.show(
+  void onTaskSelected(BuildContext context, Task task) =>
+      TaskDetailsDialog.show(
         context: context,
         task: task,
       );

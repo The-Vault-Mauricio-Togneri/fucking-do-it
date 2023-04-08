@@ -5,55 +5,64 @@ import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/status.dart';
 
 class Repository {
-  static StreamSubscription listenAssignedToMe(Function(List<Task> tasks) callback) {
-    final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
-        .where(
-          Task.FIELD_ASSIGNED_TO,
-          arrayContains: FirebaseAuth.instance.currentUser?.uid,
-        )
-        .where(Task.FIELD_STATUS, isEqualTo: Status.accepted.name)
-        .snapshots();
+  static StreamSubscription listenAssignedToMe(
+      Function(List<Task> tasks) callback) {
+    final Stream<QuerySnapshot<Map<String, dynamic>>> stream =
+        Repository._collection()
+            .where(
+              Task.FIELD_ASSIGNED_TO,
+              arrayContains: FirebaseAuth.instance.currentUser?.uid,
+            )
+            .where(Task.FIELD_STATUS, isEqualTo: Status.accepted.name)
+            .snapshots();
 
     return processStream(stream, callback);
   }
 
   static StreamSubscription listenCreated(Function(List<Task> tasks) callback) {
-    final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
-        .where(
-          Task.FIELD_CREATED_BY,
-          isEqualTo: FirebaseAuth.instance.currentUser?.uid,
-        )
-        .where(Task.FIELD_STATUS, isEqualTo: Status.created.name)
-        .snapshots();
+    final Stream<QuerySnapshot<Map<String, dynamic>>> stream =
+        Repository._collection()
+            .where(
+              Task.FIELD_CREATED_BY,
+              isEqualTo: FirebaseAuth.instance.currentUser?.uid,
+            )
+            .where(Task.FIELD_STATUS, isEqualTo: Status.created.name)
+            .snapshots();
 
     return processStream(stream, callback);
   }
 
-  static StreamSubscription listenInProgress(Function(List<Task> tasks) callback) {
-    final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
-        .where(
-          Task.FIELD_CREATED_BY,
-          isEqualTo: FirebaseAuth.instance.currentUser?.uid,
-        )
-        .where(Task.FIELD_STATUS, isEqualTo: Status.accepted.name)
-        .snapshots();
+  static StreamSubscription listenInProgress(
+      Function(List<Task> tasks) callback) {
+    final Stream<QuerySnapshot<Map<String, dynamic>>> stream =
+        Repository._collection()
+            .where(
+              Task.FIELD_CREATED_BY,
+              isEqualTo: FirebaseAuth.instance.currentUser?.uid,
+            )
+            .where(Task.FIELD_STATUS, isEqualTo: Status.accepted.name)
+            .snapshots();
 
     return processStream(stream, callback);
   }
 
-  static StreamSubscription listenInReview(Function(List<Task> tasks) callback) {
-    final Stream<QuerySnapshot<Map<String, dynamic>>> stream = Repository._collection()
-        .where(
-          Task.FIELD_CREATED_BY,
-          isEqualTo: FirebaseAuth.instance.currentUser?.uid,
-        )
-        .where(Task.FIELD_STATUS, isEqualTo: Status.done.name)
-        .snapshots();
+  static StreamSubscription listenInReview(
+      Function(List<Task> tasks) callback) {
+    final Stream<QuerySnapshot<Map<String, dynamic>>> stream =
+        Repository._collection()
+            .where(
+              Task.FIELD_CREATED_BY,
+              isEqualTo: FirebaseAuth.instance.currentUser?.uid,
+            )
+            .where(Task.FIELD_STATUS, isEqualTo: Status.done.name)
+            .snapshots();
 
     return processStream(stream, callback);
   }
 
-  static StreamSubscription processStream(Stream<QuerySnapshot<Map<String, dynamic>>> stream, Function(List<Task> tasks) callback) {
+  static StreamSubscription processStream(
+      Stream<QuerySnapshot<Map<String, dynamic>>> stream,
+      Function(List<Task> tasks) callback) {
     return stream.listen((event) async {
       final List<Task> tasks = [];
 
@@ -66,7 +75,8 @@ class Repository {
   }
 
   static Future get(String taskId) async {
-    final DocumentSnapshot<Map<String, dynamic>> document = await _collection().doc(taskId).get();
+    final DocumentSnapshot<Map<String, dynamic>> document =
+        await _collection().doc(taskId).get();
 
     return Task.fromDocument(document);
   }
@@ -105,5 +115,6 @@ class Repository {
 
   static Future delete(Task task) => _collection().doc(task.id).delete();
 
-  static CollectionReference<Map<String, dynamic>> _collection() => FirebaseFirestore.instance.collection('tasks');
+  static CollectionReference<Map<String, dynamic>> _collection() =>
+      FirebaseFirestore.instance.collection('tasks');
 }

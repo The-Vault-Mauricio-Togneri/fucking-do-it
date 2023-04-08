@@ -30,7 +30,8 @@ class TaskDetailsDialog extends StatelessWidget {
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Palette.white,
       surfaceTintColor: Palette.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       content: StateProvider<TaskDetailsState>(
         state: state,
         builder: (context, state) => SizedBox(

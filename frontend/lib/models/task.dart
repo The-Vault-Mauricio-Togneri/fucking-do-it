@@ -44,13 +44,21 @@ class Task implements Comparable<Task> {
       (!assignedTo.contains(FirebaseAuth.instance.currentUser?.uid)) &&
       (createdBy != FirebaseAuth.instance.currentUser?.uid);
 
-  bool get canBeCompleted => (status == Status.accepted) && (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
+  bool get canBeCompleted =>
+      (status == Status.accepted) &&
+      (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
 
-  bool get canBeReopened => (status == Status.done) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
+  bool get canBeReopened =>
+      (status == Status.done) &&
+      (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
-  bool get canBeCopied => ((status == Status.created) || (status == Status.accepted)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
+  bool get canBeCopied =>
+      ((status == Status.created) || (status == Status.accepted)) &&
+      (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
-  bool get canBeDeleted => ((status == Status.created) || (status == Status.done)) && (createdBy == FirebaseAuth.instance.currentUser?.uid);
+  bool get canBeDeleted =>
+      ((status == Status.created) || (status == Status.done)) &&
+      (createdBy == FirebaseAuth.instance.currentUser?.uid);
 
   String get createdAtDateTime => Formatter.fullDateTime(createdAt);
 
@@ -64,10 +72,14 @@ class Task implements Comparable<Task> {
       status: Status.parse(map[FIELD_STATUS]),
       priority: Priority.parse(map[FIELD_PRIORITY]),
       title: map[FIELD_TITLE],
-      assignedTo: (map[FIELD_ASSIGNED_TO] as List<dynamic>).map((e) => e.toString()).toList(),
+      assignedTo: (map[FIELD_ASSIGNED_TO] as List<dynamic>)
+          .map((e) => e.toString())
+          .toList(),
       assignedInfo: map[FIELD_ASSIGNED_INFO] as Map<String, dynamic>,
       description: map[FIELD_DESCRIPTION],
-      dueDate: (map[FIELD_DUE_DATE] != null) ? (map[FIELD_DUE_DATE] as Timestamp).toDate() : null,
+      dueDate: (map[FIELD_DUE_DATE] != null)
+          ? (map[FIELD_DUE_DATE] as Timestamp).toDate()
+          : null,
     );
   }
 
