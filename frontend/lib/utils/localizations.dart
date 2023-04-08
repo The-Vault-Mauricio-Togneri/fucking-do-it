@@ -28,6 +28,8 @@ abstract class BaseLocalized {
 
   String get inputDescription;
 
+  String get inputOptional;
+
   String get inputTitle;
 
   String get labelAssignedToMe;
@@ -90,10 +92,13 @@ class ENLocalized extends BaseLocalized {
   String get buttonSignInWithGoogle => 'Sign in with Google';
 
   @override
-  String get inputDeadline => 'Deadline (optional)';
+  String get inputDeadline => 'Deadline';
 
   @override
-  String get inputDescription => 'Description (optional)';
+  String get inputDescription => 'Description';
+
+  @override
+  String get inputOptional => 'Optional';
 
   @override
   String get inputTitle => 'Title';
@@ -171,10 +176,13 @@ class ESLocalized extends BaseLocalized {
   String get buttonSignInWithGoogle => 'Conectarse con Google';
 
   @override
-  String get inputDeadline => 'Fecha límite (opcional)';
+  String get inputDeadline => 'Fecha límite';
 
   @override
-  String get inputDescription => 'Descripción (opcional)';
+  String get inputDescription => 'Descripción';
+
+  @override
+  String get inputOptional => 'Opcional';
 
   @override
   String get inputTitle => 'Título';

@@ -55,6 +55,8 @@ class CustomFormField extends StatelessWidget {
       decoration: InputDecoration(
         isDense: true,
         labelText: label,
+        hintText:
+            '$label${canBeEmpty ? ' (${Localized.get.inputOptional.toLowerCase()})' : ''}',
         suffixIcon: suffixIcon,
         errorText: inputValidator,
         focusColor: Palette.primary,
