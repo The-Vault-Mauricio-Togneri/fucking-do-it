@@ -81,4 +81,14 @@ class CreateTaskState extends BaseState {
     tagsController.text = '';
     Delayed.post(tagsFocus.requestFocus);
   }
+
+  void onDeleteTag(String tag) {
+    if (tags.contains(tag)) {
+      tags.remove(tag);
+      notify();
+    }
+
+    tagsController.text = '';
+    Delayed.post(tagsFocus.requestFocus);
+  }
 }
