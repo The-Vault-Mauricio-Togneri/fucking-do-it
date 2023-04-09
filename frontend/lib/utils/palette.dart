@@ -9,7 +9,7 @@ class Palette {
   static const Color white = Colors.white;
   static const Color splash = Color(0x0faaaaaa);
   static const Color hint = Color(0xffaaaaaa);
-  static const Color unselected = Color(0xffdddddd);
+  static const Color unselected = Color(0xffeeeeee);
   static const Color border = Color(0xffdadada);
   static const Color icon = Colors.grey;
   static const Color secondaryText = Colors.grey;
