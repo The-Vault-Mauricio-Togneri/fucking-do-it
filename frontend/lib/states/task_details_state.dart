@@ -18,23 +18,23 @@ class TaskDetailsState extends BaseState {
   TaskDetailsState(this.task);
 
   void onAccept() {
-    Repository.accept(task);
     Navigation.pop();
+    Repository.accept(task);
   }
 
   void onCopyLink() {
-    Clipboard.copy(task.url());
     Navigation.pop();
+    Clipboard.copy(task.url());
   }
 
   void onReopen() {
-    Repository.reopen(task);
     Navigation.pop();
+    Repository.reopen(task);
   }
 
   void onComplete() {
-    Repository.complete(task);
     Navigation.pop();
+    Repository.complete(task);
   }
 
   void onEdit(BuildContext context) {
@@ -54,8 +54,8 @@ class TaskDetailsState extends BaseState {
       );
 
   void deleteTask() {
-    Repository.delete(task);
     Navigation.pop();
+    Repository.delete(task);
   }
 
   Future onSubmitComment(String content) async {
