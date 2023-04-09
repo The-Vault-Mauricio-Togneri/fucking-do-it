@@ -48,6 +48,8 @@ class TaskDetailsState extends BaseState {
     Navigation.pop();
   }
 
+  void onEdit(BuildContext context) {}
+
   void onDelete(BuildContext context) => ConfirmationDialog.show(
         context: context,
         message: Localized.get.confirmationDeleteTask,

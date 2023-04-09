@@ -40,19 +40,22 @@ class SecondaryButton extends StatelessWidget {
           shape: const StadiumBorder(),
         ),
         onPressed: onSubmit,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 2),
-          child: (icon != null)
-              ? Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    icon!,
-                    const HBox(10),
-                    Label(text: text, color: textColor),
-                  ],
-                )
-              : Label(text: text, color: textColor),
-        ),
+        child: (icon != null)
+            ? Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  icon!,
+                  const HBox(10),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2),
+                    child: Label(text: text, color: textColor),
+                  ),
+                ],
+              )
+            : Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Label(text: text, color: textColor),
+              ),
       ),
     );
   }

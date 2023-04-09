@@ -51,6 +51,7 @@ class TaskDetailsDialog extends StatelessWidget {
                 if (state.task.canBeCopied) CopyLinkButton(state),
                 if (state.task.canBeReopened) ReopenButton(state),
                 if (state.task.canBeCompleted) CompleteButton(state),
+                if (state.task.canBeEdited) EditButton(state),
                 if (state.task.canBeDeleted) DeleteButton(state),
                 const VBox(10),
               ],
@@ -149,6 +150,27 @@ class CompleteButton extends StatelessWidget {
         color: Palette.success,
         icon: Icons.done,
         onSubmit: state.onComplete,
+      ),
+    );
+  }
+}
+
+class EditButton extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const EditButton(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
+      child: TertiaryButton(
+        text: Localized.get.buttonEdit,
+        color: Palette.primary,
+        onSubmit: () => state.onEdit(context),
       ),
     );
   }
