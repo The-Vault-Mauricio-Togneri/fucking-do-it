@@ -1,10 +1,14 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/models/comment.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/task_details_state.dart';
+import 'package:fucking_do_it/utils/formatter.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/comment_input.dart';
+import 'package:fucking_do_it/widgets/label.dart';
+import 'package:fucking_do_it/widgets/person_avatar.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/task_card.dart';
 import 'package:fucking_do_it/widgets/tertiary_button.dart';
@@ -74,6 +78,8 @@ class CommentSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Comment> comments = state.task.commentsList;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -102,7 +108,72 @@ class CommentSection extends StatelessWidget {
             ],
           ),
         ),
+        for (int i = 0; i < comments.length; i++)
+          CommentEntry(
+            comment: comments[i],
+            isLast: i == (comments.length - 1),
+          ),
       ],
+    );
+  }
+}
+
+class CommentEntry extends StatelessWidget {
+  final Comment comment;
+  final bool isLast;
+
+  const CommentEntry({
+    required this.comment,
+    required this.isLast,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 5,
+        bottom: 10,
+        left: 55,
+        right: 20,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              PersonAvatar(
+                avatar: comment.avatar,
+                size: 24,
+              ),
+              const HBox(5),
+              Label(
+                text: comment.name,
+                color: Palette.black,
+                weight: FontWeight.bold,
+              ),
+              const HBox(10),
+              Label(
+                text: Formatter.fullDateTime(comment.createdAt),
+                color: Palette.grey,
+                size: 12,
+              ),
+            ],
+          ),
+          const VBox(5),
+          Label(
+            text: comment.content,
+            color: Palette.grey,
+          ),
+          if (!isLast)
+            const Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: HorizontalDivider(
+                color: Palette.border,
+                height: 0.3,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

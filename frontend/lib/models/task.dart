@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fucking_do_it/models/comment.dart';
 import 'package:fucking_do_it/models/person.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
@@ -102,6 +103,13 @@ class Task implements Comparable<Task> {
   }
 
   Person person(String id) => Person.fromMap(assignedInfo[id]);
+
+  List<Comment> get commentsList {
+    final List<Comment> result = comments.map(Comment.fromMap).toList();
+    result.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+    return result;
+  }
 
   factory Task.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {
     final map = document.data() ?? {};

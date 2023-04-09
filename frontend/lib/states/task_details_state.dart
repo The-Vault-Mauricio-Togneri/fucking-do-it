@@ -75,20 +75,23 @@ class TaskDetailsState extends BaseState {
   }
 
   Future onSubmitComment(String content) async {
-    final Comment comment = Comment(
-      avatar: FirebaseAuth.instance.currentUser?.photoURL ?? '',
-      name: FirebaseAuth.instance.currentUser?.displayName ?? '',
-      content: content,
-      createdAt: DateTime.now(),
-    );
+    if (content.trim().isNotEmpty) {
+      final Comment comment = Comment(
+        avatar: FirebaseAuth.instance.currentUser?.photoURL ?? '',
+        name: FirebaseAuth.instance.currentUser?.displayName ?? '',
+        content: content,
+        createdAt: DateTime.now(),
+      );
 
-    await Repository.addComment(
-      task: task,
-      comment: comment,
-    );
-    notify();
+      await Repository.addComment(
+        task: task,
+        comment: comment,
+      );
+      notify();
 
-    commentController.text = '';
+      commentController.text = '';
+    }
+
     Delayed.post(commentFocus.requestFocus);
   }
 }

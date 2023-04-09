@@ -46,13 +46,15 @@ abstract class BaseLocalized {
 
   String labelCannotBeEmpty(String param1);
 
-  String get labelComments;
-
   String get labelCreated;
 
   String labelDeltaDaysFuture(String param1);
 
   String labelDeltaDaysPast(String param1);
+
+  String labelDeltaHoursPast(String param1);
+
+  String labelDeltaMinutesPast(String param1);
 
   String get labelDeltaToday;
 
@@ -137,9 +139,6 @@ class ENLocalized extends BaseLocalized {
       '${param1.toString()} cannot be empty';
 
   @override
-  String get labelComments => 'Comments';
-
-  @override
   String get labelCreated => 'Created';
 
   @override
@@ -147,6 +146,12 @@ class ENLocalized extends BaseLocalized {
 
   @override
   String labelDeltaDaysPast(String param1) => '${param1.toString()}d ago';
+
+  @override
+  String labelDeltaHoursPast(String param1) => '${param1.toString()}h ago';
+
+  @override
+  String labelDeltaMinutesPast(String param1) => '${param1.toString()}m ago';
 
   @override
   String get labelDeltaToday => 'Today';
@@ -237,9 +242,6 @@ class ESLocalized extends BaseLocalized {
       '${param1.toString()} no puede estar vacío';
 
   @override
-  String get labelComments => 'Comentarios';
-
-  @override
   String get labelCreated => 'Creadas';
 
   @override
@@ -247,6 +249,12 @@ class ESLocalized extends BaseLocalized {
 
   @override
   String labelDeltaDaysPast(String param1) => 'hace ${param1.toString()}d';
+
+  @override
+  String labelDeltaHoursPast(String param1) => 'hace ${param1.toString()}h';
+
+  @override
+  String labelDeltaMinutesPast(String param1) => 'hace ${param1.toString()}m';
 
   @override
   String get labelDeltaToday => 'hoy';

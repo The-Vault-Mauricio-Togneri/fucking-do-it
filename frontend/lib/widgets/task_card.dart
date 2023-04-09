@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/person.dart';
@@ -6,6 +5,7 @@ import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
 import 'package:fucking_do_it/widgets/markdown_text.dart';
+import 'package:fucking_do_it/widgets/person_avatar.dart';
 import 'package:fucking_do_it/widgets/priority_chip.dart';
 import 'package:fucking_do_it/widgets/tags_list.dart';
 
@@ -138,7 +138,7 @@ class TaskCard extends StatelessWidget {
                         for (int i = 0; i < task.assignedTo.length; i++)
                           AssignedPersonRow(
                             person: task.person(task.assignedTo[i]),
-                            isLast: i < (task.assignedTo.length - 1),
+                            isLast: i == (task.assignedTo.length - 1),
                           ),
                       ],
                     ),
@@ -208,30 +208,9 @@ class AssignedPersonRow extends StatelessWidget {
       padding: EdgeInsets.only(bottom: isLast ? 0 : 5),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 12,
-            backgroundColor: Palette.transparent,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(100)),
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: CachedNetworkImage(
-                  fit: BoxFit.cover,
-                  imageUrl: person.avatar,
-                  placeholder: (context, url) =>
-                      Container(color: Palette.background),
-                  errorWidget: (context, url, error) => Container(
-                    color: Palette.background,
-                    child: const Icon(
-                      Icons.person,
-                      size: 15,
-                      color: Palette.grey,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+          PersonAvatar(
+            avatar: person.avatar,
+            size: 24,
           ),
           const HBox(5),
           Expanded(
