@@ -270,6 +270,7 @@ class TaskEntry extends StatelessWidget {
           child: TaskCard(
             task: task,
             selectable: false,
+            showComments: true,
           ),
         ),
       ),

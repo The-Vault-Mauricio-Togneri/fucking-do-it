@@ -45,6 +45,7 @@ class TaskDetailsDialog extends StatelessWidget {
                 TaskCard(
                   task: state.task,
                   selectable: true,
+                  showComments: false,
                 ),
                 const VBox(10),
                 if (state.task.canBeAccepted) AcceptButton(state),

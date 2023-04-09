@@ -12,10 +12,12 @@ import 'package:fucking_do_it/widgets/tags_list.dart';
 class TaskCard extends StatelessWidget {
   final Task task;
   final bool selectable;
+  final bool showComments;
 
   const TaskCard({
     required this.task,
     required this.selectable,
+    required this.showComments,
   });
 
   @override
@@ -137,7 +139,7 @@ class TaskCard extends StatelessWidget {
                 ],
               ),
             ),
-          if (task.comments.isNotEmpty)
+          if (task.comments.isNotEmpty && showComments)
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Row(
