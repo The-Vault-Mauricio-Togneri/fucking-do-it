@@ -45,7 +45,7 @@ class ConfirmationDialog {
           actions: [
             TertiaryButton(
               text: buttonCancel,
-              color: Palette.grey,
+              color: Palette.secondaryText,
               onSubmit: Navigation.pop,
             ),
             TertiaryButton(

@@ -46,7 +46,7 @@ class SignInButton extends StatelessWidget {
       child: SecondaryButton(
         text: Localized.get.buttonSignInWithGoogle,
         textColor: Palette.black,
-        borderColor: Palette.grey,
+        borderColor: Palette.border,
         onSubmit: state.onSignIn,
         icon: const SizedBox(
           child: ImageAsset(

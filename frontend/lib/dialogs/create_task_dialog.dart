@@ -133,9 +133,9 @@ class Fields extends StatelessWidget {
                 inputType: TextInputType.text,
                 canBeEmpty: true,
                 enabled: false,
-                suffixIcon: Icon(
+                suffixIcon: const Icon(
                   Icons.calendar_month,
-                  color: Palette.grey,
+                  color: Palette.icon,
                   size: 20,
                 ),
                 onPressed: () => state.onSelectDeadline(context),
@@ -197,7 +197,7 @@ class CloseButton extends StatelessWidget {
       child: TertiaryButton(
         text: Localized.get.buttonClose,
         onSubmit: Navigation.pop,
-        color: Palette.grey,
+        color: Palette.secondaryText,
       ),
     );
   }

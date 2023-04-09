@@ -30,7 +30,7 @@ class PersonAvatar extends StatelessWidget {
               child: Icon(
                 Icons.person,
                 size: size * 1.25,
-                color: Palette.grey,
+                color: Palette.icon,
               ),
             ),
           ),

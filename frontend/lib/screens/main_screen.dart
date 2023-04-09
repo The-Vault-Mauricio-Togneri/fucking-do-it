@@ -241,7 +241,7 @@ class NoTasks extends StatelessWidget {
     return Center(
       child: Label(
         text: Localized.get.labelEmpty,
-        color: Palette.grey,
+        color: Palette.secondaryText,
       ),
     );
   }

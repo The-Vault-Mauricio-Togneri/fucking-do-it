@@ -97,9 +97,9 @@ class CommentSection extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.comment_outlined,
-                color: Palette.grey,
+                color: Palette.icon,
                 size: 20,
               ),
               const HBox(15),
@@ -162,7 +162,7 @@ class CommentEntry extends StatelessWidget {
                 message: Formatter.fullDateTime(comment.createdAt),
                 child: Label(
                   text: Formatter.deltaTime(comment.createdAt),
-                  color: Palette.grey,
+                  color: Palette.secondaryText,
                   size: 12,
                 ),
               ),
@@ -171,7 +171,7 @@ class CommentEntry extends StatelessWidget {
           const VBox(5),
           Label(
             text: comment.content,
-            color: Palette.grey,
+            color: Palette.secondaryText,
             size: 12,
           ),
           if (!isLast)

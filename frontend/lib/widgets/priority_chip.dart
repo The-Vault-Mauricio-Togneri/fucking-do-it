@@ -39,7 +39,7 @@ class PriorityChip extends StatelessWidget {
             child: Center(
               child: Label(
                 text: priority.text,
-                color: selected ? priority.textColor : Palette.grey,
+                color: selected ? priority.textColor : Palette.secondaryText,
                 size: size,
               ),
             ),

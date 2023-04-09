@@ -79,7 +79,7 @@ class Task implements Comparable<Task> {
     final Duration difference = deadline!.difference(today);
 
     if (difference.inDays > 0) {
-      return Palette.grey;
+      return Palette.secondaryText;
     } else {
       return Palette.error;
     }

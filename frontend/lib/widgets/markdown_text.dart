@@ -35,7 +35,7 @@ class MarkdownText extends StatelessWidget {
       ),
       em: textStyle,
       tableBorder: TableBorder.all(
-        color: Palette.grey,
+        color: Palette.border,
         width: 0.5,
       ),
       strong: textStyle.copyWith(fontWeight: FontWeight.bold),

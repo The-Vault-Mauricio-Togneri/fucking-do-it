@@ -11,6 +11,8 @@ class Palette {
   static const Color hint = Color(0xffaaaaaa);
   static const Color unselected = Color(0xffdddddd);
   static const Color border = Color(0xffdadada);
+  static const Color icon = Colors.grey;
+  static const Color secondaryText = Colors.grey;
 
   static Color dialogBackground = Colors.orange;
   static Color background = Colors.orange;
@@ -25,15 +27,11 @@ class Palette {
       background = PaletteLight.background;
       primaryText = PaletteLight.primaryTextColor;
       loading = PaletteLight.loading;
-
-      grey = PaletteLight.grey;
     } else {
       dialogBackground = PaletteDark.dialogBackground;
       background = PaletteDark.background;
       primaryText = PaletteDark.primaryTextColor;
       loading = PaletteDark.loading;
-
-      grey = PaletteDark.grey;
     }
   }
 }
@@ -43,8 +41,6 @@ class PaletteLight {
   static const Color background = Color(0xffedf0fc);
   static const Color primaryTextColor = Color(0xff404040);
   static const Color loading = Palette.primary;
-
-  static const Color grey = Colors.grey;
 }
 
 class PaletteDark {
@@ -52,6 +48,4 @@ class PaletteDark {
   static const Color background = Colors.black;
   static const Color primaryTextColor = Colors.white;
   static const Color loading = Colors.white;
-
-  static const Color grey = Colors.grey;
 }
