@@ -6,6 +6,7 @@ import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/task_card.dart';
+import 'package:fucking_do_it/widgets/tertiary_button.dart';
 
 class TaskDetailsDialog extends StatelessWidget {
   final TaskDetailsState state;
@@ -39,7 +40,6 @@ class TaskDetailsDialog extends StatelessWidget {
           width: 500,
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
                 TaskCard(state.task),
@@ -162,12 +162,10 @@ class DeleteButton extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: 20,
         right: 20,
-        bottom: 10,
       ),
-      child: PrimaryButton(
+      child: TertiaryButton(
         text: Localized.get.buttonDelete,
         color: Palette.error,
-        icon: Icons.delete,
         onSubmit: state.onDelete,
       ),
     );

@@ -6,10 +6,10 @@ import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/input_field.dart';
-import 'package:fucking_do_it/widgets/label.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/priority_chip.dart';
 import 'package:fucking_do_it/widgets/tags_list.dart';
+import 'package:fucking_do_it/widgets/tertiary_button.dart';
 
 class CreateTaskDialog extends StatelessWidget {
   final CreateTaskState state;
@@ -184,14 +184,10 @@ class CloseButton extends StatelessWidget {
       padding: const EdgeInsets.only(
         bottom: 10,
       ),
-      child: TextButton(
-        onPressed: Navigation.pop,
-        child: Label(
-          text: Localized.get.buttonClose.toUpperCase(),
-          color: Palette.grey,
-          weight: FontWeight.bold,
-          size: 12,
-        ),
+      child: TertiaryButton(
+        text: Localized.get.buttonClose,
+        onSubmit: Navigation.pop,
+        color: Palette.grey,
       ),
     );
   }
