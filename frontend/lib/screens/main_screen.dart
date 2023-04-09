@@ -267,7 +267,10 @@ class TaskEntry extends StatelessWidget {
         child: InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           onTap: () => state.onTaskSelected(context, task),
-          child: TaskCard(task),
+          child: TaskCard(
+            task: task,
+            selectable: false,
+          ),
         ),
       ),
     );

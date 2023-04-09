@@ -79,7 +79,7 @@ class Fields extends StatelessWidget {
             InputField(
               label: Localized.get.inputDescription,
               controller: state.descriptionController,
-              inputType: TextInputType.text,
+              inputType: TextInputType.multiline,
               canBeEmpty: true,
               minLines: 1,
               maxLines: 5,

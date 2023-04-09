@@ -42,7 +42,10 @@ class TaskDetailsDialog extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TaskCard(state.task),
+                TaskCard(
+                  task: state.task,
+                  selectable: true,
+                ),
                 const VBox(10),
                 if (state.task.canBeAccepted) AcceptButton(state),
                 if (state.task.canBeCopied) CopyLinkButton(state),

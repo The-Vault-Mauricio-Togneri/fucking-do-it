@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/utils/style.dart';
 
 class Label extends StatelessWidget {
   final String text;
@@ -35,7 +36,7 @@ class Label extends StatelessWidget {
           fontSize: size,
           fontWeight: weight,
           decoration: decoration,
-          fontFamily: 'CustomFont',
+          fontFamily: Style.FONT_NAME,
         ),
       ),
     );
