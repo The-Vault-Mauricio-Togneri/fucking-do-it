@@ -131,6 +131,7 @@ class Fields extends StatelessWidget {
                 label: Localized.get.inputDeadline,
                 controller: state.deadlineController,
                 inputType: TextInputType.text,
+                focusNode: state.deadlineFocus,
                 canBeEmpty: true,
                 enabled: false,
                 suffixIcon: const Icon(

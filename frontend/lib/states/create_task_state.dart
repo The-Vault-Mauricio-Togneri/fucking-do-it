@@ -17,6 +17,7 @@ class CreateTaskState extends BaseState {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController deadlineController = TextEditingController();
   final TextEditingController tagsController = TextEditingController();
+  final FocusNode deadlineFocus = FocusNode();
   final FocusNode tagsFocus = FocusNode();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -58,6 +59,7 @@ class CreateTaskState extends BaseState {
     );
 
     deadline = dateTime;
+    deadlineFocus.nextFocus();
     _updateDeadlineInput();
   }
 
