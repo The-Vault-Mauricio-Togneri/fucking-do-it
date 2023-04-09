@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fucking_do_it/models/comment.dart';
 import 'package:fucking_do_it/models/person.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/status.dart';
@@ -86,6 +87,16 @@ class Repository {
 
   static Future update(Task task) =>
       _collection().doc(task.id).set(task.document);
+
+  static Future addComment({
+    required Task task,
+    required Comment comment,
+  }) {
+    task.comments.add(comment.document);
+    return _collection().doc(task.id).update({
+      Task.FIELD_COMMENTS: task.comments,
+    });
+  }
 
   static Future complete(Task task) => _collection().doc(task.id).update({
         Task.FIELD_STATUS: Status.done.name,

@@ -1,8 +1,10 @@
-import 'dart:html';
+import 'dart:html' hide Comment;
 import 'package:dafluta/dafluta.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
 import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
+import 'package:fucking_do_it/models/comment.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/constants.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
@@ -72,5 +74,20 @@ class TaskDetailsState extends BaseState {
     Navigation.pop();
   }
 
-  void onSubmitComment(String text) {}
+  void onSubmitComment(String content) {
+    final Comment comment = Comment(
+      avatar: FirebaseAuth.instance.currentUser?.photoURL ?? '',
+      name: FirebaseAuth.instance.currentUser?.displayName ?? '',
+      content: content,
+      createdAt: DateTime.now(),
+    );
+
+    Repository.addComment(
+      task: task,
+      comment: comment,
+    );
+
+    commentController.text = '';
+    Delayed.post(commentFocus.requestFocus);
+  }
 }
