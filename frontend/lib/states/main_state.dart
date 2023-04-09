@@ -61,25 +61,21 @@ class MainState extends BaseState {
 
   Future onTasksAssignedToMe(List<Task> tasks) async {
     tasksAssignedToMe = tasks;
-    tasksAssignedToMe!.sort((a, b) => a.compareTo(b));
     notify();
   }
 
   Future onTasksCreated(List<Task> tasks) async {
     tasksCreated = tasks;
-    tasksCreated!.sort((a, b) => a.compareTo(b));
     notify();
   }
 
   Future onTasksAccepted(List<Task> tasks) async {
     tasksAccepted = tasks;
-    tasksAccepted!.sort((a, b) => a.compareTo(b));
     notify();
   }
 
   Future onTasksInReview(List<Task> tasks) async {
     tasksInReview = tasks;
-    tasksInReview!.sort((a, b) => a.compareTo(b));
     notify();
   }
 

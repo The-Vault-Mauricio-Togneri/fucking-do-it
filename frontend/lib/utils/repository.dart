@@ -72,6 +72,8 @@ class Repository {
         tasks.add(Task.fromDocument(document));
       }
 
+      tasks.sort((a, b) => a.compareTo(b));
+
       callback(tasks);
     });
   }
@@ -83,7 +85,8 @@ class Repository {
     return Task.fromDocument(document);
   }
 
-  static Future<DocumentReference> create(Task task) => _collection().add(task.document);
+  static Future<DocumentReference> create(Task task) =>
+      _collection().add(task.document);
 
   static Future update(Task task) =>
       _collection().doc(task.id).set(task.document);

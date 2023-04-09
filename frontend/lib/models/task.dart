@@ -147,5 +147,12 @@ class Task implements Comparable<Task> {
       };
 
   @override
-  int compareTo(Task other) => createdAt.compareTo(other.createdAt);
+  int compareTo(Task other) {
+    final DateTime thisDate =
+        deadline ?? DateTime.now().add(const Duration(days: 365));
+    final DateTime otherDate =
+        other.deadline ?? DateTime.now().add(const Duration(days: 365));
+
+    return thisDate.compareTo(otherDate);
+  }
 }
