@@ -19,8 +19,6 @@ class Palette {
   static Color primaryText = Colors.orange;
   static Color loading = Colors.orange;
 
-  static Color grey = Colors.grey;
-
   static void set(Brightness brightness) {
     if (brightness == Brightness.light) {
       dialogBackground = PaletteLight.dialogBackground;
