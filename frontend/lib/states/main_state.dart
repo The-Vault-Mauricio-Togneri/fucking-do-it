@@ -44,12 +44,10 @@ class MainState extends BaseState {
       final Task task = await Repository.get(paramTaskId!);
       paramTaskId = null;
 
-      if (task.canBeAccepted) {
-        TaskDetailsDialog.show(
-          context: Navigation.context(),
-          task: task,
-        );
-      }
+      TaskDetailsDialog.show(
+        context: Navigation.context(),
+        task: task,
+      );
     }
   }
 
