@@ -16,6 +16,7 @@ class Palette {
 
   static Color dialogBackground = Colors.orange;
   static Color background = Colors.orange;
+  static Color inputBackground = Colors.orange;
   static Color primaryText = Colors.orange;
   static Color loading = Colors.orange;
 
@@ -23,11 +24,13 @@ class Palette {
     if (brightness == Brightness.light) {
       dialogBackground = PaletteLight.dialogBackground;
       background = PaletteLight.background;
+      inputBackground = PaletteLight.inputBackground;
       primaryText = PaletteLight.primaryTextColor;
       loading = PaletteLight.loading;
     } else {
       dialogBackground = PaletteDark.dialogBackground;
       background = PaletteDark.background;
+      inputBackground = PaletteDark.inputBackground;
       primaryText = PaletteDark.primaryTextColor;
       loading = PaletteDark.loading;
     }
@@ -37,6 +40,7 @@ class Palette {
 class PaletteLight {
   static const Color dialogBackground = Colors.white;
   static const Color background = Color(0xffedf0fc);
+  static const Color inputBackground = Color(0xffedf0fc);
   static const Color primaryTextColor = Color(0xff404040);
   static const Color loading = Palette.primary;
 }
@@ -44,6 +48,7 @@ class PaletteLight {
 class PaletteDark {
   static const Color dialogBackground = Colors.black;
   static const Color background = Colors.black;
+  static const Color inputBackground = Color(0xffedf0fc);
   static const Color primaryTextColor = Colors.white;
   static const Color loading = Colors.white;
 }

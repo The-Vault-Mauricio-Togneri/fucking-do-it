@@ -32,18 +32,18 @@ class CommentInput extends StatelessWidget {
         isDense: true,
         hintText: Localized.get.inputComment,
         focusColor: Palette.primary,
-        fillColor: Palette.background,
+        fillColor: Palette.inputBackground,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: Palette.background, width: 0),
+          borderSide: BorderSide(color: Palette.inputBackground, width: 0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Palette.background, width: 0),
+          borderSide: BorderSide(color: Palette.inputBackground, width: 0),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Palette.background, width: 0),
+          borderSide: BorderSide(color: Palette.inputBackground, width: 0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Palette.background, width: 0),
+          borderSide: BorderSide(color: Palette.inputBackground, width: 0),
         ),
         hintStyle: const TextStyle(
           fontSize: 12,
