@@ -26,6 +26,7 @@
     "label.deltaDaysPast": "%1$sd ago",
     "label.deltaHoursPast": "%1$sh ago",
     "label.deltaMinutesPast": "%1$sm ago",
+    "label.deltaNow": "Now",
     "label.deltaToday": "Today",
     "label.empty": "Empty",
     "label.inReview": "In review",

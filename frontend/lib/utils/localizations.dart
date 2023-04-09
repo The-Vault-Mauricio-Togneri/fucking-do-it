@@ -56,6 +56,8 @@ abstract class BaseLocalized {
 
   String labelDeltaMinutesPast(String param1);
 
+  String get labelDeltaNow;
+
   String get labelDeltaToday;
 
   String get labelEmpty;
@@ -154,6 +156,9 @@ class ENLocalized extends BaseLocalized {
   String labelDeltaMinutesPast(String param1) => '${param1.toString()}m ago';
 
   @override
+  String get labelDeltaNow => 'Now';
+
+  @override
   String get labelDeltaToday => 'Today';
 
   @override
@@ -248,16 +253,19 @@ class ESLocalized extends BaseLocalized {
   String labelDeltaDaysFuture(String param1) => '${param1.toString()}d';
 
   @override
-  String labelDeltaDaysPast(String param1) => 'hace ${param1.toString()}d';
+  String labelDeltaDaysPast(String param1) => 'Hace ${param1.toString()}d';
 
   @override
-  String labelDeltaHoursPast(String param1) => 'hace ${param1.toString()}h';
+  String labelDeltaHoursPast(String param1) => 'Hace ${param1.toString()}h';
 
   @override
-  String labelDeltaMinutesPast(String param1) => 'hace ${param1.toString()}m';
+  String labelDeltaMinutesPast(String param1) => 'Hace ${param1.toString()}m';
 
   @override
-  String get labelDeltaToday => 'hoy';
+  String get labelDeltaNow => 'Ahora';
+
+  @override
+  String get labelDeltaToday => 'Hoy';
 
   @override
   String get labelEmpty => 'Vacía';

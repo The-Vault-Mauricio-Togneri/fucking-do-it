@@ -7,7 +7,7 @@ class Formatter {
 
   static String dayLongMonthMonthYear(DateTime dateTime) =>
       DateFormat.yMMMd(Localized.current.languageCode).format(dateTime);
-      
+
   static String hoursMinutes(DateTime dateTime) =>
       DateFormat.Hm(Localized.current.languageCode).format(dateTime);
 
@@ -24,12 +24,15 @@ class Formatter {
     final Duration difference = dateTime.difference(today);
 
     if (difference.inDays > 0) {
-      return Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
+      return Localized.get
+          .labelDeltaDaysFuture(difference.inDays.toString())
+          .toLowerCase();
     } else if (difference.inDays == 0) {
-      return Localized.get.labelDeltaToday.toLowerCase();
+      return Localized.get.labelDeltaToday.toLowerCase().toLowerCase();
     } else {
       return Localized.get
-          .labelDeltaDaysPast(difference.inDays.abs().toString());
+          .labelDeltaDaysPast(difference.inDays.abs().toString())
+          .toLowerCase();
     }
   }
 
@@ -37,12 +40,19 @@ class Formatter {
     final Duration difference = DateTime.now().difference(dateTime);
 
     if (difference.inDays > 0) {
-      return Localized.get.labelDeltaDaysPast(difference.inDays.toString());
-    } else if (difference.inHours > 0) {
-      return Localized.get.labelDeltaHoursPast(difference.inHours.toString());
-    } else {
       return Localized.get
-          .labelDeltaMinutesPast(difference.inMinutes.toString());
+          .labelDeltaDaysPast(difference.inDays.toString())
+          .toLowerCase();
+    } else if (difference.inHours > 0) {
+      return Localized.get
+          .labelDeltaHoursPast(difference.inHours.toString())
+          .toLowerCase();
+    } else if (difference.inMinutes > 0) {
+      return Localized.get
+          .labelDeltaMinutesPast(difference.inMinutes.toString())
+          .toLowerCase();
+    } else {
+      return Localized.get.labelDeltaNow.toLowerCase();
     }
   }
 }
