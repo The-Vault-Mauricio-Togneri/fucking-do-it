@@ -14,7 +14,7 @@ class MarkdownText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const TextStyle textStyle = TextStyle(color: Palette.black);
+    final TextStyle textStyle = TextStyle(color: Palette.primaryText);
 
     final MarkdownStyleSheet markdownStyle = MarkdownStyleSheet(
       a: textStyle.copyWith(color: Palette.primary),

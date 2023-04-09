@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/main_state.dart';
+import 'package:fucking_do_it/utils/brightness_manager.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 import 'package:fucking_do_it/widgets/label.dart';
@@ -33,6 +34,17 @@ class MainScreen extends StatelessWidget {
                 size: 16,
               ),
             ),
+            leading: (BrightnessManager.isDarkMode)
+                ? IconButton(
+                    onPressed: state.onLightMode,
+                    icon: const Icon(Icons.wb_sunny),
+                    color: Palette.white,
+                  )
+                : IconButton(
+                    onPressed: state.onDarkMode,
+                    icon: const Icon(Icons.nightlight),
+                    color: Palette.white,
+                  ),
             actions: [
               IconButton(
                 onPressed: state.signOut,
@@ -140,7 +152,7 @@ class TaskColumn extends StatelessWidget {
               children: [
                 Label(
                   text: title.toUpperCase(),
-                  color: Palette.black,
+                  color: Palette.primaryText,
                   weight: FontWeight.bold,
                 ),
                 if ((tasks != null) && (tasks!.isNotEmpty))
@@ -213,9 +225,9 @@ class LoadingTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Center(
-        child: CircularProgressIndicator(color: Palette.primary),
+        child: CircularProgressIndicator(color: Palette.loading),
       ),
     );
   }
@@ -255,7 +267,7 @@ class TaskEntry extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
-        color: Palette.white,
+        color: Palette.dialogBackground,
         border: Border.all(
           color: Palette.border,
           width: 0.5,

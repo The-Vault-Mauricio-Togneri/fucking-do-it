@@ -19,8 +19,8 @@ class FuckingDoIt extends StatelessWidget {
         focusColor: Palette.primary,
         highlightColor: Palette.primary,
         hintColor: Palette.hint,
-        dialogBackgroundColor: Palette.white,
-        scaffoldBackgroundColor: Palette.white,
+        dialogBackgroundColor: Palette.dialogBackground,
+        scaffoldBackgroundColor: Palette.background,
         useMaterial3: true,
         fontFamily: Constants.FONT_NAME,
         colorScheme:

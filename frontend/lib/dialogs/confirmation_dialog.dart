@@ -27,14 +27,14 @@ class ConfirmationDialog {
             right: 10,
             bottom: 10,
           ),
-          backgroundColor: Palette.white,
-          surfaceTintColor: Palette.white,
+          backgroundColor: Palette.dialogBackground,
+          surfaceTintColor: Palette.dialogBackground,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           content: Label(
             text: message,
-            color: Palette.black,
+            color: Palette.primaryText,
             weight: FontWeight.bold,
             size: 16,
           ),

@@ -25,10 +25,6 @@ class PrimaryButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-          textStyle: const TextStyle(
-            fontSize: 14,
-            color: Palette.white,
-          ),
           shape: const StadiumBorder(),
         ),
         onPressed: onSubmit,
@@ -49,6 +45,7 @@ class PrimaryButton extends StatelessWidget {
               Label(
                 text: text.toUpperCase(),
                 color: Palette.white,
+                size: 14,
               ),
             ],
           ),

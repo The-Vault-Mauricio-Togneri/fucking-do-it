@@ -66,27 +66,27 @@ class InputField extends StatelessWidget {
         suffixIcon: suffixIcon,
         errorText: inputValidator,
         focusColor: Palette.primary,
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
-        disabledBorder: const OutlineInputBorder(
+        disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
-        enabledBorder: const OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.grey, width: 1),
         ),
         floatingLabelStyle: const TextStyle(
           fontSize: 12,
           color: Palette.primary,
         ),
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontSize: 12,
           color: Palette.hint,
         ),
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           fontSize: 12,
           color: Palette.hint,
         ),

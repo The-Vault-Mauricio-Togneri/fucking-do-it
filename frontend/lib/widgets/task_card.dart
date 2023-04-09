@@ -37,7 +37,7 @@ class TaskCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(
+              Icon(
                 Icons.title,
                 color: Palette.grey,
                 size: 20,
@@ -46,7 +46,7 @@ class TaskCard extends StatelessWidget {
               Expanded(
                 child: Label(
                   text: task.title,
-                  color: Palette.black,
+                  color: Palette.primaryText,
                   weight: FontWeight.bold,
                   size: 14,
                 ),
@@ -59,7 +59,7 @@ class TaskCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.view_headline_outlined,
                     color: Palette.grey,
                     size: 20,
@@ -78,7 +78,7 @@ class TaskCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(
+              Icon(
                 Icons.flag_rounded,
                 color: Palette.grey,
                 size: 20,
@@ -97,7 +97,7 @@ class TaskCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.calendar_today,
                     color: Palette.grey,
                     size: 20,
@@ -122,8 +122,8 @@ class TaskCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 2),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2),
                     child: Icon(
                       Icons.people,
                       color: Palette.grey,
@@ -152,7 +152,7 @@ class TaskCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.comment_outlined,
                     color: Palette.grey,
                     size: 20,
@@ -174,8 +174,8 @@ class TaskCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 4),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
                     child: Icon(
                       Icons.label_outline_rounded,
                       color: Palette.grey,

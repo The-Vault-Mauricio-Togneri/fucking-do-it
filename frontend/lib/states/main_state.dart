@@ -6,6 +6,7 @@ import 'package:fucking_do_it/app/initializer.dart';
 import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/dialogs/task_details_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
+import 'package:fucking_do_it/utils/brightness_manager.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
@@ -102,5 +103,15 @@ class MainState extends BaseState {
   Future signOut() async {
     await FirebaseAuth.instance.signOut();
     Navigation.authScreen();
+  }
+
+  void onDarkMode() {
+    BrightnessManager.darkMode();
+    notify();
+  }
+
+  void onLightMode() {
+    BrightnessManager.lightMode();
+    notify();
   }
 }

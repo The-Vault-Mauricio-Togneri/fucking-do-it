@@ -35,8 +35,8 @@ class TaskDetailsDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
-      backgroundColor: Palette.white,
-      surfaceTintColor: Palette.white,
+      backgroundColor: Palette.dialogBackground,
+      surfaceTintColor: Palette.dialogBackground,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       content: StateProvider<TaskDetailsState>(
@@ -92,7 +92,7 @@ class CommentSection extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.comment_outlined,
                 color: Palette.grey,
                 size: 20,
@@ -148,7 +148,7 @@ class CommentEntry extends StatelessWidget {
               const HBox(10),
               Label(
                 text: comment.name,
-                color: Palette.black,
+                color: Palette.primaryText,
                 weight: FontWeight.bold,
                 size: 12,
               ),
@@ -170,8 +170,8 @@ class CommentEntry extends StatelessWidget {
             size: 12,
           ),
           if (!isLast)
-            const Padding(
-              padding: EdgeInsets.only(top: 10),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
               child: HorizontalDivider(
                 color: Palette.border,
                 height: 0.3,

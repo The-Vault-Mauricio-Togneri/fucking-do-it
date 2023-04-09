@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:fucking_do_it/utils/brightness_manager.dart';
 import 'package:fucking_do_it/utils/empty_url_strategy.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
@@ -38,6 +39,8 @@ class Initializer {
     getIt.registerSingleton<Navigation>(Navigation());
 
     paramTaskId = Uri.base.queryParameters['taskId'];
+
+    await BrightnessManager.init();
 
     setUrlStrategy(EmptyUrlStrategy());
   }

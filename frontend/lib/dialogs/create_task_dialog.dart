@@ -34,8 +34,8 @@ class CreateTaskDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
-      backgroundColor: Palette.white,
-      surfaceTintColor: Palette.white,
+      backgroundColor: Palette.dialogBackground,
+      surfaceTintColor: Palette.dialogBackground,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
@@ -129,7 +129,7 @@ class Fields extends StatelessWidget {
                 inputType: TextInputType.text,
                 canBeEmpty: true,
                 enabled: false,
-                suffixIcon: const Icon(
+                suffixIcon: Icon(
                   Icons.calendar_month,
                   color: Palette.border,
                   size: 20,
