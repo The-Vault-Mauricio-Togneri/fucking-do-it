@@ -14,13 +14,23 @@ class TertiaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onSubmit,
-      child: Label(
-        text: text.toUpperCase(),
-        color: color,
-        size: 12,
-        weight: FontWeight.bold,
+    return InkWell(
+      highlightColor: color.withAlpha(50),
+      onTap: onSubmit,
+      borderRadius: const BorderRadius.all(Radius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 4,
+          bottom: 4,
+          left: 8,
+          right: 8,
+        ),
+        child: Label(
+          text: text.toUpperCase(),
+          color: color,
+          size: 12,
+          weight: FontWeight.bold,
+        ),
       ),
     );
   }
