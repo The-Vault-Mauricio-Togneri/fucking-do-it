@@ -212,12 +212,12 @@ class AssignedPersonRow extends StatelessWidget {
             avatar: person.avatar,
             size: 24,
           ),
-          const HBox(5),
+          const HBox(10),
           Expanded(
             child: Label(
               text: person.name,
               color: Palette.grey,
-              size: 14,
+              size: 12,
               overflow: TextOverflow.ellipsis,
             ),
           ),
