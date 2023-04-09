@@ -5,6 +5,7 @@ import 'package:fucking_do_it/models/comment.dart';
 import 'package:fucking_do_it/models/person.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
+import 'package:fucking_do_it/utils/constants.dart';
 import 'package:fucking_do_it/utils/formatter.dart';
 import 'package:fucking_do_it/utils/palette.dart';
 
@@ -48,6 +49,9 @@ class Task implements Comparable<Task> {
     required this.tags,
     required this.comments,
   });
+
+  String url([String? taskId]) =>
+      '${Constants.BASE_URL}?taskId=${taskId ?? id}';
 
   bool get canComment =>
       (status != Status.created) &&

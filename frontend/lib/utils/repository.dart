@@ -83,7 +83,7 @@ class Repository {
     return Task.fromDocument(document);
   }
 
-  static Future create(Task task) => _collection().add(task.document);
+  static Future<DocumentReference> create(Task task) => _collection().add(task.document);
 
   static Future update(Task task) =>
       _collection().doc(task.id).set(task.document);

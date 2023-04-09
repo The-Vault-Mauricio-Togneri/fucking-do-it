@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/types/status.dart';
+import 'package:fucking_do_it/utils/clipboard.dart';
 import 'package:fucking_do_it/utils/formatter.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
@@ -103,7 +105,8 @@ class CreateTaskState extends BaseState {
       comments: [],
     );
 
-    await Repository.create(task);
+    final DocumentReference ref = await Repository.create(task);
+    Clipboard.copy(task.url(ref.id));
     Navigation.pop();
   }
 

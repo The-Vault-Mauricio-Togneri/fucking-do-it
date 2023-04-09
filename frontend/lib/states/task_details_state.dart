@@ -1,4 +1,3 @@
-import 'dart:html' hide Comment;
 import 'package:dafluta/dafluta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,7 @@ import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
 import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/models/comment.dart';
 import 'package:fucking_do_it/models/task.dart';
-import 'package:fucking_do_it/utils/constants.dart';
+import 'package:fucking_do_it/utils/clipboard.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
@@ -24,22 +23,7 @@ class TaskDetailsState extends BaseState {
   }
 
   void onCopyLink() {
-    try {
-      final textarea = TextAreaElement();
-      document.body!.append(textarea);
-      textarea.style.border = '0';
-      textarea.style.margin = '0';
-      textarea.style.padding = '0';
-      textarea.style.opacity = '0';
-      textarea.style.position = 'absolute';
-      textarea.readOnly = true;
-      textarea.value = '${Constants.BASE_URL}?taskId=${task.id}';
-      textarea.select();
-      document.execCommand('copy');
-      textarea.remove();
-    } catch (e) {
-      // ignore
-    }
+    Clipboard.copy(task.url());
     Navigation.pop();
   }
 
