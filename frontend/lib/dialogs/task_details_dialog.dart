@@ -4,6 +4,7 @@ import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/task_details_state.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/palette.dart';
+import 'package:fucking_do_it/widgets/comment_input.dart';
 import 'package:fucking_do_it/widgets/primary_button.dart';
 import 'package:fucking_do_it/widgets/task_card.dart';
 import 'package:fucking_do_it/widgets/tertiary_button.dart';
@@ -46,6 +47,33 @@ class TaskDetailsDialog extends StatelessWidget {
                   task: state.task,
                   selectable: true,
                   showComments: false,
+                  bottomPadding: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    bottom: 10,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.comment_outlined,
+                        color: Palette.grey,
+                        size: 20,
+                      ),
+                      const HBox(15),
+                      Expanded(
+                        child: CommentInput(
+                          controller: state.commentController,
+                          focusNode: state.commentFocus,
+                          onChanged: state.onChangeComment,
+                          onSubmit: state.onSubmitComment,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const VBox(10),
                 if (state.task.canBeAccepted) AcceptButton(state),

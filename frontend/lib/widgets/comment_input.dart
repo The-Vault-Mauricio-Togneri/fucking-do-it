@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
+import 'package:fucking_do_it/utils/palette.dart';
+
+class CommentInput extends StatelessWidget {
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final Function(String) onChanged;
+  final Function(String) onSubmit;
+
+  const CommentInput({
+    required this.controller,
+    required this.focusNode,
+    required this.onChanged,
+    required this.onSubmit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      focusNode: focusNode,
+      controller: controller,
+      autofocus: true,
+      keyboardType: TextInputType.text,
+      minLines: 1,
+      maxLines: 1,
+      textCapitalization: TextCapitalization.sentences,
+      onChanged: onChanged,
+      onFieldSubmitted: onSubmit,
+      style: const TextStyle(
+        fontSize: 14,
+      ),
+      decoration: InputDecoration(
+        filled: true,
+        isDense: true,
+        hintText: Localized.get.inputComment,
+        focusColor: Palette.primary,
+        fillColor: Palette.background,
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(color: Palette.background, width: 0),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Palette.background, width: 0),
+        ),
+        disabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Palette.background, width: 0),
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Palette.background, width: 0),
+        ),
+        hintStyle: const TextStyle(
+          fontSize: 12,
+          color: Palette.hint,
+        ),
+      ),
+    );
+  }
+}

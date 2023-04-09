@@ -271,6 +271,7 @@ class TaskEntry extends StatelessWidget {
             task: task,
             selectable: false,
             showComments: true,
+            bottomPadding: 20,
           ),
         ),
       ),

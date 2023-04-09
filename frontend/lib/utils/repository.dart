@@ -84,7 +84,8 @@ class Repository {
 
   static Future create(Task task) => _collection().add(task.document);
 
-  static Future update(Task task) => _collection().doc(task.id).set(task.document);
+  static Future update(Task task) =>
+      _collection().doc(task.id).set(task.document);
 
   static Future complete(Task task) => _collection().doc(task.id).update({
         Task.FIELD_STATUS: Status.done.name,

@@ -28,6 +28,8 @@ abstract class BaseLocalized {
 
   String get confirmationDeleteTask;
 
+  String get inputComment;
+
   String get inputDeadline;
 
   String get inputDescription;
@@ -43,6 +45,8 @@ abstract class BaseLocalized {
   String get labelAssignedToMe;
 
   String labelCannotBeEmpty(String param1);
+
+  String get labelComments;
 
   String get labelCreated;
 
@@ -105,6 +109,9 @@ class ENLocalized extends BaseLocalized {
       'Do you confirm you want to delete the task?';
 
   @override
+  String get inputComment => 'Add a comment…';
+
+  @override
   String get inputDeadline => 'Deadline';
 
   @override
@@ -128,6 +135,9 @@ class ENLocalized extends BaseLocalized {
   @override
   String labelCannotBeEmpty(String param1) =>
       '${param1.toString()} cannot be empty';
+
+  @override
+  String get labelComments => 'Comments';
 
   @override
   String get labelCreated => 'Created';
@@ -199,6 +209,9 @@ class ESLocalized extends BaseLocalized {
       '¿Confirmas que quieres eliminar la tarea?';
 
   @override
+  String get inputComment => 'Añade un comentario…';
+
+  @override
   String get inputDeadline => 'Fecha límite';
 
   @override
@@ -222,6 +235,9 @@ class ESLocalized extends BaseLocalized {
   @override
   String labelCannotBeEmpty(String param1) =>
       '${param1.toString()} no puede estar vacío';
+
+  @override
+  String get labelComments => 'Comentarios';
 
   @override
   String get labelCreated => 'Creadas';

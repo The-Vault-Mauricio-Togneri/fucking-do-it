@@ -11,6 +11,8 @@ import 'package:fucking_do_it/utils/repository.dart';
 
 class TaskDetailsState extends BaseState {
   final Task task;
+  final TextEditingController commentController = TextEditingController();
+  final FocusNode commentFocus = FocusNode();
 
   TaskDetailsState(this.task);
 
@@ -69,4 +71,8 @@ class TaskDetailsState extends BaseState {
     Repository.delete(task);
     Navigation.pop();
   }
+
+  void onChangeComment(String text) {}
+
+  void onSubmitComment(String text) {}
 }

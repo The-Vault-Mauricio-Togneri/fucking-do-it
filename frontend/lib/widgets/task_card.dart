@@ -13,17 +13,24 @@ class TaskCard extends StatelessWidget {
   final Task task;
   final bool selectable;
   final bool showComments;
+  final double bottomPadding;
 
   const TaskCard({
     required this.task,
     required this.selectable,
     required this.showComments,
+    required this.bottomPadding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.only(
+        top: 20,
+        left: 20,
+        right: 20,
+        bottom: bottomPadding,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
