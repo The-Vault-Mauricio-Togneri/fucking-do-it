@@ -270,7 +270,7 @@ class TaskEntry extends StatelessWidget {
         color: Palette.dialogBackground,
         border: Border.all(
           color: Palette.border,
-          width: 0.5,
+          width: 0.4,
         ),
       ),
       child: Material(

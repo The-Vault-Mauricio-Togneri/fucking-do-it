@@ -37,12 +37,12 @@ class TaskDetailsDialog extends StatelessWidget {
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Palette.dialogBackground,
       surfaceTintColor: Palette.dialogBackground,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         side: BorderSide(
           color: Palette.border,
-          width: 0.5,
+          width: 0.4,
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       content: StateProvider<TaskDetailsState>(
         state: state,
@@ -175,8 +175,8 @@ class CommentEntry extends StatelessWidget {
             size: 12,
           ),
           if (!isLast)
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
+            const Padding(
+              padding: EdgeInsets.only(top: 10),
               child: HorizontalDivider(
                 color: Palette.border,
                 height: 0.3,

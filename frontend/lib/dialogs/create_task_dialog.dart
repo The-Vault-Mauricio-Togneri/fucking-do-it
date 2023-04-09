@@ -36,12 +36,12 @@ class CreateTaskDialog extends StatelessWidget {
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Palette.dialogBackground,
       surfaceTintColor: Palette.dialogBackground,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         side: BorderSide(
           color: Palette.border,
-          width: 0.5,
+          width: 0.4,
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       content: StateProvider<CreateTaskState>(
         state: state,
@@ -135,7 +135,7 @@ class Fields extends StatelessWidget {
                 enabled: false,
                 suffixIcon: Icon(
                   Icons.calendar_month,
-                  color: Palette.border,
+                  color: Palette.grey,
                   size: 20,
                 ),
                 onPressed: () => state.onSelectDeadline(context),

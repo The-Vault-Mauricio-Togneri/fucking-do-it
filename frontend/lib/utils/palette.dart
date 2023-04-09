@@ -10,6 +10,7 @@ class Palette {
   static const Color splash = Color(0x0faaaaaa);
   static const Color hint = Color(0xffaaaaaa);
   static const Color unselected = Color(0xffdddddd);
+  static const Color border = Color(0xffdadada);
 
   static Color dialogBackground = Colors.orange;
   static Color background = Colors.orange;
@@ -17,7 +18,6 @@ class Palette {
   static Color loading = Colors.orange;
 
   static Color grey = Colors.grey;
-  static Color border = const Color(0xffdadada);
 
   static void set(Brightness brightness) {
     if (brightness == Brightness.light) {
@@ -27,7 +27,6 @@ class Palette {
       loading = PaletteLight.loading;
 
       grey = PaletteLight.grey;
-      border = PaletteLight.border;
     } else {
       dialogBackground = PaletteDark.dialogBackground;
       background = PaletteDark.background;
@@ -35,7 +34,6 @@ class Palette {
       loading = PaletteDark.loading;
 
       grey = PaletteDark.grey;
-      border = PaletteDark.border;
     }
   }
 }
@@ -47,7 +45,6 @@ class PaletteLight {
   static const Color loading = Palette.primary;
 
   static const Color grey = Colors.grey;
-  static const Color border = Color(0xffdadada);
 }
 
 class PaletteDark {
@@ -57,5 +54,4 @@ class PaletteDark {
   static const Color loading = Colors.white;
 
   static const Color grey = Colors.grey;
-  static const Color border = Color(0xffdadada);
 }
