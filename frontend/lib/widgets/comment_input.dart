@@ -25,6 +25,7 @@ class CommentInput extends StatelessWidget {
       textCapitalization: TextCapitalization.sentences,
       onFieldSubmitted: onSubmit,
       style: const TextStyle(
+        color: Palette.black,
         fontSize: 14,
       ),
       decoration: InputDecoration(

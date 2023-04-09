@@ -55,7 +55,8 @@ class InputField extends StatelessWidget {
       textCapitalization: TextCapitalization.sentences,
       onChanged: onChanged,
       onFieldSubmitted: onSubmit,
-      style: const TextStyle(
+      style: TextStyle(
+        color: Palette.primaryText,
         fontSize: 14,
       ),
       decoration: InputDecoration(
