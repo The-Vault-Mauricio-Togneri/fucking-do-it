@@ -72,7 +72,5 @@ class TaskDetailsState extends BaseState {
     Navigation.pop();
   }
 
-  void onChangeComment(String text) {}
-
   void onSubmitComment(String text) {}
 }

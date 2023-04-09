@@ -68,7 +68,6 @@ class TaskDetailsDialog extends StatelessWidget {
                         child: CommentInput(
                           controller: state.commentController,
                           focusNode: state.commentFocus,
-                          onChanged: state.onChangeComment,
                           onSubmit: state.onSubmitComment,
                         ),
                       ),

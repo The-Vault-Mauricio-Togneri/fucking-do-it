@@ -5,13 +5,11 @@ import 'package:fucking_do_it/utils/palette.dart';
 class CommentInput extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
-  final Function(String) onChanged;
   final Function(String) onSubmit;
 
   const CommentInput({
     required this.controller,
     required this.focusNode,
-    required this.onChanged,
     required this.onSubmit,
   });
 
@@ -25,7 +23,6 @@ class CommentInput extends StatelessWidget {
       minLines: 1,
       maxLines: 1,
       textCapitalization: TextCapitalization.sentences,
-      onChanged: onChanged,
       onFieldSubmitted: onSubmit,
       style: const TextStyle(
         fontSize: 14,
