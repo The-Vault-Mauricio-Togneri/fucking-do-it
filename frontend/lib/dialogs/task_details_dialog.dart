@@ -153,10 +153,13 @@ class CommentEntry extends StatelessWidget {
                 size: 12,
               ),
               const HBox(10),
-              Label(
-                text: Formatter.deltaTime(comment.createdAt),
-                color: Palette.grey,
-                size: 12,
+              Tooltip(
+                message: Formatter.fullDateTime(comment.createdAt),
+                child: Label(
+                  text: Formatter.deltaTime(comment.createdAt),
+                  color: Palette.grey,
+                  size: 12,
+                ),
               ),
             ],
           ),

@@ -7,6 +7,16 @@ class Formatter {
 
   static String dayLongMonthMonthYear(DateTime dateTime) =>
       DateFormat.yMMMd(Localized.current.languageCode).format(dateTime);
+      
+  static String hoursMinutes(DateTime dateTime) =>
+      DateFormat.Hm(Localized.current.languageCode).format(dateTime);
+
+  static String fullDateTime(DateTime dateTime) {
+    final String date = dayLongMonthMonthYear(dateTime);
+    final String time = hoursMinutes(dateTime);
+
+    return '$date $time';
+  }
 
   static String deltaDate(DateTime dateTime) {
     final DateTime now = DateTime.now();
