@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fucking_do_it/screens/auth_screen.dart';
+import 'package:fucking_do_it/utils/constants.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/palette.dart';
-import 'package:fucking_do_it/utils/style.dart';
 
 class FuckingDoIt extends StatelessWidget {
   const FuckingDoIt();
@@ -22,7 +22,7 @@ class FuckingDoIt extends StatelessWidget {
         dialogBackgroundColor: Palette.white,
         scaffoldBackgroundColor: Palette.white,
         useMaterial3: true,
-        fontFamily: Style.FONT_NAME,
+        fontFamily: Constants.FONT_NAME,
         colorScheme:
             ColorScheme.fromSwatch().copyWith(secondary: Palette.primary),
       ),

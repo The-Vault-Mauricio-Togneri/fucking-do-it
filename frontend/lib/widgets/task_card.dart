@@ -1,13 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:fucking_do_it/models/person.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/palette.dart';
-import 'package:fucking_do_it/utils/style.dart';
-import 'package:fucking_do_it/utils/url_launcher.dart';
 import 'package:fucking_do_it/widgets/label.dart';
+import 'package:fucking_do_it/widgets/markdown_text.dart';
 import 'package:fucking_do_it/widgets/priority_chip.dart';
 import 'package:fucking_do_it/widgets/tags_list.dart';
 
@@ -59,17 +57,9 @@ class TaskCard extends StatelessWidget {
                   ),
                   const HBox(15),
                   Expanded(
-                    child: MarkdownBody(
+                    child: MarkdownText(
+                      text: task.description,
                       selectable: selectable,
-                      onTapLink: (text, link, other) {
-                        if (link != null) {
-                          UrlLauncher.open(link);
-                        }
-                      },
-                      styleSheet: MarkdownStyleSheet.fromTheme(
-                        Style.themeData(context),
-                      ),
-                      data: task.description,
                     ),
                   ),
                 ],

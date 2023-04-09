@@ -3,6 +3,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
+import 'package:fucking_do_it/utils/constants.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
@@ -27,7 +28,7 @@ class TaskDetailsState extends BaseState {
       textarea.style.opacity = '0';
       textarea.style.position = 'absolute';
       textarea.readOnly = true;
-      textarea.value = 'https://fucking-do-it.web.app?taskId=${task.id}';
+      textarea.value = '${Constants.BASE_URL}?taskId=${task.id}';
       textarea.select();
       document.execCommand('copy');
       textarea.remove();
