@@ -36,8 +36,12 @@ class CreateTaskDialog extends StatelessWidget {
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Palette.dialogBackground,
       surfaceTintColor: Palette.dialogBackground,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Palette.border,
+          width: 0.5,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       content: StateProvider<CreateTaskState>(
         state: state,

@@ -29,8 +29,12 @@ class ConfirmationDialog {
           ),
           backgroundColor: Palette.dialogBackground,
           surfaceTintColor: Palette.dialogBackground,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Palette.border,
+              width: 0.5,
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           content: Label(
             text: message,
