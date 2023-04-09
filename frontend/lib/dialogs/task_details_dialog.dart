@@ -171,7 +171,7 @@ class CommentEntry extends StatelessWidget {
           const VBox(5),
           Label(
             text: comment.content,
-            color: Palette.secondaryText,
+            color: Palette.primaryText,
             size: 12,
           ),
           if (!isLast)
