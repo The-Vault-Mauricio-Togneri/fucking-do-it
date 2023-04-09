@@ -22,6 +22,8 @@ abstract class BaseLocalized {
 
   String get buttonReopen;
 
+  String get buttonSave;
+
   String get buttonSignInWithGoogle;
 
   String get confirmationDeleteTask;
@@ -91,6 +93,9 @@ class ENLocalized extends BaseLocalized {
 
   @override
   String get buttonReopen => 'Reopen';
+
+  @override
+  String get buttonSave => 'Save';
 
   @override
   String get buttonSignInWithGoogle => 'Sign in with Google';
@@ -182,6 +187,9 @@ class ESLocalized extends BaseLocalized {
 
   @override
   String get buttonReopen => 'Reabrir';
+
+  @override
+  String get buttonSave => 'Guardar';
 
   @override
   String get buttonSignInWithGoogle => 'Conectarse con Google';

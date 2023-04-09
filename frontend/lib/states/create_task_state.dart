@@ -9,6 +9,7 @@ import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
 class CreateTaskState extends BaseState {
+  Task? originalTask;
   Priority? priority;
   DateTime? deadline;
   final List<String> tags = [];
@@ -19,8 +20,25 @@ class CreateTaskState extends BaseState {
   final FocusNode tagsFocus = FocusNode();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  CreateTaskState(this.originalTask);
+
   bool get canSubmit =>
       (priority != null) && titleController.text.trim().isNotEmpty;
+
+  bool get isCreate => originalTask == null;
+
+  @override
+  void onLoad() {
+    if (!isCreate) {
+      titleController.text = originalTask!.title;
+      descriptionController.text = originalTask!.description;
+      priority = originalTask!.priority;
+      deadline = originalTask!.deadline;
+      tags.addAll(originalTask!.tags);
+      _updateDeadlineInput();
+      notify();
+    }
+  }
 
   void onTitleChanged() {
     notify();
@@ -40,9 +58,12 @@ class CreateTaskState extends BaseState {
     );
 
     deadline = dateTime;
+    _updateDeadlineInput();
+  }
 
-    if (dateTime != null) {
-      deadlineController.text = Formatter.dayLongMonthMonthYear(dateTime);
+  void _updateDeadlineInput() {
+    if (deadline != null) {
+      deadlineController.text = Formatter.dayLongMonthMonthYear(deadline!);
     } else {
       deadlineController.text = '';
     }
@@ -52,26 +73,52 @@ class CreateTaskState extends BaseState {
 
   Future onSubmit() async {
     if (formKey.currentState!.validate()) {
-      Keyboard.hide(Navigation.context());
-
-      final Task task = Task(
-        id: '',
-        createdBy: FirebaseAuth.instance.currentUser?.uid ?? '',
-        createdAt: DateTime.now(),
-        status: Status.created,
-        priority: priority!,
-        title: titleController.text.trim(),
-        assignedTo: [],
-        assignedInfo: {},
-        description: descriptionController.text.trim(),
-        deadline: deadline,
-        tags: tags,
-        comments: [],
-      );
-
-      await Repository.create(task);
-      Navigation.pop();
+      if (isCreate) {
+        _createTask();
+      } else {
+        _updateTask();
+      }
     }
+  }
+
+  Future _createTask() async {
+    final Task task = Task(
+      id: '',
+      createdBy: FirebaseAuth.instance.currentUser?.uid ?? '',
+      createdAt: DateTime.now(),
+      status: Status.created,
+      priority: priority!,
+      title: titleController.text.trim(),
+      assignedTo: [],
+      assignedInfo: {},
+      description: descriptionController.text.trim(),
+      deadline: deadline,
+      tags: tags,
+      comments: [],
+    );
+
+    await Repository.create(task);
+    Navigation.pop();
+  }
+
+  Future _updateTask() async {
+    final Task task = Task(
+      id: originalTask!.id,
+      createdBy: originalTask!.createdBy,
+      createdAt: originalTask!.createdAt,
+      status: originalTask!.status,
+      priority: priority!,
+      title: titleController.text.trim(),
+      assignedTo: originalTask!.assignedTo,
+      assignedInfo: originalTask!.assignedInfo,
+      description: descriptionController.text.trim(),
+      deadline: deadline,
+      tags: tags,
+      comments: [],
+    );
+
+    await Repository.update(task);
+    Navigation.pop();
   }
 
   void onCreateTag(String tag) {

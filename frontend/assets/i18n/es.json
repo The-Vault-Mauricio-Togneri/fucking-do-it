@@ -9,6 +9,7 @@
     "button.delete": "Eliminar",
     "button.edit": "Editar",
     "button.reopen": "Reabrir",
+    "button.save": "Guardar",
     "button.signInWithGoogle": "Conectarse con Google",
     "confirmation.deleteTask": "¿Confirmas que quieres eliminar la tarea?",
     "input.deadline": "Fecha límite",

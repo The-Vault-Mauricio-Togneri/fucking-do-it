@@ -96,7 +96,8 @@ class MainState extends BaseState {
     Repository.delete(task);
   }
 
-  void onCreateTask(BuildContext context) => CreateTaskDialog.show(context);
+  void onCreateTask(BuildContext context) =>
+      CreateTaskDialog.show(context: context);
 
   Future signOut() async {
     await FirebaseAuth.instance.signOut();

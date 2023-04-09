@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/states/create_task_state.dart';
 import 'package:fucking_do_it/types/priority.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
@@ -16,11 +17,14 @@ class CreateTaskDialog extends StatelessWidget {
 
   const CreateTaskDialog._(this.state);
 
-  static DialogController show(BuildContext context) {
+  static DialogController show({
+    required BuildContext context,
+    Task? originalTask,
+  }) {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => CreateTaskDialog._(CreateTaskState()),
+      builder: (context) => CreateTaskDialog._(CreateTaskState(originalTask)),
     );
 
     return DialogController(context);
@@ -43,7 +47,7 @@ class CreateTaskDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Fields(state),
-              CreateButton(state),
+              SubmitButton(state),
               const CloseButton(),
             ],
           ),
@@ -151,10 +155,10 @@ class Fields extends StatelessWidget {
   }
 }
 
-class CreateButton extends StatelessWidget {
+class SubmitButton extends StatelessWidget {
   final CreateTaskState state;
 
-  const CreateButton(this.state);
+  const SubmitButton(this.state);
 
   @override
   Widget build(BuildContext context) {
@@ -166,9 +170,11 @@ class CreateButton extends StatelessWidget {
         bottom: 10,
       ),
       child: PrimaryButton(
-        text: Localized.get.buttonCreate,
-        color: Palette.primary,
-        icon: Icons.add,
+        text: state.isCreate
+            ? Localized.get.buttonCreate
+            : Localized.get.buttonSave,
+        color: state.isCreate ? Palette.primary : Palette.success,
+        icon: state.isCreate ? Icons.add : Icons.save,
         onSubmit: state.canSubmit ? state.onSubmit : null,
       ),
     );

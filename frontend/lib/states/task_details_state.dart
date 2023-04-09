@@ -2,6 +2,7 @@ import 'dart:html';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
+import 'package:fucking_do_it/dialogs/create_task_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/utils/constants.dart';
 import 'package:fucking_do_it/utils/localizations.dart';
@@ -48,7 +49,13 @@ class TaskDetailsState extends BaseState {
     Navigation.pop();
   }
 
-  void onEdit(BuildContext context) {}
+  void onEdit(BuildContext context) {
+    Navigation.pop();
+    CreateTaskDialog.show(
+      context: context,
+      originalTask: task,
+    );
+  }
 
   void onDelete(BuildContext context) => ConfirmationDialog.show(
         context: context,
