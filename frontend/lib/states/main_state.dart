@@ -13,11 +13,11 @@ import 'package:fucking_do_it/utils/repository.dart';
 class MainState extends BaseState {
   List<Task>? tasksAssignedToMe;
   List<Task>? tasksCreated;
-  List<Task>? tasksInProgress;
+  List<Task>? tasksAccepted;
   List<Task>? tasksInReview;
   StreamSubscription? subscriptionAssignedToMe;
   StreamSubscription? subscriptionCreated;
-  StreamSubscription? subscriptionInProgress;
+  StreamSubscription? subscriptionAccepted;
   StreamSubscription? subscriptionInReview;
 
   String get title {
@@ -34,7 +34,7 @@ class MainState extends BaseState {
     subscriptionAssignedToMe ??=
         Repository.listenAssignedToMe(onTasksAssignedToMe);
     subscriptionCreated ??= Repository.listenCreated(onTasksCreated);
-    subscriptionInProgress ??= Repository.listenInProgress(onTasksInProgress);
+    subscriptionAccepted ??= Repository.listenAccepted(onTasksAccepted);
     subscriptionInReview ??= Repository.listenInReview(onTasksInReview);
   }
 
@@ -56,7 +56,7 @@ class MainState extends BaseState {
   void onDestroy() {
     subscriptionAssignedToMe?.cancel();
     subscriptionCreated?.cancel();
-    subscriptionInProgress?.cancel();
+    subscriptionAccepted?.cancel();
     subscriptionInReview?.cancel();
   }
 
@@ -72,9 +72,9 @@ class MainState extends BaseState {
     notify();
   }
 
-  Future onTasksInProgress(List<Task> tasks) async {
-    tasksInProgress = tasks;
-    tasksInProgress!.sort((a, b) => a.compareTo(b));
+  Future onTasksAccepted(List<Task> tasks) async {
+    tasksAccepted = tasks;
+    tasksAccepted!.sort((a, b) => a.compareTo(b));
     notify();
   }
 

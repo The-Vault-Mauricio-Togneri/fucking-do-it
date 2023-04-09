@@ -84,8 +84,8 @@ class Content extends StatelessWidget {
           const VerticalDivider(),
           TaskColumn(
             state: state,
-            title: Localized.get.labelInProgress,
-            tasks: state.tasksInProgress,
+            title: Localized.get.labelAccepted,
+            tasks: state.tasksAccepted,
           ),
           const VerticalDivider(),
           TaskColumn(

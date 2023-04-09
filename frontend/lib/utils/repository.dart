@@ -33,7 +33,7 @@ class Repository {
     return processStream(stream, callback);
   }
 
-  static StreamSubscription listenInProgress(
+  static StreamSubscription listenAccepted(
       Function(List<Task> tasks) callback) {
     final Stream<QuerySnapshot<Map<String, dynamic>>> stream =
         Repository._collection()

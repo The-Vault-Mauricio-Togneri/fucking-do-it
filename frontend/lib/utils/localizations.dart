@@ -34,6 +34,8 @@ abstract class BaseLocalized {
 
   String get inputTitle;
 
+  String get labelAccepted;
+
   String get labelAssignedToMe;
 
   String labelCannotBeEmpty(String param1);
@@ -47,8 +49,6 @@ abstract class BaseLocalized {
   String get labelDeltaToday;
 
   String get labelEmpty;
-
-  String get labelInProgress;
 
   String get labelInReview;
 
@@ -109,6 +109,9 @@ class ENLocalized extends BaseLocalized {
   String get inputTitle => 'Title';
 
   @override
+  String get labelAccepted => 'Accepted';
+
+  @override
   String get labelAssignedToMe => 'Assigned to me';
 
   @override
@@ -129,9 +132,6 @@ class ENLocalized extends BaseLocalized {
 
   @override
   String get labelEmpty => 'Empty';
-
-  @override
-  String get labelInProgress => 'In progress';
 
   @override
   String get labelInReview => 'In review';
@@ -196,6 +196,9 @@ class ESLocalized extends BaseLocalized {
   String get inputTitle => 'Título';
 
   @override
+  String get labelAccepted => 'Aceptadas';
+
+  @override
   String get labelAssignedToMe => 'Asignadas a mí';
 
   @override
@@ -216,9 +219,6 @@ class ESLocalized extends BaseLocalized {
 
   @override
   String get labelEmpty => 'Vacía';
-
-  @override
-  String get labelInProgress => 'En progreso';
 
   @override
   String get labelInReview => 'En revisión';
