@@ -16,11 +16,8 @@ class FuckingDoIt extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Palette.primary,
-        focusColor: Palette.primary,
-        highlightColor: Palette.primary,
-        hintColor: Palette.hint,
-        dialogBackgroundColor: Palette.dialogBackground,
-        scaffoldBackgroundColor: Palette.background,
+        dialogBackgroundColor: Palette.white,
+        scaffoldBackgroundColor: Palette.white,
         useMaterial3: true,
         fontFamily: Constants.FONT_NAME,
         colorScheme:
