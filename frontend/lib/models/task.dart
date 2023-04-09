@@ -49,6 +49,11 @@ class Task implements Comparable<Task> {
     required this.comments,
   });
 
+  bool get canComment =>
+      (status != Status.created) &&
+      (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid) ||
+          (createdBy == FirebaseAuth.instance.currentUser?.uid));
+
   bool get canBeAccepted =>
       ((status == Status.created) || (status == Status.accepted)) &&
       (!assignedTo.contains(FirebaseAuth.instance.currentUser?.uid)) &&

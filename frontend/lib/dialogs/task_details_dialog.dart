@@ -58,7 +58,7 @@ class TaskDetailsDialog extends StatelessWidget {
                   showComments: false,
                   bottomPadding: 10,
                 ),
-                CommentSection(state),
+                if (state.task.canComment) CommentSection(state),
                 const VBox(10),
                 if (state.task.canBeAccepted) AcceptButton(state),
                 if (state.task.canBeCopied) CopyLinkButton(state),
