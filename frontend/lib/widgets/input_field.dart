@@ -79,9 +79,9 @@ class InputField extends StatelessWidget {
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Palette.border, width: 1),
         ),
-        floatingLabelStyle: const TextStyle(
+        floatingLabelStyle: TextStyle(
           fontSize: 12,
-          color: Palette.primary,
+          color: Palette.primaryText,
         ),
         labelStyle: const TextStyle(
           fontSize: 12,

@@ -8,8 +8,7 @@ class BrightnessManager {
   static bool get isDarkMode => current == Brightness.dark;
 
   static Future init() async {
-    current = Brightness.dark;
-    //await BrightnessStorage.load();
+    current = await BrightnessStorage.load();
     Palette.set(current);
   }
 
