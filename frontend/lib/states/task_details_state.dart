@@ -74,7 +74,7 @@ class TaskDetailsState extends BaseState {
     Navigation.pop();
   }
 
-  void onSubmitComment(String content) {
+  Future onSubmitComment(String content) async {
     final Comment comment = Comment(
       avatar: FirebaseAuth.instance.currentUser?.photoURL ?? '',
       name: FirebaseAuth.instance.currentUser?.displayName ?? '',
@@ -82,10 +82,11 @@ class TaskDetailsState extends BaseState {
       createdAt: DateTime.now(),
     );
 
-    Repository.addComment(
+    await Repository.addComment(
       task: task,
       comment: comment,
     );
+    notify();
 
     commentController.text = '';
     Delayed.post(commentFocus.requestFocus);

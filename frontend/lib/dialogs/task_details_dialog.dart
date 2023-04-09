@@ -49,31 +49,7 @@ class TaskDetailsDialog extends StatelessWidget {
                   showComments: false,
                   bottomPadding: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                    bottom: 10,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.comment_outlined,
-                        color: Palette.grey,
-                        size: 20,
-                      ),
-                      const HBox(15),
-                      Expanded(
-                        child: CommentInput(
-                          controller: state.commentController,
-                          focusNode: state.commentFocus,
-                          onSubmit: state.onSubmitComment,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                CommentSection(state),
                 const VBox(10),
                 if (state.task.canBeAccepted) AcceptButton(state),
                 if (state.task.canBeCopied) CopyLinkButton(state),
@@ -87,6 +63,46 @@ class TaskDetailsDialog extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CommentSection extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const CommentSection(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            bottom: 10,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.comment_outlined,
+                color: Palette.grey,
+                size: 20,
+              ),
+              const HBox(15),
+              Expanded(
+                child: CommentInput(
+                  controller: state.commentController,
+                  focusNode: state.commentFocus,
+                  onSubmit: state.onSubmitComment,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
