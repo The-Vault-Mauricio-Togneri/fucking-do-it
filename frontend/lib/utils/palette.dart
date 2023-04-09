@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Palette {
-  static const Color primary = Colors.blue;
+  static const Color primary = Color(0xff005499);
   static const Color transparent = Colors.transparent;
   static const Color error = Color(0xffef5365);
   static const Color success = Color(0xff82b368);
