@@ -13,7 +13,7 @@ class Task implements Comparable<Task> {
   final String createdBy;
   final DateTime createdAt;
   final Status status;
-  final Priority priority;
+  final Priority? priority;
   final String title;
   final List<String> assignedTo;
   final Map<String, dynamic> assignedInfo;
@@ -102,7 +102,9 @@ class Task implements Comparable<Task> {
       createdBy: map[FIELD_CREATED_BY],
       createdAt: (map[FIELD_CREATED_AT] as Timestamp).toDate(),
       status: Status.parse(map[FIELD_STATUS]),
-      priority: Priority.parse(map[FIELD_PRIORITY]),
+      priority: (map[FIELD_PRIORITY] != null)
+          ? Priority.parse(map[FIELD_PRIORITY])
+          : null,
       title: map[FIELD_TITLE],
       assignedTo: (map[FIELD_ASSIGNED_TO] as List<dynamic>)
           .map((e) => e.toString())
@@ -124,7 +126,7 @@ class Task implements Comparable<Task> {
         FIELD_CREATED_BY: createdBy,
         FIELD_CREATED_AT: Timestamp.fromDate(createdAt),
         FIELD_STATUS: status.name,
-        FIELD_PRIORITY: priority.name,
+        FIELD_PRIORITY: priority?.name,
         FIELD_TITLE: title,
         FIELD_ASSIGNED_TO: assignedTo,
         FIELD_ASSIGNED_INFO: assignedInfo,

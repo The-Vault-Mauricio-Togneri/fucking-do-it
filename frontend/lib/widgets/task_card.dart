@@ -74,23 +74,26 @@ class TaskCard extends StatelessWidget {
                 ],
               ),
             ),
-          const VBox(10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Icon(
-                Icons.flag_rounded,
-                color: Palette.icon,
-                size: 20,
+          if (task.priority != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.flag_rounded,
+                    color: Palette.icon,
+                    size: 20,
+                  ),
+                  const HBox(15),
+                  PriorityChip(
+                    priority: task.priority!,
+                    size: 12,
+                    selected: true,
+                  ),
+                ],
               ),
-              const HBox(15),
-              PriorityChip(
-                priority: task.priority,
-                size: 12,
-                selected: true,
-              ),
-            ],
-          ),
+            ),
           if (task.deadline != null)
             Padding(
               padding: const EdgeInsets.only(top: 10),

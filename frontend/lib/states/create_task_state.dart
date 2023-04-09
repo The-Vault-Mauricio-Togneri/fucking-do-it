@@ -23,8 +23,7 @@ class CreateTaskState extends BaseState {
 
   CreateTaskState(this.originalTask);
 
-  bool get canSubmit =>
-      (priority != null) && titleController.text.trim().isNotEmpty;
+  bool get canSubmit => titleController.text.trim().isNotEmpty;
 
   bool get isCreate => originalTask == null;
 
@@ -46,7 +45,12 @@ class CreateTaskState extends BaseState {
   }
 
   void onSetPriority(Priority newPriority) {
-    priority = newPriority;
+    if (newPriority != priority) {
+      priority = newPriority;
+    } else {
+      priority = null;
+    }
+
     notify();
   }
 
@@ -89,7 +93,7 @@ class CreateTaskState extends BaseState {
       createdBy: FirebaseAuth.instance.currentUser?.uid ?? '',
       createdAt: DateTime.now(),
       status: Status.created,
-      priority: priority!,
+      priority: priority,
       title: titleController.text.trim(),
       assignedTo: [],
       assignedInfo: {},
@@ -109,7 +113,7 @@ class CreateTaskState extends BaseState {
       createdBy: originalTask!.createdBy,
       createdAt: originalTask!.createdAt,
       status: originalTask!.status,
-      priority: priority!,
+      priority: priority,
       title: titleController.text.trim(),
       assignedTo: originalTask!.assignedTo,
       assignedInfo: originalTask!.assignedInfo,
