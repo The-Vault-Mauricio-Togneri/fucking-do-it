@@ -19,12 +19,20 @@ class MarkdownText extends StatelessWidget {
     final MarkdownStyleSheet markdownStyle = MarkdownStyleSheet(
       a: textStyle.copyWith(color: Palette.primary),
       p: textStyle,
-      h1: textStyle,
       h2: textStyle,
       h3: textStyle,
       h4: textStyle,
       h5: textStyle,
       h6: textStyle,
+      horizontalRuleDecoration: BoxDecoration(
+        border: Border.all(
+          color: Palette.border,
+          width: 0.5,
+        ),
+      ),
+      checkbox: const TextStyle(
+        fontSize: 18,
+      ),
       em: textStyle,
       strong: textStyle.copyWith(fontWeight: FontWeight.bold),
       textAlign: WrapAlignment.start,
