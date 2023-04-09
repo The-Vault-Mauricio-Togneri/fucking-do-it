@@ -105,9 +105,9 @@ class CreateTaskState extends BaseState {
       comments: [],
     );
 
+    Navigation.pop();
     final DocumentReference ref = await Repository.create(task);
     Clipboard.copy(task.url(ref.id));
-    Navigation.pop();
   }
 
   Future _updateTask() async {
@@ -126,8 +126,8 @@ class CreateTaskState extends BaseState {
       comments: [],
     );
 
-    await Repository.update(task);
     Navigation.pop();
+    await Repository.update(task);
   }
 
   void onCreateTag(String tag) {
