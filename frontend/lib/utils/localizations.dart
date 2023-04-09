@@ -18,11 +18,11 @@ abstract class BaseLocalized {
 
   String get buttonDelete;
 
-  String get buttonOk;
-
   String get buttonReopen;
 
   String get buttonSignInWithGoogle;
+
+  String get confirmationDeleteTask;
 
   String get inputDeadline;
 
@@ -85,13 +85,14 @@ class ENLocalized extends BaseLocalized {
   String get buttonDelete => 'Delete';
 
   @override
-  String get buttonOk => 'Ok';
-
-  @override
   String get buttonReopen => 'Reopen';
 
   @override
   String get buttonSignInWithGoogle => 'Sign in with Google';
+
+  @override
+  String get confirmationDeleteTask =>
+      'Do you confirm you want to delete the task?';
 
   @override
   String get inputDeadline => 'Deadline';
@@ -172,13 +173,14 @@ class ESLocalized extends BaseLocalized {
   String get buttonDelete => 'Eliminar';
 
   @override
-  String get buttonOk => 'Ok';
-
-  @override
   String get buttonReopen => 'Reabrir';
 
   @override
   String get buttonSignInWithGoogle => 'Conectarse con Google';
+
+  @override
+  String get confirmationDeleteTask =>
+      '¿Confirmas que quieres eliminar la tarea?';
 
   @override
   String get inputDeadline => 'Fecha límite';

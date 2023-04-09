@@ -1,6 +1,9 @@
 import 'dart:html';
 import 'package:dafluta/dafluta.dart';
+import 'package:flutter/material.dart';
+import 'package:fucking_do_it/dialogs/confirmation_dialog.dart';
 import 'package:fucking_do_it/models/task.dart';
+import 'package:fucking_do_it/utils/localizations.dart';
 import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
@@ -44,7 +47,15 @@ class TaskDetailsState extends BaseState {
     Navigation.pop();
   }
 
-  void onDelete() {
+  void onDelete(BuildContext context) => ConfirmationDialog.show(
+        context: context,
+        message: Localized.get.confirmationDeleteTask,
+        buttonCancel: Localized.get.buttonCancel,
+        buttonOk: Localized.get.buttonDelete,
+        onConfirm: deleteTask,
+      );
+
+  void deleteTask() {
     Repository.delete(task);
     Navigation.pop();
   }

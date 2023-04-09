@@ -166,7 +166,7 @@ class DeleteButton extends StatelessWidget {
       child: TertiaryButton(
         text: Localized.get.buttonDelete,
         color: Palette.error,
-        onSubmit: state.onDelete,
+        onSubmit: () => state.onDelete(context),
       ),
     );
   }
