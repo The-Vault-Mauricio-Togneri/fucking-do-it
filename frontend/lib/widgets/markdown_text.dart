@@ -34,6 +34,10 @@ class MarkdownText extends StatelessWidget {
         fontSize: 18,
       ),
       em: textStyle,
+      tableBorder: TableBorder.all(
+        color: Palette.grey,
+        width: 0.5,
+      ),
       strong: textStyle.copyWith(fontWeight: FontWeight.bold),
       textAlign: WrapAlignment.start,
       h1Align: WrapAlignment.start,
