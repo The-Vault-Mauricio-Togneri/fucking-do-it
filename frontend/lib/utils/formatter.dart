@@ -8,13 +8,39 @@ class Formatter {
   static String dayLongMonthMonthYear(DateTime dateTime) =>
       DateFormat.yMMMd(Localized.current.languageCode).format(dateTime);
 
-  static String hoursMinutes(DateTime dateTime) =>
-      DateFormat.Hm(Localized.current.languageCode).format(dateTime);
+  static String deltaDate(DateTime dateTime) {
+    final DateTime now = DateTime.now();
+    final DateTime today = DateTime(now.year, now.month, now.day);
+    final Duration difference = dateTime.difference(today);
+    String delta = '';
 
-  static String fullDateTime(DateTime dateTime) {
-    final String date = dayLongMonthMonthYear(dateTime);
-    final String time = hoursMinutes(dateTime);
+    if (difference.inDays > 0) {
+      delta = Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
+    } else if (difference.inDays == 0) {
+      delta = Localized.get.labelDeltaToday.toLowerCase();
+    } else {
+      delta =
+          Localized.get.labelDeltaDaysPast(difference.inDays.abs().toString());
+    }
 
-    return '$date $time';
+    return delta;
+  }
+
+  static String deltaTime(DateTime dateTime) {
+    final DateTime now = DateTime.now();
+    final DateTime today = DateTime(now.year, now.month, now.day);
+    final Duration difference = dateTime.difference(today);
+    String delta = '';
+
+    if (difference.inDays > 0) {
+      delta = Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
+    } else if (difference.inDays == 0) {
+      delta = Localized.get.labelDeltaToday.toLowerCase();
+    } else {
+      delta =
+          Localized.get.labelDeltaDaysPast(difference.inDays.abs().toString());
+    }
+
+    return delta;
   }
 }
