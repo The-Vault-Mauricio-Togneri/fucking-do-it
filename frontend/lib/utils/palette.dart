@@ -7,6 +7,7 @@ class Palette {
   static const Color success = Color(0xff82b368);
   static const Color black = Color(0xff404040);
   static const Color white = Colors.white;
+  static const Color splash = Color(0x0faaaaaa);
 
   static Color dialogBackground = Colors.orange;
   static Color background = Colors.orange;

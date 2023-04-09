@@ -27,6 +27,7 @@ class PriorityChip extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         child: InkWell(
           onTap: () => onPressed?.call(priority),
+          highlightColor: Palette.splash,
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           child: Padding(
             padding: EdgeInsets.only(

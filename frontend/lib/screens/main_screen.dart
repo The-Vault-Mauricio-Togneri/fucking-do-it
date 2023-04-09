@@ -277,6 +277,7 @@ class TaskEntry extends StatelessWidget {
         color: Palette.transparent,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: InkWell(
+          highlightColor: Palette.splash,
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           onTap: () => state.onTaskSelected(context, task),
           child: TaskCard(
