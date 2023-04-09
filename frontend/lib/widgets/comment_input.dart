@@ -45,7 +45,7 @@ class CommentInput extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.background, width: 0),
         ),
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           fontSize: 12,
           color: Palette.hint,
         ),

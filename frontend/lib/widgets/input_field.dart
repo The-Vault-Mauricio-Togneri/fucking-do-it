@@ -82,11 +82,11 @@ class InputField extends StatelessWidget {
           fontSize: 12,
           color: Palette.primary,
         ),
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           fontSize: 12,
           color: Palette.hint,
         ),
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           fontSize: 12,
           color: Palette.hint,
         ),

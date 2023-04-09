@@ -8,6 +8,7 @@ class Palette {
   static const Color black = Color(0xff404040);
   static const Color white = Colors.white;
   static const Color splash = Color(0x0faaaaaa);
+  static const Color hint = Color(0xffaaaaaa);
 
   static Color dialogBackground = Colors.orange;
   static Color background = Colors.orange;
@@ -15,7 +16,6 @@ class Palette {
   static Color loading = Colors.orange;
 
   static Color grey = Colors.grey;
-  static Color hint = const Color(0xffaaaaaa);
   static Color border = const Color(0xffdadada);
   static Color unselected = const Color(0xffdddddd);
 
@@ -27,7 +27,6 @@ class Palette {
       loading = PaletteLight.loading;
 
       grey = PaletteLight.grey;
-      hint = PaletteLight.hint;
       border = PaletteLight.border;
       unselected = PaletteLight.unselected;
     } else {
@@ -37,7 +36,6 @@ class Palette {
       loading = PaletteDark.loading;
 
       grey = PaletteDark.grey;
-      hint = PaletteDark.hint;
       border = PaletteDark.border;
       unselected = PaletteDark.unselected;
     }
@@ -50,9 +48,7 @@ class PaletteLight {
   static const Color primaryTextColor = Color(0xff404040);
   static const Color loading = Palette.primary;
 
-  static const Color white = Colors.white;
   static const Color grey = Colors.grey;
-  static const Color hint = Color(0xffaaaaaa);
   static const Color border = Color(0xffdadada);
   static const Color unselected = Color(0xffdddddd);
 }
@@ -63,9 +59,7 @@ class PaletteDark {
   static const Color primaryTextColor = Colors.white;
   static const Color loading = Colors.white;
 
-  static const Color white = Colors.black;
   static const Color grey = Colors.grey;
-  static const Color hint = Color(0xffaaaaaa);
   static const Color border = Color(0xffdadada);
   static const Color unselected = Color(0xffdddddd);
 }
