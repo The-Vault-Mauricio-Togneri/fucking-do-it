@@ -145,11 +145,12 @@ class CommentEntry extends StatelessWidget {
                 avatar: comment.avatar,
                 size: 24,
               ),
-              const HBox(5),
+              const HBox(10),
               Label(
                 text: comment.name,
                 color: Palette.black,
                 weight: FontWeight.bold,
+                size: 12,
               ),
               const HBox(10),
               Label(
@@ -163,6 +164,7 @@ class CommentEntry extends StatelessWidget {
           Label(
             text: comment.content,
             color: Palette.grey,
+            size: 12,
           ),
           if (!isLast)
             const Padding(

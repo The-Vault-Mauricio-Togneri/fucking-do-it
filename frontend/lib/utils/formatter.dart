@@ -12,35 +12,27 @@ class Formatter {
     final DateTime now = DateTime.now();
     final DateTime today = DateTime(now.year, now.month, now.day);
     final Duration difference = dateTime.difference(today);
-    String delta = '';
 
     if (difference.inDays > 0) {
-      delta = Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
+      return Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
     } else if (difference.inDays == 0) {
-      delta = Localized.get.labelDeltaToday.toLowerCase();
+      return Localized.get.labelDeltaToday.toLowerCase();
     } else {
-      delta =
-          Localized.get.labelDeltaDaysPast(difference.inDays.abs().toString());
+      return Localized.get
+          .labelDeltaDaysPast(difference.inDays.abs().toString());
     }
-
-    return delta;
   }
 
   static String deltaTime(DateTime dateTime) {
-    final DateTime now = DateTime.now();
-    final DateTime today = DateTime(now.year, now.month, now.day);
-    final Duration difference = dateTime.difference(today);
-    String delta = '';
+    final Duration difference = DateTime.now().difference(dateTime);
 
     if (difference.inDays > 0) {
-      delta = Localized.get.labelDeltaDaysFuture(difference.inDays.toString());
-    } else if (difference.inDays == 0) {
-      delta = Localized.get.labelDeltaToday.toLowerCase();
+      return Localized.get.labelDeltaDaysPast(difference.inDays.toString());
+    } else if (difference.inHours > 0) {
+      return Localized.get.labelDeltaHoursPast(difference.inHours.toString());
     } else {
-      delta =
-          Localized.get.labelDeltaDaysPast(difference.inDays.abs().toString());
+      return Localized.get
+          .labelDeltaMinutesPast(difference.inMinutes.toString());
     }
-
-    return delta;
   }
 }
