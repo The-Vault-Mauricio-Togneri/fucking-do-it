@@ -24,6 +24,7 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
+          disabledBackgroundColor: Palette.unselected,
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
           shape: const StadiumBorder(),
         ),
@@ -38,13 +39,16 @@ class PrimaryButton extends StatelessWidget {
                 child: Icon(
                   icon,
                   size: 20,
-                  color: Palette.white,
+                  color: (onSubmit != null)
+                      ? Palette.white
+                      : Palette.secondaryText,
                 ),
               ),
               const HBox(5),
               Label(
                 text: text.toUpperCase(),
-                color: Palette.white,
+                color:
+                    (onSubmit != null) ? Palette.white : Palette.secondaryText,
                 size: 14,
               ),
             ],
