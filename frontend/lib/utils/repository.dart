@@ -7,6 +7,18 @@ import 'package:fucking_do_it/models/task.dart';
 import 'package:fucking_do_it/types/status.dart';
 
 class Repository {
+  static StreamSubscription listen(
+    String taskId,
+    Function(Task task) callback,
+  ) {
+    final Stream<DocumentSnapshot<Map<String, dynamic>>> stream =
+        Repository._collection().doc(taskId).snapshots();
+
+    return stream.listen((event) {
+      callback(Task.fromDocument(event));
+    });
+  }
+
   static StreamSubscription listenAssignedToMe(
       Function(List<Task> tasks) callback) {
     final Stream<QuerySnapshot<Map<String, dynamic>>> stream =

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:dafluta/dafluta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,27 @@ import 'package:fucking_do_it/utils/navigation.dart';
 import 'package:fucking_do_it/utils/repository.dart';
 
 class TaskDetailsState extends BaseState {
-  final Task task;
+  Task task;
   final TextEditingController commentController = TextEditingController();
   final FocusNode commentFocus = FocusNode();
+  StreamSubscription? subscription;
 
   TaskDetailsState(this.task);
+
+  @override
+  void onLoad() {
+    subscription ??= Repository.listen(task.id, onTaskChanged);
+  }
+
+  @override
+  void onDestroy() {
+    subscription?.cancel();
+  }
+
+  Future onTaskChanged(Task newTask) async {
+    task = newTask;
+    notify();
+  }
 
   void onAccept() {
     Navigation.pop();

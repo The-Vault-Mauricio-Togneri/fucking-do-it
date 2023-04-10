@@ -39,6 +39,14 @@ class MainState extends BaseState {
     subscriptionInReview ??= Repository.listenInReview(onTasksInReview);
   }
 
+  @override
+  void onDestroy() {
+    subscriptionAssignedToMe?.cancel();
+    subscriptionCreated?.cancel();
+    subscriptionAccepted?.cancel();
+    subscriptionInReview?.cancel();
+  }
+
   Future checkAcceptTask() async {
     if (paramTaskId != null) {
       final Task task = await Repository.get(paramTaskId!);
@@ -49,14 +57,6 @@ class MainState extends BaseState {
         task: task,
       );
     }
-  }
-
-  @override
-  void onDestroy() {
-    subscriptionAssignedToMe?.cancel();
-    subscriptionCreated?.cancel();
-    subscriptionAccepted?.cancel();
-    subscriptionInReview?.cancel();
   }
 
   Future onTasksAssignedToMe(List<Task> tasks) async {

@@ -26,10 +26,10 @@ class PersonAvatar extends StatelessWidget {
             imageUrl: avatar,
             placeholder: (context, url) => Container(color: Palette.background),
             errorWidget: (context, url, error) => Container(
-              color: Palette.background,
+              color: Palette.border,
               child: Icon(
                 Icons.person,
-                size: size * 1.25,
+                size: size * 0.8,
                 color: Palette.icon,
               ),
             ),
