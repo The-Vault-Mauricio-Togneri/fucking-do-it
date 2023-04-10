@@ -14,8 +14,10 @@ class Repository {
     final Stream<DocumentSnapshot<Map<String, dynamic>>> stream =
         Repository._collection().doc(taskId).snapshots();
 
-    return stream.listen((event) {
-      callback(Task.fromDocument(event));
+    return stream.listen((snapshot) {
+      if (snapshot.exists) {
+        callback(Task.fromDocument(snapshot));
+      }
     });
   }
 
