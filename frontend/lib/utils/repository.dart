@@ -9,7 +9,7 @@ import 'package:fucking_do_it/types/status.dart';
 class Repository {
   static StreamSubscription listen(
     String taskId,
-    Function(Task task) callback,
+    Function(Task? task) callback,
   ) {
     final Stream<DocumentSnapshot<Map<String, dynamic>>> stream =
         Repository._collection().doc(taskId).snapshots();
@@ -17,6 +17,8 @@ class Repository {
     return stream.listen((snapshot) {
       if (snapshot.exists) {
         callback(Task.fromDocument(snapshot));
+      } else {
+        callback(null);
       }
     });
   }

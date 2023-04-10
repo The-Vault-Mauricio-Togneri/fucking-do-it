@@ -29,9 +29,13 @@ class TaskDetailsState extends BaseState {
     subscription?.cancel();
   }
 
-  Future onTaskChanged(Task newTask) async {
-    task = newTask;
-    notify();
+  Future onTaskChanged(Task? newTask) async {
+    if (newTask != null) {
+      task = newTask;
+      notify();
+    } else {
+      Navigation.pop();
+    }
   }
 
   void onAccept() {
