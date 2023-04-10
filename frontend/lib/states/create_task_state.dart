@@ -123,7 +123,7 @@ class CreateTaskState extends BaseState {
       description: descriptionController.text.trim(),
       deadline: deadline,
       tags: tags,
-      comments: [],
+      comments: originalTask!.comments,
     );
 
     Navigation.pop();
