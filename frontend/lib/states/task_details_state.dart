@@ -71,13 +71,8 @@ class TaskDetailsState extends BaseState {
         message: Localized.get.confirmationDeleteTask,
         buttonCancel: Localized.get.buttonCancel,
         buttonOk: Localized.get.buttonDelete,
-        onConfirm: deleteTask,
+        onConfirm: () => Repository.delete(task),
       );
-
-  void deleteTask() {
-    Navigation.pop();
-    Repository.delete(task);
-  }
 
   Future onSubmitComment(String content) async {
     if (content.trim().isNotEmpty) {
