@@ -336,7 +336,7 @@ class QuitButton extends StatelessWidget {
         right: 20,
       ),
       child: TertiaryButton(
-        text: 'Leave',
+        text: Localized.get.buttonLeave,
         color: Palette.error,
         onSubmit: () => state.onQuit(context),
       ),

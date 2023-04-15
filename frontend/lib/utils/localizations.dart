@@ -20,6 +20,8 @@ abstract class BaseLocalized {
 
   String get buttonEdit;
 
+  String get buttonLeave;
+
   String get buttonReopen;
 
   String get buttonSave;
@@ -27,6 +29,8 @@ abstract class BaseLocalized {
   String get buttonSignInWithGoogle;
 
   String get confirmationDeleteTask;
+
+  String get confirmationLeaveTask;
 
   String get inputComment;
 
@@ -100,6 +104,9 @@ class ENLocalized extends BaseLocalized {
   String get buttonEdit => 'Edit';
 
   @override
+  String get buttonLeave => 'Leave';
+
+  @override
   String get buttonReopen => 'Reopen';
 
   @override
@@ -111,6 +118,10 @@ class ENLocalized extends BaseLocalized {
   @override
   String get confirmationDeleteTask =>
       'Do you confirm you want to delete the task?';
+
+  @override
+  String get confirmationLeaveTask =>
+      'Do you confirm you want to leave the task?';
 
   @override
   String get inputComment => 'Add a comment…';
@@ -206,6 +217,9 @@ class ESLocalized extends BaseLocalized {
   String get buttonEdit => 'Editar';
 
   @override
+  String get buttonLeave => 'Abandonar';
+
+  @override
   String get buttonReopen => 'Reabrir';
 
   @override
@@ -217,6 +231,10 @@ class ESLocalized extends BaseLocalized {
   @override
   String get confirmationDeleteTask =>
       '¿Confirmas que quieres eliminar la tarea?';
+
+  @override
+  String get confirmationLeaveTask =>
+      '¿Confirmas que quieres abandonar la tarea?';
 
   @override
   String get inputComment => 'Añade un comentario…';

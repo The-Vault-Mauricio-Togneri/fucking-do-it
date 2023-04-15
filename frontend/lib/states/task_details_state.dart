@@ -76,9 +76,9 @@ class TaskDetailsState extends BaseState {
 
   void onQuit(BuildContext context) => ConfirmationDialog.show(
         context: context,
-        message: 'Do you confirm you want to leave the task?',
+        message: Localized.get.confirmationLeaveTask,
         buttonCancel: Localized.get.buttonCancel,
-        buttonOk: 'Leave',
+        buttonOk: Localized.get.buttonLeave,
         onConfirm: () {
           Navigation.pop();
           Repository.leave(task);
