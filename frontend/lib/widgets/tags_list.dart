@@ -35,7 +35,10 @@ class TagChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 5),
+      padding: const EdgeInsets.only(
+        right: 5,
+        bottom: 5,
+      ),
       child: Chip(
         padding: EdgeInsets.only(
           top: 0,
