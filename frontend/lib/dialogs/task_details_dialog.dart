@@ -66,6 +66,7 @@ class TaskDetailsDialog extends StatelessWidget {
                 if (state.task.canBeCompleted) CompleteButton(state),
                 if (state.task.canBeEdited) EditButton(state),
                 if (state.task.canBeDeleted) DeleteButton(state),
+                if (state.task.canBeQuit) QuitButton(state),
                 const VBox(10),
               ],
             ),
@@ -317,6 +318,27 @@ class DeleteButton extends StatelessWidget {
         text: Localized.get.buttonDelete,
         color: Palette.error,
         onSubmit: () => state.onDelete(context),
+      ),
+    );
+  }
+}
+
+class QuitButton extends StatelessWidget {
+  final TaskDetailsState state;
+
+  const QuitButton(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
+      child: TertiaryButton(
+        text: 'Leave',
+        color: Palette.error,
+        onSubmit: () => state.onQuit(context),
       ),
     );
   }

@@ -74,6 +74,17 @@ class TaskDetailsState extends BaseState {
         onConfirm: () => Repository.delete(task),
       );
 
+  void onQuit(BuildContext context) => ConfirmationDialog.show(
+        context: context,
+        message: 'Do you confirm you want to leave the task?',
+        buttonCancel: Localized.get.buttonCancel,
+        buttonOk: 'Leave',
+        onConfirm: () {
+          Navigation.pop();
+          Repository.leave(task);
+        },
+      );
+
   Future onSubmitComment(String content) async {
     if (content.trim().isNotEmpty) {
       final Comment comment = Comment(

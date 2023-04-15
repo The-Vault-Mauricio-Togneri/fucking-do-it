@@ -12,7 +12,7 @@ class Repository {
     Function(Task? task) callback,
   ) {
     final Stream<DocumentSnapshot<Map<String, dynamic>>> stream =
-        Repository._collection().doc(taskId).snapshots();
+        Repository._doc(taskId).snapshots();
 
     return stream.listen((snapshot) {
       if (snapshot.exists) {
@@ -96,7 +96,7 @@ class Repository {
 
   static Future get(String taskId) async {
     final DocumentSnapshot<Map<String, dynamic>> document =
-        await _collection().doc(taskId).get();
+        await _doc(taskId).get();
 
     return Task.fromDocument(document);
   }
@@ -104,24 +104,24 @@ class Repository {
   static Future<DocumentReference> create(Task task) =>
       _collection().add(task.document);
 
-  static Future update(Task task) =>
-      _collection().doc(task.id).set(task.document);
+  static Future update(Task task) => _doc(task.id).set(task.document);
 
   static Future addComment({
     required Task task,
     required Comment comment,
   }) {
     task.comments.add(comment.document);
-    return _collection().doc(task.id).update({
+
+    return _doc(task.id).update({
       Task.FIELD_COMMENTS: task.comments,
     });
   }
 
-  static Future complete(Task task) => _collection().doc(task.id).update({
+  static Future complete(Task task) => _doc(task.id).update({
         Task.FIELD_STATUS: Status.done.name,
       });
 
-  static Future reopen(Task task) => _collection().doc(task.id).update({
+  static Future reopen(Task task) => _doc(task.id).update({
         Task.FIELD_STATUS: Status.accepted.name,
       });
 
@@ -139,7 +139,7 @@ class Repository {
         Person.FIELD_EMAIL: FirebaseAuth.instance.currentUser?.email,
       };
 
-      return _collection().doc(task.id).update({
+      return _doc(task.id).update({
         Task.FIELD_ASSIGNED_TO: assignedTo,
         Task.FIELD_ASSIGNED_INFO: assignedInfo,
         Task.FIELD_STATUS: Status.accepted.name,
@@ -147,8 +147,25 @@ class Repository {
     }
   }
 
-  static Future delete(Task task) => _collection().doc(task.id).delete();
+  static Future delete(Task task) => _doc(task.id).delete();
+
+  static Future leave(Task task) async {
+    final String userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+
+    task.assignedTo.remove(userId);
+    task.assignedInfo.remove(userId);
+
+    return _doc(task.id).update({
+      Task.FIELD_ASSIGNED_TO: task.assignedTo,
+      Task.FIELD_ASSIGNED_INFO: task.assignedInfo,
+      Task.FIELD_STATUS:
+          task.assignedTo.isEmpty ? Status.created.name : Status.accepted.name,
+    });
+  }
 
   static CollectionReference<Map<String, dynamic>> _collection() =>
       FirebaseFirestore.instance.collection('tasks');
+
+  static DocumentReference<Map<String, dynamic>> _doc(String id) =>
+      FirebaseFirestore.instance.collection('tasks').doc(id);
 }

@@ -67,6 +67,9 @@ class Task implements Comparable<Task> {
       (status == Status.accepted) &&
       (assignedTo.contains(FirebaseAuth.instance.currentUser?.uid));
 
+  bool get canBeQuit =>
+      assignedTo.contains(FirebaseAuth.instance.currentUser?.uid);
+
   bool get canBeReopened =>
       (status == Status.done) &&
       (createdBy == FirebaseAuth.instance.currentUser?.uid);
